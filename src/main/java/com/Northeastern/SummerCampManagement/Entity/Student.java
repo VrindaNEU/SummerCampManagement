@@ -5,7 +5,11 @@
 package com.Northeastern.SummerCampManagement.Entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -23,6 +27,19 @@ public class Student extends AppUser{
     String address;
     Integer age;
     Boolean camper;
+    
+    //Mappings
+    @OneToOne
+    @JoinColumn(name = "preferenceId")
+    private MealPreference mealPreference;
+    
+    @OneToOne
+    @JoinColumn(name = "feedbackId")
+    private Feedback feedback;
+    
+    @OneToMany
+    @JoinColumn(name = "activityId")
+    private List<Activity> activities;
     
    
     
