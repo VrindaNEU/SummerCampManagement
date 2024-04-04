@@ -21,11 +21,63 @@ coke,
 public class MealPreference {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer preferenceId;
-    String allergies;
-    String foodPreference;
-    Beverage beveragePreferance;
-    String medicalConditions;
+    private Integer preferenceId;
+    private String allergies;
+    private String foodPreference;
+    private Beverage beveragePreferance;
+    private String medicalConditions;
+
+    //Constructors
+    public MealPreference() {
+    }
+
+    public MealPreference( String allergies, String foodPreference, Beverage beveragePreferance, String medicalConditions) {
+       
+        this.allergies = allergies;
+        this.foodPreference = foodPreference;
+        this.beveragePreferance = beveragePreferance;
+        this.medicalConditions = medicalConditions;
+    }
+    
+    //Getters and Setters
+
+    public Integer getPreferenceId() {
+        return preferenceId;
+    }
+
+
+    public String getAllergies() {
+        return allergies;
+    }
+
+    public void setAllergies(String allergies) {
+        this.allergies = allergies;
+    }
+
+    public String getFoodPreference() {
+        return foodPreference;
+    }
+
+    public void setFoodPreference(String foodPreference) {
+        this.foodPreference = foodPreference;
+    }
+
+    public Beverage getBeveragePreferance() {
+        return beveragePreferance;
+    }
+
+    public void setBeveragePreferance(Beverage beveragePreferance) {
+        this.beveragePreferance = beveragePreferance;
+    }
+
+    public String getMedicalConditions() {
+        return medicalConditions;
+    }
+
+    public void setMedicalConditions(String medicalConditions) {
+        this.medicalConditions = medicalConditions;
+    }
+    
     
     
     

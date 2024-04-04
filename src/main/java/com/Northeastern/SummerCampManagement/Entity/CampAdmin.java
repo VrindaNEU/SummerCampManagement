@@ -14,18 +14,24 @@ import java.time.LocalDate;
 @Entity
 public class CampAdmin extends AppUser{
     
-    String email;
-    String contactNumber;
+    private String email;
+    private String contactNumber;
 
-    //Constructors
+    //Constructor
     public CampAdmin() {
     }
 
-    public CampAdmin(Integer userId, String Username, String Password, Role role, LocalDate registrationDate) {
-        super(userId, Username, Password, role, registrationDate);
+    public CampAdmin(String email, String contactNumber, String username, String password, Role role, LocalDate registrationDate) {
+        super(username, password, role, registrationDate);
+        this.email = email;
+        this.contactNumber = contactNumber;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.registrationDate = registrationDate;
     }
     
-    // Getters and Setters
+    //Getters and Setters
 
     public String getEmail() {
         return email;
@@ -35,36 +41,33 @@ public class CampAdmin extends AppUser{
         this.email = email;
     }
 
-    public String getPhoneNumber() {
+    public String getContactNumber() {
         return contactNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.contactNumber = phoneNumber;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
     public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
-    public void setUsername(String Username) {
-        this.Username = Username;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
-    public void setPassword(String Password) {
-        this.Password = Password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Role getRole() {
@@ -82,7 +85,7 @@ public class CampAdmin extends AppUser{
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
-    
-    
+
+
     
 }

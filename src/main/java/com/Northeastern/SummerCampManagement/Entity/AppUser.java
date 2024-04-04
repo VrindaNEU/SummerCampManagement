@@ -29,66 +29,69 @@ public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer userId;
-    String Username;
-    String Password;
+    String username;
+    String password;
     Role role;
     LocalDate registrationDate;
 
+    //Constructors 
+    
     public AppUser() {
     }
-
-    public AppUser(Integer userId, String Username, String Password, Role role, LocalDate registrationDate) {
-        this.userId = userId;
-        this.Username = Username;
-        this.Password = Password;
+    
+    public AppUser(String username, String password, Role role, LocalDate registrationDate) {
+       
+        this.username = username;
+        this.password = password;
         this.role = role;
         this.registrationDate = registrationDate;
     }
+    
+    //Getters and Setters
 
-    public String getPassword() {
-        return Password;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public LocalDate getRegistrationDate() {
-        return registrationDate;
+    
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Role getRole() {
         return role;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public String getUsername() {
-        return Username;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public void setUsername(String Username) {
-        this.Username = Username;
-    }
-
-    public void setPassword(String Password) {
-        this.Password = Password;
-    }
-
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
     }
 
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
+
     
     
-    
-    
-    
-    
-    
+
+
+
+
+
 }
