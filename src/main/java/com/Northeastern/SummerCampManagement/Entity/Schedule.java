@@ -23,13 +23,76 @@ public class Schedule {
     
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
-    Integer scheduleId;
-    LocalDate date;
-    LocalDateTime startTime;
-    LocalDateTime endTime;
-    String location;
+    private Integer scheduleId;
+    private LocalDate date;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private String location;
     
     @OneToMany
     @JoinColumn(name = "activityId")
     private List<Activity> activities;
+
+    //Constructors
+    public Schedule() {
+    }
+
+    public Schedule( LocalDate date, LocalDateTime startTime, LocalDateTime endTime, String location, List<Activity> activities) {
+        
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.location = location;
+        this.activities = activities;
+    }
+    
+    //Getters and Setters
+
+    public Integer getScheduleId() {
+        return scheduleId;
+    }
+
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(List<Activity> activities) {
+        this.activities = activities;
+    }
+    
+    
+    
 }

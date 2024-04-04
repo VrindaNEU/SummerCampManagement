@@ -20,24 +20,31 @@ CampAssistant
 @Entity
 public class CampStaff extends AppUser{
     
-    String firstName;
-    String lastName;
-    String email;
-    String contactNumber;
-    Designation designation;
-    Boolean activeStatus;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String contactNumber;
+    private Designation designation;
+    private Boolean activeStatus;
     
     //Constructors
 
     public CampStaff() {
     }
 
-    public CampStaff(Integer userId, String Username, String Password, Role role, LocalDate registrationDate) {
-        super(userId, Username, Password, role, registrationDate);
+    public CampStaff(String firstName, String lastName, String email, String contactNumber, Designation designation, Boolean activeStatus, String username, String password, Role role, LocalDate registrationDate) {
+        super(username, password, role, registrationDate);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.contactNumber = contactNumber;
+        this.designation = designation;
+        this.activeStatus = activeStatus;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.registrationDate = registrationDate;
     }
-    
-    
-    
     
     //Getters and Setters
 
@@ -93,24 +100,21 @@ public class CampStaff extends AppUser{
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
+    
     public String getUsername() {
-        return Username;
+        return username;
     }
 
-    public void setUsername(String Username) {
-        this.Username = Username;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
-    public void setPassword(String Password) {
-        this.Password = Password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Role getRole() {
@@ -128,8 +132,6 @@ public class CampStaff extends AppUser{
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
-    
-    
-    
-    
+
+   
 }

@@ -20,13 +20,13 @@ import java.util.List;
 public class Student extends AppUser{
     
     
-    String firstName;
-    String lastName;
-    String email;
-    String contactNumber;
-    String address;
-    Integer age;
-    Boolean camper;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String contactNumber;
+    private String address;
+    private Integer age;
+    private Boolean camper;
     
     //Mappings
     @OneToOne
@@ -41,19 +41,30 @@ public class Student extends AppUser{
     @JoinColumn(name = "activityId")
     private List<Activity> activities;
     
-   
     
     //Constructors
 
     public Student() {
     }
-
     
 
-    
-
-    
-    // Getters and Setters
+    public Student(String firstName, String lastName, String email, String contactNumber, String address, Integer age, Boolean camper, MealPreference mealPreference, Feedback feedback, List<Activity> activities, String username, String password, Role role, LocalDate registrationDate) {
+        super(username, password, role, registrationDate);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.contactNumber = contactNumber;
+        this.address = address;
+        this.age = age;
+        this.camper = camper;
+        this.mealPreference = mealPreference;
+        this.feedback = feedback;
+        this.activities = activities;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.registrationDate = registrationDate;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -95,28 +106,65 @@ public class Student extends AppUser{
         this.address = address;
     }
 
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Boolean getCamper() {
+        return camper;
+    }
+
+    public void setCamper(Boolean camper) {
+        this.camper = camper;
+    }
+
+    public MealPreference getMealPreference() {
+        return mealPreference;
+    }
+
+    public void setMealPreference(MealPreference mealPreference) {
+        this.mealPreference = mealPreference;
+    }
+
+    public Feedback getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(Feedback feedback) {
+        this.feedback = feedback;
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(List<Activity> activities) {
+        this.activities = activities;
+    }
+
     public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
-    public void setUsername(String Username) {
-        this.Username = Username;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
-    public void setPassword(String Password) {
-        this.Password = Password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Role getRole() {
@@ -136,4 +184,5 @@ public class Student extends AppUser{
     }
     
     
+
 }
