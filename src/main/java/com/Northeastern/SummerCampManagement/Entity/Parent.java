@@ -25,13 +25,20 @@ public class Parent extends AppUser{
     public Parent() {
     }
 
-    public Parent(Integer userId, String Username, String Password, Role role, LocalDate registrationDate) {
-        super(userId, Username, Password, role, registrationDate);
+    public Parent(String firstName, String lastName, String email, String contactNumber, String address, String username, String password, Role role, LocalDate registrationDate) {
+        super(username, password, role, registrationDate);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.contactNumber = contactNumber;
+        this.address = address;
+         this.username = username;
+        this.password = password;
+        this.role = role;
+        this.registrationDate = registrationDate;
     }
-    
-    
-    // Getters and Setters
 
+    //Getters and Setters
     public String getFirstName() {
         return firstName;
     }
@@ -76,24 +83,20 @@ public class Parent extends AppUser{
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
     public String getUsername() {
-        return Username;
+        return username;
     }
 
-    public void setUsername(String Username) {
-        this.Username = Username;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
-    public void setPassword(String Password) {
-        this.Password = Password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Role getRole() {
@@ -113,6 +116,7 @@ public class Parent extends AppUser{
     }
     
     
+
     
     
 }

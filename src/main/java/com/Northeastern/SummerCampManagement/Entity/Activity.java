@@ -32,11 +32,65 @@ public class Activity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer activityId;
-    String activityName;
-    String description;
-    Category category;
-    String ageGroup;
+    private Integer activityId;
+    private String activityName;
+    private String description;
+    private Category category;
+    private String ageGroup;
+
+    //Constructors
+    public Activity() {
+    }
+
+    public Activity( String activityName, String description, Category category, String ageGroup) {
+       
+        this.activityName = activityName;
+        this.description = description;
+        this.category = category;
+        this.ageGroup = ageGroup;
+    }
+    
+    //Getters and Setters
+
+    public Integer getActivityId() {
+        return activityId;
+    }
+
+    
+
+    public String getActivityName() {
+        return activityName;
+    }
+
+    public void setActivityName(String activityName) {
+        this.activityName = activityName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public String getAgeGroup() {
+        return ageGroup;
+    }
+
+    public void setAgeGroup(String ageGroup) {
+        this.ageGroup = ageGroup;
+    }
+    
+    
     
     
 }
