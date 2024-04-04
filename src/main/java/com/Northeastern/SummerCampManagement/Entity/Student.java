@@ -27,6 +27,8 @@ public class Student extends AppUser{
     private String address;
     private Integer age;
     private Boolean camper;
+    private String campUsername;
+    private String campPassword;
     
     //Mappings
     @OneToOne
