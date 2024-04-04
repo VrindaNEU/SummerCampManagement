@@ -13,6 +13,11 @@ enum Beverage{
 juice,
 coke,
 }
+enum FoodPreference{
+vegetarian,
+nonvegetarian,
+vegan
+}
 /**
  *
  * @author vrind
@@ -23,7 +28,7 @@ public class MealPreference {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer preferenceId;
     private String allergies;
-    private String foodPreference;
+    private FoodPreference foodPreference;
     private Beverage beveragePreferance;
     private String medicalConditions;
 
@@ -31,13 +36,15 @@ public class MealPreference {
     public MealPreference() {
     }
 
-    public MealPreference( String allergies, String foodPreference, Beverage beveragePreferance, String medicalConditions) {
+    public MealPreference( String allergies, FoodPreference foodPreference, Beverage beveragePreferance, String medicalConditions) {
        
         this.allergies = allergies;
         this.foodPreference = foodPreference;
         this.beveragePreferance = beveragePreferance;
         this.medicalConditions = medicalConditions;
     }
+
+    
     
     //Getters and Setters
 
@@ -54,13 +61,15 @@ public class MealPreference {
         this.allergies = allergies;
     }
 
-    public String getFoodPreference() {
+    public void setFoodPreference(FoodPreference foodPreference) {
+        this.foodPreference = foodPreference;
+    }
+
+    public FoodPreference getFoodPreference() {
         return foodPreference;
     }
 
-    public void setFoodPreference(String foodPreference) {
-        this.foodPreference = foodPreference;
-    }
+    
 
     public Beverage getBeveragePreferance() {
         return beveragePreferance;
