@@ -5,7 +5,10 @@
 package com.Northeastern.SummerCampManagement.Entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -19,6 +22,10 @@ public class Parent extends AppUser{
     String email;
     String contactNumber;
     String address;
+    
+    @OneToMany
+    @JoinColumn(name = "studentId")
+    private List<Student> student;
     
     //Constructors
 
@@ -114,6 +121,16 @@ public class Parent extends AppUser{
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
+
+    public List<Student> getStudent() {
+        return student;
+    }
+
+    public void setStudent(List<Student> student) {
+        this.student = student;
+    }
+    
+    
     
     
 
