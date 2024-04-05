@@ -26,9 +26,14 @@ public class Student extends AppUser{
     private String contactNumber;
     private String address;
     private Integer age;
+
+    private String attendance;
+    private String grade;
+    
     private Boolean camper;
     private String campUsername;
     private String campPassword;
+   
     
     //Mappings
     @OneToOne
@@ -46,27 +51,27 @@ public class Student extends AppUser{
     
     //Constructors
 
-    public Student() {
-    }
-    
-
-    public Student(String firstName, String lastName, String email, String contactNumber, String address, Integer age, Boolean camper, MealPreference mealPreference, Feedback feedback, List<Activity> activities, String username, String password, Role role, LocalDate registrationDate) {
+    public Student( String username, String password, Role role, LocalDate registrationDate, String firstName, String lastName, String email, String contactNumber, String address, Integer age) {
         super(username, password, role, registrationDate);
+       
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.registrationDate = registrationDate;
+        
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.contactNumber = contactNumber;
         this.address = address;
         this.age = age;
-        this.camper = camper;
-        this.mealPreference = mealPreference;
-        this.feedback = feedback;
-        this.activities = activities;
-        this.username = username;
-        this.password = password;
-        this.role = role;
-        this.registrationDate = registrationDate;
+        
+        
     }
+
+    
+    
+    //Getters and Setters
 
     public String getFirstName() {
         return firstName;
@@ -116,12 +121,44 @@ public class Student extends AppUser{
         this.age = age;
     }
 
+    public String getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(String attendance) {
+        this.attendance = attendance;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
     public Boolean getCamper() {
         return camper;
     }
 
     public void setCamper(Boolean camper) {
         this.camper = camper;
+    }
+
+    public String getCampUsername() {
+        return campUsername;
+    }
+
+    public void setCampUsername(String campUsername) {
+        this.campUsername = campUsername;
+    }
+
+    public String getCampPassword() {
+        return campPassword;
+    }
+
+    public void setCampPassword(String campPassword) {
+        this.campPassword = campPassword;
     }
 
     public MealPreference getMealPreference() {
@@ -152,6 +189,7 @@ public class Student extends AppUser{
         return userId;
     }
 
+    
 
     public String getUsername() {
         return username;
@@ -184,6 +222,10 @@ public class Student extends AppUser{
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
+    
+    
+
+  
     
     
 

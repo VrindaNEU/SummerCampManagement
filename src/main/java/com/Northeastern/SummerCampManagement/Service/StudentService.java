@@ -5,6 +5,7 @@
 package com.Northeastern.SummerCampManagement.Service;
 
 import com.Northeastern.SummerCampManagement.Entity.Student;
+import com.Northeastern.SummerCampManagement.Entity.MealPreference;
 import com.Northeastern.SummerCampManagement.Dao.StudentRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class StudentService {
 		return this.studentRepository.save(newStudent);	
 	}
     
+    
     // Get Student By Id
     
     public Student getStudentById(Integer userId) throws CustomException {
@@ -37,7 +39,50 @@ public class StudentService {
 		return student.get();
 	}
     
-    //
+    // Update Student(School) By Id
+    
+    public Student updateStudentById(Integer userId, Student updatedStudent) throws CustomException {
+		
+		      Optional<Student> studentOpt = this.studentRepository.findById(userId);
+		if (!studentOpt.isPresent()){
+			throw new CustomException("Student not found for id:" + userId);}
+                
+                
+                    Student student = studentOpt.get();
+                
+                    student.setFirstName(updatedStudent.getFirstName());
+                    student.setLastName(updatedStudent.getLastName());
+                    student.setEmail(updatedStudent.getEmail());
+                    student.setContactNumber(updatedStudent.getContactNumber());
+                    student.setAddress(updatedStudent.getAddress());
+                    student.setAge(updatedStudent.getAge());
+                    student.setAttendance(updatedStudent.getAttendance());
+                    student.setGrade(updatedStudent.getGrade());
+                   
+		
+		return this.studentRepository.save(student);
+	}
+    
+    
+           //Add Camper By Id
+    
+     public Student campRegister(Integer userId, String Username, String Password, MealPreference mealpreference) throws CustomException {
+		
+		      Optional<Student> studentOpt = this.studentRepository.findById(userId);
+		if (!studentOpt.isPresent()){
+			throw new CustomException("Student not found for id:" + userId);}
+                
+                    Student student = studentOpt.get();
+                
+                    student.setCamper(true);
+                    student.setCampUsername(Username);
+                    student.setCampPassword(Password);
+                    student.setMealPreference(mealpreference);
+                    
+		return this.studentRepository.save(student);
+	}
+     
+       
     
     
 
