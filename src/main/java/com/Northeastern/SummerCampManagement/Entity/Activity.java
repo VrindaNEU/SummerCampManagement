@@ -16,7 +16,7 @@ import jakarta.persistence.Id;
 
 enum Category{
 sports,
-artsCafts,
+artsCrafts,
 educational
 }
 
@@ -37,17 +37,26 @@ public class Activity {
     private String description;
     private Category category;
     private String ageGroup;
+    private Status status;
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
     //Constructors
     public Activity() {
     }
 
-    public Activity( String activityName, String description, Category category, String ageGroup) {
+    public Activity( String activityName, Status status, String description, Category category, String ageGroup) {
        
         this.activityName = activityName;
         this.description = description;
         this.category = category;
         this.ageGroup = ageGroup;
+        this.status = status;
     }
     
     //Getters and Setters

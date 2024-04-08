@@ -4,10 +4,27 @@
  */
 package com.Northeastern.SummerCampManagement.Service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.Northeastern.SummerCampManagement.Dao.StudentRepository;
+import com.Northeastern.SummerCampManagement.Dao.ParentRepository;
+
 /**
  *
  * @author vrind
  */
+
+@Service
 public class ParentService {
+    
+    @Autowired
+    ParentRepository parentRepository;
+    
+    @Autowired
+    StudentRepository studentRepository;
+    
+    
+    
+    
     
 }
