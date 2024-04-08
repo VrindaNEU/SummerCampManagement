@@ -6,6 +6,7 @@ package com.Northeastern.SummerCampManagement.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.time.LocalDate;
@@ -47,6 +48,8 @@ public class Student extends AppUser{
     @OneToMany
     @JoinColumn(name = "activityId")
     private List<Activity> activities;
+    
+   
     
     
     //Constructors
