@@ -69,11 +69,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         guardianTextLabel = new javax.swing.JLabel();
-        guardianTextField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         UPDATE = new javax.swing.JButton();
         createButton = new javax.swing.JButton();
+        adminStudentGaurdianCombo = new javax.swing.JComboBox<>();
         parentCrudPanel = new javax.swing.JPanel();
         parentCrudtextLabel = new javax.swing.JLabel();
         firstNameParentTextLabel = new javax.swing.JLabel();
@@ -407,12 +407,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         guardianTextLabel.setText("Guardian");
 
-        guardianTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guardianTextFieldActionPerformed(evt);
-            }
-        });
-
         jButton1.setText("EDIT");
 
         jButton2.setText("DELETE");
@@ -420,6 +414,8 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         UPDATE.setText("SAVE");
 
         createButton.setText("CREATE");
+
+        adminStudentGaurdianCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout studentCrudPanelLayout = new javax.swing.GroupLayout(studentCrudPanel);
         studentCrudPanel.setLayout(studentCrudPanelLayout);
@@ -458,26 +454,30 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                         .addComponent(usernameTextLabel)
                         .addGap(42, 42, 42)
                         .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(guardianTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(62, 62, 62)
-                        .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                                .addComponent(addressTextLabel)
-                                .addGap(44, 44, 44)
-                                .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 143, Short.MAX_VALUE))
-                            .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                                .addComponent(passwordTextLabel)
+                                .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(62, 62, 62)
                                 .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(createButton))
+                                        .addComponent(addressTextLabel)
+                                        .addGap(44, 44, 44)
+                                        .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 147, Short.MAX_VALUE))
                                     .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                                        .addGap(34, 34, 34)
-                                        .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                                        .addComponent(passwordTextLabel)
+                                        .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(studentCrudPanelLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(createButton))
+                                            .addGroup(studentCrudPanelLayout.createSequentialGroup()
+                                                .addGap(34, 34, 34)
+                                                .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))))))
+                            .addGroup(studentCrudPanelLayout.createSequentialGroup()
+                                .addComponent(adminStudentGaurdianCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(studentCrudPanelLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jButton1)
@@ -528,15 +528,15 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(guardianTextLabel)
-                            .addComponent(guardianTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                            .addComponent(adminStudentGaurdianCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(UPDATE)
                     .addComponent(jButton2))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         rightPanel.add(studentCrudPanel, "card3");
@@ -1708,10 +1708,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_firstNametextFieldActionPerformed
 
-    private void guardianTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardianTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_guardianTextFieldActionPerformed
-
     private void studentCrudButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentCrudButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_studentCrudButtonActionPerformed
@@ -1811,6 +1807,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton adminButton;
     private javax.swing.JPanel adminDashboard;
     private javax.swing.JPanel adminPanel;
+    private javax.swing.JComboBox<String> adminStudentGaurdianCombo;
     private javax.swing.JTextField ageTextField;
     private javax.swing.JTextField ageTextField1;
     private javax.swing.JLabel ageTextLabel;
@@ -1869,7 +1866,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField firstNametextField;
     private javax.swing.JTextField firstNametextField1;
     private javax.swing.JLabel gradeStudentText;
-    private javax.swing.JTextField guardianTextField;
     private javax.swing.JTextField guardianTextField1;
     private javax.swing.JLabel guardianTextLabel;
     private javax.swing.JLabel guardianTextLabel1;
