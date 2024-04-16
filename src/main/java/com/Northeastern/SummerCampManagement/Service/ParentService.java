@@ -26,7 +26,9 @@ public class ParentService {
     
     @Autowired
     ParentRepository parentRepository;
+ 
     
+
     @Autowired
     StudentRepository studentRepository;
    
@@ -72,6 +74,7 @@ public class ParentService {
      
      
      public Parent updateParentById(Integer userId, Parent updatedParent) throws CustomException {
+
 		
 		      Optional<Parent> parentOpt = this.parentRepository.findById(userId);
 		if (!parentOpt.isPresent()){
@@ -80,6 +83,7 @@ public class ParentService {
                 
                     Parent parent = parentOpt.get();
                 
+
                     parent.setEmail(updatedParent.getEmail());
                     parent.setContactNumber(updatedParent.getContactNumber());
                     parent.setAddress(updatedParent.getAddress());
@@ -87,7 +91,7 @@ public class ParentService {
 		
 		return this.parentRepository.save(parent);
 	}
-    
+
     //Delete Parent
      
       public String deleteParentById (Integer userId) throws CustomException{
@@ -109,15 +113,24 @@ public class ParentService {
                   }
      
                   }
-         
+
          
         this.parentRepository.deleteById(userId);
         
-        
+
         
     return "Parent Deleted Succesfully";
     }
+
     
+    public Parent getParenttById(Integer userId) throws CustomException {
+		
+		      Optional <Parent> parent = this.parentRepository.findById(userId);
+		if (!parent.isPresent())
+			throw new CustomException("Parent not found for id:" + userId);
+		
+		return parent.get();
+	}
     
     
     

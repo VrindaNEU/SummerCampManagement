@@ -6,8 +6,10 @@ package com.Northeastern.SummerCampManagement.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.time.LocalDate;
@@ -62,6 +64,8 @@ public class Student extends AppUser{
         inverseJoinColumns = @JoinColumn(name = "activity_id")
     )
     private Set<Activity> activities = new HashSet<>();
+    
+   
     
     
     //Constructors
