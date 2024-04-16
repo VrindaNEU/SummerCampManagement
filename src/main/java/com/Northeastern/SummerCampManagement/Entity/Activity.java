@@ -4,10 +4,19 @@
  */
 package com.Northeastern.SummerCampManagement.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -38,10 +47,40 @@ public class Activity {
     private Category category;
     private String ageGroup;
     private Status status;
+    
+    
+    @JsonIgnore
+    @ManyToMany(mappedBy = "activities")
+    private Set<Student> students = new HashSet<>();
+    
+    @OneToOne
+    @JoinColumn(name = "scheduleId")
+    private Schedule schedule;
 
+    
+    
+    
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
+    }
+    
     public Status getStatus() {
         return status;
     }
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
+    
+    
 
     public void setStatus(Status status) {
         this.status = status;
@@ -60,6 +99,8 @@ public class Activity {
     }
     
     //Getters and Setters
+    
+    
 
     public Integer getActivityId() {
         return activityId;

@@ -4,7 +4,9 @@
  */
 package com.Northeastern.SummerCampManagement.Dao;
 
+import com.Northeastern.SummerCampManagement.Entity.Activity;
 import com.Northeastern.SummerCampManagement.Entity.Student;
+import java.util.Collection;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -12,5 +14,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author vrind
  */
 public interface StudentRepository extends JpaRepository<Student, Integer>{
+    
+    Collection<Student> findAllByActivities(Activity activity);
     
 }
