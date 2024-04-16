@@ -201,7 +201,7 @@
                                                       <Component id="studentTextLabel" min="-2" pref="81" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                                                       <Component id="dashboardStaffLabel1" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace pref="61" max="32767" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
                                                       <Component id="staffTextLabel1" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
@@ -238,7 +238,7 @@
                                           <Component id="dashboardStaffLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="staffTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="365" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -310,7 +310,7 @@
                                               <Component id="jScrollPane1" min="-2" pref="517" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="56" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -427,7 +427,7 @@
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace pref="226" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Component id="jLabel9" min="-2" pref="295" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                                   </Group>
@@ -440,7 +440,7 @@
                                       <Component id="parentCrudtextLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
                                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="456" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -454,6 +454,289 @@
                             <Component class="javax.swing.JLabel" name="jLabel9">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="VISUALIZATION"/>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="staffCrudPanel">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                              <CardConstraints cardName="card5"/>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="firstNameStaffActivityLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lastNameStaffActivityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="emailStaffActivityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="createStaffActivityButton" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="firstNameStaffActivityField" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jTextField4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="contactStaffActivityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="designationStaffActivityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="staffActivityStatusLabel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="contactStaffActivityField" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Group type="103" groupAlignment="1" attributes="0">
+                                                          <Component id="deleteStaffActivityButton" min="-2" max="-2" attributes="0"/>
+                                                          <Group type="103" groupAlignment="0" attributes="0">
+                                                              <Component id="designationStaffActivityDropDown" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="staffActivityStatusDropDown" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
+                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                              <Component id="editStaffActivityButton" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                                              <Component id="saveStaffActivityButton" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jScrollPane4" alignment="0" min="-2" pref="513" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
+                                              <Component id="staffActivityLabel" min="-2" pref="63" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="0" pref="82" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                      <Component id="staffActivityLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="firstNameStaffActivityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="contactStaffActivityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="firstNameStaffActivityField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="contactStaffActivityField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="lastNameStaffActivityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="designationStaffActivityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="designationStaffActivityDropDown" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="emailStaffActivityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="staffActivityStatusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="staffActivityStatusDropDown" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="createStaffActivityButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="editStaffActivityButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="saveStaffActivityButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="deleteStaffActivityButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="42" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane4" min="-2" pref="253" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JLabel" name="staffActivityLabel">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="1"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="STAFF"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="firstNameStaffActivityLabel">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="First Name"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="lastNameStaffActivityLabel">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Last Name"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="emailStaffActivityLabel">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Email"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="contactStaffActivityLabel">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Contact Number"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="designationStaffActivityLabel">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Designation"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="staffActivityStatusLabel">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Active Status"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="staffActivityStatusDropDown">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="2">
+                                    <StringItem index="0" value="Active"/>
+                                    <StringItem index="1" value="InActive"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="designationStaffActivityDropDown">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="3">
+                                    <StringItem index="0" value="Camp Lead"/>
+                                    <StringItem index="1" value="Camp Manager"/>
+                                    <StringItem index="2" value="Camp Assistant"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="designationStaffActivityDropDownActionPerformed"/>
+                              </Events>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="contactStaffActivityField">
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="firstNameStaffActivityField">
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="jTextField3">
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="jTextField4">
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField4ActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+                              <AuxValues>
+                                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                              </AuxValues>
+
+                              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                              <SubComponents>
+                                <Component class="javax.swing.JTable" name="staffActivityTable">
+                                  <Properties>
+                                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                                      <Table columnCount="6" rowCount="4">
+                                        <Column editable="true" title="Name" type="java.lang.Object"/>
+                                        <Column editable="true" title="Last Name" type="java.lang.Object"/>
+                                        <Column editable="true" title="Email" type="java.lang.Object"/>
+                                        <Column editable="true" title="Contact No." type="java.lang.Object"/>
+                                        <Column editable="true" title="Designation" type="java.lang.Object"/>
+                                        <Column editable="true" title="Activity Status" type="java.lang.Object"/>
+                                      </Table>
+                                    </Property>
+                                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                      <TableColumnModel selectionModel="0">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                      </TableColumnModel>
+                                    </Property>
+                                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                                    </Property>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Component class="javax.swing.JButton" name="createStaffActivityButton">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Create"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="editStaffActivityButton">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Edit"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="deleteStaffActivityButton">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Delete"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="saveStaffActivityButton">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Save"/>
                               </Properties>
                             </Component>
                           </SubComponents>
@@ -495,7 +778,7 @@
                                   <Component id="campRegButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                                   <Component id="campFeedbackButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="289" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -604,7 +887,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="232" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -623,7 +906,7 @@
                                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="363" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -686,7 +969,7 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="activityCategoryCombo" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace pref="91" max="32767" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
                                                       <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
                                                   </Group>
@@ -767,7 +1050,7 @@
                                       <Component id="jScrollPane8" min="-2" pref="223" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                       <Component id="viewRegisteredCampersButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="91" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -954,7 +1237,7 @@
                                               <Component id="staffScheduleSubmitButton" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="258" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -990,7 +1273,7 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                                       <Component id="staffScheduleSubmitButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="228" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1092,8 +1375,14 @@
                                               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                                               <Component id="jScrollPane3" min="-2" pref="452" max="-2" attributes="0"/>
                                           </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
+                                              <Component id="selectStudentForDietPrefLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                              <Component id="selectStudentForMealPref" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace pref="58" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1102,9 +1391,14 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                       <Component id="dietaryPrefLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="selectStudentForMealPref" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="selectStudentForDietPrefLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jScrollPane3" min="-2" pref="174" max="-2" attributes="0"/>
-                                      <EmptySpace pref="315" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1157,6 +1451,26 @@
                                 </Component>
                               </SubComponents>
                             </Container>
+                            <Component class="javax.swing.JComboBox" name="selectStudentForMealPref">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="4">
+                                    <StringItem index="0" value="Item 1"/>
+                                    <StringItem index="1" value="Item 2"/>
+                                    <StringItem index="2" value="Item 3"/>
+                                    <StringItem index="3" value="Item 4"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="selectStudentForDietPrefLabel">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Select Student"/>
+                              </Properties>
+                            </Component>
                           </SubComponents>
                         </Container>
                       </SubComponents>
@@ -1207,7 +1521,7 @@
                                   <Component id="staffSchedulesButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                   <Component id="staffDietButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="242" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1416,7 +1730,7 @@
                                               <Component id="camperActivityLabel" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="90" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -1443,7 +1757,7 @@
                                           <Component id="jScrollPane7" min="-2" pref="361" max="-2" attributes="0"/>
                                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="38" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Component id="registerActivityButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                   </Group>
@@ -1543,7 +1857,7 @@
                                               <Component id="jScrollPane6" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="84" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1554,7 +1868,7 @@
                                       <Component id="camperScheduleLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                       <Component id="jScrollPane6" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="105" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1648,12 +1962,12 @@
                                               <Component id="allergiesDietTextField" min="-2" pref="71" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="foodDietLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="beveragesDietlabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="beveragesDietComboBox" min="-2" max="-2" attributes="0"/>
                                           <Component id="foodDietComboBox" min="-2" max="-2" attributes="0"/>
@@ -1698,7 +2012,7 @@
                                           <Component id="editDietButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="saveDietButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="304" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1818,7 +2132,7 @@
                                   <Component id="camperScheduleButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                   <Component id="camperDietButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="257" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1856,6 +2170,129 @@
                 </Container>
               </SubComponents>
             </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="loginPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
+              <JSplitPaneConstraints position="right"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="passwordLoginCampLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="passwordCampTextField" min="-2" pref="71" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="userNameCampLoginLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                                          <Component id="usernameCampTextField" min="-2" pref="71" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="roleCampLoginLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+                                      <Component id="roleCampDropBox" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
+                              <Component id="welcomeCampLabel" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="293" max="-2" attributes="0"/>
+                              <Component id="loginCampButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="209" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Component id="welcomeCampLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="userNameCampLoginLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="usernameCampTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="passwordLoginCampLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="passwordCampTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="roleCampLoginLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="roleCampDropBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                      <Component id="loginCampButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="346" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="userNameCampLoginLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Username"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="passwordLoginCampLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Password"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="roleCampLoginLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Role"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="usernameCampTextField">
+            </Component>
+            <Component class="javax.swing.JTextField" name="passwordCampTextField">
+            </Component>
+            <Component class="javax.swing.JComboBox" name="roleCampDropBox">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="3">
+                    <StringItem index="0" value="student"/>
+                    <StringItem index="1" value="parent"/>
+                    <StringItem index="2" value="admin"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="welcomeCampLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="WELCOME TO THE CAMP PORTAL"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="loginCampButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="LOGIN"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
