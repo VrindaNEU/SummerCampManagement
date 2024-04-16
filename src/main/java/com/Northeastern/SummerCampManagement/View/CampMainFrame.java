@@ -52,6 +52,26 @@ public class CampMainFrame extends javax.swing.JFrame {
         feedbackPanel = new javax.swing.JPanel();
         parentCrudtextLabel = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        staffCrudPanel = new javax.swing.JPanel();
+        staffActivityLabel = new javax.swing.JLabel();
+        firstNameStaffActivityLabel = new javax.swing.JLabel();
+        lastNameStaffActivityLabel = new javax.swing.JLabel();
+        emailStaffActivityLabel = new javax.swing.JLabel();
+        contactStaffActivityLabel = new javax.swing.JLabel();
+        designationStaffActivityLabel = new javax.swing.JLabel();
+        staffActivityStatusLabel = new javax.swing.JLabel();
+        staffActivityStatusDropDown = new javax.swing.JComboBox<>();
+        designationStaffActivityDropDown = new javax.swing.JComboBox<>();
+        contactStaffActivityField = new javax.swing.JTextField();
+        firstNameStaffActivityField = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        staffActivityTable = new javax.swing.JTable();
+        createStaffActivityButton = new javax.swing.JButton();
+        editStaffActivityButton = new javax.swing.JButton();
+        deleteStaffActivityButton = new javax.swing.JButton();
+        saveStaffActivityButton = new javax.swing.JButton();
         leftPanel = new javax.swing.JPanel();
         campRegButton = new javax.swing.JButton();
         campAdmindashboardButton = new javax.swing.JButton();
@@ -240,7 +260,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                                 .addComponent(studentTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(65, 65, 65)
                                 .addComponent(dashboardStaffLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(staffTextLabel1))))
                     .addGroup(adminDashboardLayout.createSequentialGroup()
                         .addGap(62, 62, 62)
@@ -265,7 +285,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                 .addGroup(adminDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dashboardStaffLabel)
                     .addComponent(staffTextLabel))
-                .addContainerGap(365, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         rightPanel.add(adminDashboard, "card2");
@@ -304,7 +324,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                     .addGroup(registrationReportPanelLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         registrationReportPanelLayout.setVerticalGroup(
             registrationReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,7 +353,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                 .addComponent(parentCrudtextLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, feedbackPanelLayout.createSequentialGroup()
-                .addContainerGap(226, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74))
         );
@@ -344,10 +364,152 @@ public class CampMainFrame extends javax.swing.JFrame {
                 .addComponent(parentCrudtextLabel)
                 .addGap(101, 101, 101)
                 .addComponent(jLabel9)
-                .addContainerGap(456, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         rightPanel.add(feedbackPanel, "card4");
+
+        staffActivityLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        staffActivityLabel.setText("STAFF");
+
+        firstNameStaffActivityLabel.setText("First Name");
+
+        lastNameStaffActivityLabel.setText("Last Name");
+
+        emailStaffActivityLabel.setText("Email");
+
+        contactStaffActivityLabel.setText("Contact Number");
+
+        designationStaffActivityLabel.setText("Designation");
+
+        staffActivityStatusLabel.setText("Active Status");
+
+        staffActivityStatusDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "InActive" }));
+
+        designationStaffActivityDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Camp Lead", "Camp Manager", "Camp Assistant" }));
+        designationStaffActivityDropDown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                designationStaffActivityDropDownActionPerformed(evt);
+            }
+        });
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
+        staffActivityTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Name", "Last Name", "Email", "Contact No.", "Designation", "Activity Status"
+            }
+        ));
+        jScrollPane4.setViewportView(staffActivityTable);
+
+        createStaffActivityButton.setText("Create");
+
+        editStaffActivityButton.setText("Edit");
+
+        deleteStaffActivityButton.setText("Delete");
+
+        saveStaffActivityButton.setText("Save");
+
+        javax.swing.GroupLayout staffCrudPanelLayout = new javax.swing.GroupLayout(staffCrudPanel);
+        staffCrudPanel.setLayout(staffCrudPanelLayout);
+        staffCrudPanelLayout.setHorizontalGroup(
+            staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(staffCrudPanelLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(firstNameStaffActivityLabel)
+                        .addComponent(lastNameStaffActivityLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(emailStaffActivityLabel, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addGroup(staffCrudPanelLayout.createSequentialGroup()
+                        .addComponent(createStaffActivityButton)
+                        .addGap(2, 2, 2)))
+                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(staffCrudPanelLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(firstNameStaffActivityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(64, 64, 64)
+                        .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(contactStaffActivityLabel)
+                                .addComponent(designationStaffActivityLabel))
+                            .addGroup(staffCrudPanelLayout.createSequentialGroup()
+                                .addComponent(staffActivityStatusLabel)
+                                .addGap(24, 24, 24)))
+                        .addGap(39, 39, 39)
+                        .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(staffCrudPanelLayout.createSequentialGroup()
+                                .addComponent(contactStaffActivityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(staffCrudPanelLayout.createSequentialGroup()
+                                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(deleteStaffActivityButton)
+                                    .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(designationStaffActivityDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(staffActivityStatusDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(staffCrudPanelLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(editStaffActivityButton)
+                        .addGap(71, 71, 71)
+                        .addComponent(saveStaffActivityButton)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(staffCrudPanelLayout.createSequentialGroup()
+                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(staffCrudPanelLayout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(staffActivityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 82, Short.MAX_VALUE))
+        );
+        staffCrudPanelLayout.setVerticalGroup(
+            staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(staffCrudPanelLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(staffActivityLabel)
+                .addGap(34, 34, 34)
+                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(firstNameStaffActivityLabel)
+                    .addComponent(contactStaffActivityLabel)
+                    .addComponent(firstNameStaffActivityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactStaffActivityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lastNameStaffActivityLabel)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(designationStaffActivityLabel)
+                    .addComponent(designationStaffActivityDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailStaffActivityLabel)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(staffActivityStatusLabel)
+                    .addComponent(staffActivityStatusDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
+                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(createStaffActivityButton)
+                    .addComponent(editStaffActivityButton)
+                    .addComponent(saveStaffActivityButton)
+                    .addComponent(deleteStaffActivityButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+        );
+
+        rightPanel.add(staffCrudPanel, "card5");
 
         jSplitPane2.setRightComponent(rightPanel);
 
@@ -385,7 +547,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                 .addComponent(campRegButton)
                 .addGap(55, 55, 55)
                 .addComponent(campFeedbackButton)
-                .addContainerGap(289, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jSplitPane2.setLeftComponent(leftPanel);
@@ -443,7 +605,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                         .addGroup(staffDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
                             .addComponent(jLabel13))))
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         staffDashboardLayout.setVerticalGroup(
             staffDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,7 +620,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                 .addGroup(staffDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel13))
-                .addContainerGap(363, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         rightStaffPanel.add(staffDashboard, "card2");
@@ -534,7 +696,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                         .addGroup(staffActivityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(staffActivityPanelLayout.createSequentialGroup()
                                 .addComponent(activityCategoryCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
                             .addGroup(staffActivityPanelLayout.createSequentialGroup()
@@ -595,7 +757,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(viewRegisteredCampersButton)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         rightStaffPanel.add(staffActivityPanel, "card4");
@@ -653,7 +815,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                     .addGroup(staffSchedulePanelLayout.createSequentialGroup()
                         .addGap(97, 97, 97)
                         .addComponent(staffScheduleSubmitButton)))
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         staffSchedulePanelLayout.setVerticalGroup(
             staffSchedulePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -682,7 +844,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
                 .addComponent(staffScheduleSubmitButton)
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         rightStaffPanel.add(staffSchedulePanel, "card5");
@@ -720,7 +882,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                         .addComponent(selectStudentForDietPrefLabel)
                         .addGap(26, 26, 26)
                         .addComponent(selectStudentForMealPref, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dietryPreferencePanelLayout.setVerticalGroup(
             dietryPreferencePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -733,7 +895,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                     .addComponent(selectStudentForDietPrefLabel))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(315, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         rightStaffPanel.add(dietryPreferencePanel, "card5");
@@ -788,7 +950,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                 .addComponent(staffSchedulesButton)
                 .addGap(45, 45, 45)
                 .addComponent(staffDietButton)
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         staffSplitPane.setLeftComponent(leftStaffPanel);
@@ -906,7 +1068,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                     .addGroup(camperActivityPanelLayout.createSequentialGroup()
                         .addGap(253, 253, 253)
                         .addComponent(camperActivityLabel)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(camperActivityPanelLayout.createSequentialGroup()
                 .addGroup(camperActivityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(camperActivityPanelLayout.createSequentialGroup()
@@ -926,7 +1088,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                 .addGroup(camperActivityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(registerActivityButton)
                 .addGap(36, 36, 36))
         );
@@ -961,7 +1123,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                     .addGroup(camperSchedulePanelLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         camperSchedulePanelLayout.setVerticalGroup(
             camperSchedulePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -970,7 +1132,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                 .addComponent(camperScheduleLabel)
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         rightCamperPanel.add(camperSchedulePanel, "card5");
@@ -1009,11 +1171,11 @@ public class CampMainFrame extends javax.swing.JFrame {
                         .addComponent(allergiesDietLabel)
                         .addGap(46, 46, 46)
                         .addComponent(allergiesDietTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(camperDietPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(foodDietLabel)
                     .addComponent(beveragesDietlabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(camperDietPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(beveragesDietComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(foodDietComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1050,7 +1212,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                 .addGroup(camperDietPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editDietButton)
                     .addComponent(saveDietButton))
-                .addGap(0, 304, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         rightCamperPanel.add(camperDietPanel, "card6");
@@ -1102,7 +1264,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                 .addComponent(camperScheduleButton)
                 .addGap(38, 38, 38)
                 .addComponent(camperDietButton)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         camperSplitPane.setLeftComponent(leftCamperPanel);
@@ -1243,6 +1405,14 @@ public class CampMainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_viewRegisteredCampersButtonActionPerformed
 
+    private void designationStaffActivityDropDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_designationStaffActivityDropDownActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_designationStaffActivityDropDownActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1329,14 +1499,24 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JSplitPane camperSplitPane;
     private javax.swing.JLabel camperUpcomingActivityDashboardLabel;
     private javax.swing.JLabel camperscheduleImageLabel;
+    private javax.swing.JTextField contactStaffActivityField;
+    private javax.swing.JLabel contactStaffActivityLabel;
+    private javax.swing.JButton createStaffActivityButton;
     private javax.swing.JLabel dashboardCampLabel;
     private javax.swing.JLabel dashboardStaffLabel;
     private javax.swing.JLabel dashboardStaffLabel1;
+    private javax.swing.JButton deleteStaffActivityButton;
+    private javax.swing.JComboBox<String> designationStaffActivityDropDown;
+    private javax.swing.JLabel designationStaffActivityLabel;
     private javax.swing.JLabel dietPreferencesLabel;
     private javax.swing.JLabel dietaryPrefLabel;
     private javax.swing.JPanel dietryPreferencePanel;
     private javax.swing.JButton editDietButton;
+    private javax.swing.JButton editStaffActivityButton;
+    private javax.swing.JLabel emailStaffActivityLabel;
     private javax.swing.JPanel feedbackPanel;
+    private javax.swing.JTextField firstNameStaffActivityField;
+    private javax.swing.JLabel firstNameStaffActivityLabel;
     private javax.swing.JComboBox<String> foodDietComboBox;
     private javax.swing.JLabel foodDietLabel;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -1352,6 +1532,7 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
@@ -1360,6 +1541,9 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel lastNameStaffActivityLabel;
     private javax.swing.JPanel leftCamperPanel;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JPanel leftStaffPanel;
@@ -1380,13 +1564,19 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> roleCampDropBox;
     private javax.swing.JLabel roleCampLoginLabel;
     private javax.swing.JButton saveDietButton;
+    private javax.swing.JButton saveStaffActivityButton;
     private javax.swing.JLabel scheduleActivityLabel;
     private com.toedter.calendar.JDateChooser scheduleStaffDate;
     private javax.swing.JLabel selectStudentForDietPrefLabel;
     private javax.swing.JComboBox<String> selectStudentForMealPref;
     private javax.swing.JButton staffActivityButton;
+    private javax.swing.JLabel staffActivityLabel;
     private javax.swing.JPanel staffActivityPanel;
+    private javax.swing.JComboBox<String> staffActivityStatusDropDown;
+    private javax.swing.JLabel staffActivityStatusLabel;
+    private javax.swing.JTable staffActivityTable;
     private javax.swing.JButton staffButton;
+    private javax.swing.JPanel staffCrudPanel;
     private javax.swing.JPanel staffDashboard;
     private javax.swing.JButton staffDashboardButton;
     private javax.swing.JButton staffDietButton;
