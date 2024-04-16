@@ -97,6 +97,8 @@ public class CampMainFrame extends javax.swing.JFrame {
         dietaryPrefLabel = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        selectStudentForMealPref = new javax.swing.JComboBox<>();
+        selectStudentForDietPrefLabel = new javax.swing.JLabel();
         leftStaffPanel = new javax.swing.JPanel();
         staffActivityButton = new javax.swing.JButton();
         staffDashboardButton = new javax.swing.JButton();
@@ -688,6 +690,10 @@ public class CampMainFrame extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable3);
 
+        selectStudentForMealPref.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        selectStudentForDietPrefLabel.setText("Select Student");
+
         javax.swing.GroupLayout dietryPreferencePanelLayout = new javax.swing.GroupLayout(dietryPreferencePanel);
         dietryPreferencePanel.setLayout(dietryPreferencePanelLayout);
         dietryPreferencePanelLayout.setHorizontalGroup(
@@ -699,7 +705,12 @@ public class CampMainFrame extends javax.swing.JFrame {
                         .addComponent(dietaryPrefLabel))
                     .addGroup(dietryPreferencePanelLayout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dietryPreferencePanelLayout.createSequentialGroup()
+                        .addGap(187, 187, 187)
+                        .addComponent(selectStudentForDietPrefLabel)
+                        .addGap(26, 26, 26)
+                        .addComponent(selectStudentForMealPref, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         dietryPreferencePanelLayout.setVerticalGroup(
@@ -707,7 +718,11 @@ public class CampMainFrame extends javax.swing.JFrame {
             .addGroup(dietryPreferencePanelLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(dietaryPrefLabel)
-                .addGap(67, 67, 67)
+                .addGap(27, 27, 27)
+                .addGroup(dietryPreferencePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectStudentForMealPref, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectStudentForDietPrefLabel))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(315, Short.MAX_VALUE))
         );
@@ -1285,6 +1300,8 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton saveDietButton;
     private javax.swing.JLabel scheduleActivityLabel;
     private com.toedter.calendar.JDateChooser scheduleStaffDate;
+    private javax.swing.JLabel selectStudentForDietPrefLabel;
+    private javax.swing.JComboBox<String> selectStudentForMealPref;
     private javax.swing.JButton staffActivityButton;
     private javax.swing.JPanel staffActivityPanel;
     private javax.swing.JButton staffButton;

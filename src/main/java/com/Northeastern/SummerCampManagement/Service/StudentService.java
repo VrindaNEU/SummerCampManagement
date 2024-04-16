@@ -4,13 +4,19 @@
  */
 package com.Northeastern.SummerCampManagement.Service;
 
+import com.Northeastern.SummerCampManagement.Dao.ParentRepository;
 import com.Northeastern.SummerCampManagement.Entity.Student;
 import com.Northeastern.SummerCampManagement.Entity.MealPreference;
 import com.Northeastern.SummerCampManagement.Entity.Activity;
 import com.Northeastern.SummerCampManagement.Entity.Feedback;
 import com.Northeastern.SummerCampManagement.Dao.StudentRepository;
+import com.Northeastern.SummerCampManagement.Entity.Parent;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,16 +24,34 @@ import org.springframework.stereotype.Service;
  *
  * @author vrind
  */
+
+
 @Service
 public class StudentService {
     
     @Autowired
     StudentRepository studentRepository;
     
+    @Autowired
+    ParentRepository parentRepository;
+    
     // Create Student
-    public Student addStudent(Student newStudent) throws CustomException  {
+    public Student addStudentByParentId(Student newStudent, Integer parentId) throws CustomException  {
+        
+		      Optional<Parent> parent = this.parentRepository.findById(parentId);
+		if (!parent.isPresent())
+			throw new CustomException("Parent not found for id:" + parentId);
+                
+               // this.studentRepository.save(newStudent);
+                
+                List<Student> students = new ArrayList();
+                
+                parent.get().setStudent(students);
+                
+                this.parentRepository.save(parent.get());
+                
 		
-		return this.studentRepository.save(newStudent);	
+		return newStudent;	
 	}
     
     
@@ -40,7 +64,51 @@ public class StudentService {
 			throw new CustomException("Student not found for id:" + userId);
 		
 		return student.get();
+                
+                
 	}
+    
+    //Get All Students
+    
+    
+     
+     public Collection<Student> getAllStudents() throws CustomException {
+		
+		     
+                      Optional<Collection> students = Optional.of(this.studentRepository.findAll());
+                      
+                      
+		if (students.isEmpty())
+			throw new CustomException("No Students Found");
+		
+		return students.get();
+	}
+     
+     
+     // Get Students by ParentId
+     
+     
+     
+     public Collection<Student> getStudentByParentId(Integer parentId) throws CustomException{
+     
+      Optional<Parent> parent = this.parentRepository.findById(parentId);
+		if (!parent.isPresent()){
+			throw new CustomException("Parent not found for id:" + parentId);}
+                
+
+                   Optional<Collection<Student>> collectStudents = Optional.of(parent.get().getStudent());
+                
+                 if (!collectStudents.isPresent()){
+                       List emptyList = new ArrayList();
+			return emptyList;
+                  }
+                 
+                 else{
+                 return collectStudents.get();
+                 }
+     
+     }
+    
     
     // Update Student(School) By Id
     
@@ -53,8 +121,7 @@ public class StudentService {
                 
                     Student student = studentOpt.get();
                 
-                    student.setFirstName(updatedStudent.getFirstName());
-                    student.setLastName(updatedStudent.getLastName());
+                   
                     student.setEmail(updatedStudent.getEmail());
                     student.setContactNumber(updatedStudent.getContactNumber());
                     student.setAddress(updatedStudent.getAddress());
@@ -129,7 +196,7 @@ public class StudentService {
                 
                     Student student = studentOpt.get();
                     
-                   ArrayList<Activity> activities = new ArrayList<>();
+                   Set<Activity> activities = new HashSet<>();
                    activities.add(activity);
                     student.setActivities(activities);
                     
