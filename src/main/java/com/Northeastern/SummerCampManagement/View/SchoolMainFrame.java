@@ -4,12 +4,22 @@
  */
 package com.Northeastern.SummerCampManagement.View;
 
+import com.Northeastern.SummerCampManagement.Entity.Parent;
+import com.Northeastern.SummerCampManagement.Service.CustomException;
+import com.Northeastern.SummerCampManagement.Service.ParentService;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  *
  * @author jalan
  */
-public class SchoolMainFrame extends javax.swing.JFrame {
 
+public class SchoolMainFrame extends javax.swing.JFrame {
+ @Autowired
+         ParentService parentService;
+    Parent parent;
     /**
      * Creates new form MainFrame
      */
@@ -19,7 +29,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         topPanel.setVisible(false);
         bottomPanel.setVisible(false);
         loginPanel.setVisible(true);
+       
+     parent = new Parent();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,7 +94,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         parentCrudPanel = new javax.swing.JPanel();
         parentCrudtextLabel = new javax.swing.JLabel();
         firstNameParentTextLabel = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        parentFirstNameField = new javax.swing.JTextField();
         lastNameParentTextLabel = new javax.swing.JLabel();
         emailParentTextLabel = new javax.swing.JLabel();
         contactNumberTextLabel = new javax.swing.JLabel();
@@ -578,6 +591,12 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         addressParentTextLabel.setText("Address");
 
+        emailParentTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailParentTextFieldActionPerformed(evt);
+            }
+        });
+
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -590,6 +609,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         createParentButton.setText("CREATE");
+        createParentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createParentButtonActionPerformed(evt);
+            }
+        });
 
         editParentButton.setText("EDIT");
 
@@ -615,7 +639,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                                     .addGroup(parentCrudPanelLayout.createSequentialGroup()
                                         .addComponent(firstNameParentTextLabel)
                                         .addGap(30, 30, 30)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(parentFirstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(parentCrudPanelLayout.createSequentialGroup()
                                         .addComponent(emailParentTextLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -655,7 +679,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(parentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(firstNameParentTextLabel)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(parentFirstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lastNameParentTextLabel)
                     .addComponent(lastNameParentTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
@@ -1856,6 +1880,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         bottomPanel.add(adminPanel);
         bottomPanel.repaint();
         bottomPanel.revalidate();
+        adminPanel.add(parentPanel);
             
             
         }
@@ -1904,6 +1929,28 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_logoutButtonActionPerformed
+
+    private void createParentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createParentButtonActionPerformed
+        // TODO add your handling code here:
+      parent.setFirstName(parentFirstNameField.getText());
+      parent.setLastName(lastNameParentTextfield.getText());
+      parent.setEmail(emailParentTextField.getText());
+      parent.setContactNumber(contactNumberParentTextField.getText());
+      parent.setAddress(addressParentTextField.getText());
+     try {
+         parentService.addParent(parent);
+     } catch (CustomException ex) {
+         Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+     }
+      
+      
+        
+        
+    }//GEN-LAST:event_createParentButtonActionPerformed
+
+    private void emailParentTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailParentTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailParentTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2054,7 +2101,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lastNameParentTextLabel;
     private javax.swing.JTextField lastNameParentTextfield;
     private javax.swing.JLabel lastNameProfileLabel;
@@ -2085,6 +2131,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel parentDashboardLabel;
     private javax.swing.JLabel parentDashboardLabel1;
     private javax.swing.JPanel parentFeedbackPanel;
+    private javax.swing.JTextField parentFirstNameField;
     private javax.swing.JPanel parentPanel;
     private javax.swing.JPanel parentProfilePanel;
     private javax.swing.JSplitPane parentSplitPane;
