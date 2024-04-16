@@ -15,6 +15,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
      */
     public SchoolMainFrame() {
         initComponents();
+        schoolSplitPane.setVisible(true);
+        topPanel.setVisible(false);
+        bottomPanel.setVisible(false);
+        loginPanel.setVisible(true);
     }
 
     /**
@@ -73,7 +77,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         UPDATE = new javax.swing.JButton();
         createButton = new javax.swing.JButton();
-        adminStudentGaurdianCombo = new javax.swing.JComboBox<>();
+        selectParentComboBox = new javax.swing.JComboBox<>();
         parentCrudPanel = new javax.swing.JPanel();
         parentCrudtextLabel = new javax.swing.JLabel();
         firstNameParentTextLabel = new javax.swing.JLabel();
@@ -240,6 +244,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         schoolSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         adminButton.setText("Admin");
+        adminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminButtonActionPerformed(evt);
+            }
+        });
 
         parentButton.setText("Parent");
         parentButton.addActionListener(new java.awt.event.ActionListener() {
@@ -252,6 +261,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         logoutButton.setForeground(new java.awt.Color(255, 51, 0));
         logoutButton.setText("X");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
@@ -424,7 +438,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         createButton.setText("CREATE");
 
-        adminStudentGaurdianCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectParentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout studentCrudPanelLayout = new javax.swing.GroupLayout(studentCrudPanel);
         studentCrudPanel.setLayout(studentCrudPanelLayout);
@@ -485,7 +499,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                                                 .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE))))))
                             .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                                .addComponent(adminStudentGaurdianCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(selectParentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(studentCrudPanelLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
@@ -537,7 +551,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(guardianTextLabel)
-                            .addComponent(adminStudentGaurdianCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(selectParentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -668,7 +682,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         rightPanel.add(parentCrudPanel, "card4");
 
-        campusCrudTextLabel.setText("CAMPUS CRUD");
+        campusCrudTextLabel.setText("CAMPUS CRUD (Optional)");
 
         campusNameTextLabel.setText("Name");
 
@@ -1707,6 +1721,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         welcomeSchoolLabel.setText("WELCOME TO THE SCHOOL CAMP");
 
         loginSchoolButton.setText("LOGIN");
+        loginSchoolButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginSchoolButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
@@ -1770,7 +1789,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(schoolSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+            .addComponent(schoolSplitPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -1823,6 +1842,68 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private void viewCampReportButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCampReportButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_viewCampReportButton1ActionPerformed
+
+    private void loginSchoolButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginSchoolButtonActionPerformed
+        // TODO add your handling code here:
+        
+        if(roleSchoolDropBox.getSelectedItem().toString()== "admin"){
+            
+        schoolSplitPane.setVisible(true);
+        topPanel.setVisible(true);
+        bottomPanel.setVisible(true);
+        loginPanel.setVisible(false);
+        bottomPanel.removeAll();
+        bottomPanel.add(adminPanel);
+        bottomPanel.repaint();
+        bottomPanel.revalidate();
+            
+            
+        }
+        else if(roleSchoolDropBox.getSelectedItem().toString()== "parent"){
+            
+        schoolSplitPane.setVisible(true);
+        topPanel.setVisible(true);
+        bottomPanel.setVisible(true);
+        loginPanel.setVisible(false);
+        bottomPanel.removeAll();
+        bottomPanel.add(parentPanel);
+        bottomPanel.repaint();
+        bottomPanel.revalidate();
+            
+        }
+        
+        else{
+            
+        schoolSplitPane.setVisible(true);
+        topPanel.setVisible(true);
+        bottomPanel.setVisible(true);
+        loginPanel.setVisible(false);
+        bottomPanel.removeAll();
+        bottomPanel.add(studentPanel);
+        bottomPanel.repaint();
+        bottomPanel.revalidate();
+        
+        }
+        
+        
+        
+    }//GEN-LAST:event_loginSchoolButtonActionPerformed
+
+    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminButtonActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        // TODO add your handling code here:
+        
+        schoolSplitPane.setVisible(true);
+        topPanel.setVisible(false);
+        bottomPanel.setVisible(false);
+        loginPanel.setVisible(true);
+        
+        
+        
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1883,7 +1964,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton adminButton;
     private javax.swing.JPanel adminDashboard;
     private javax.swing.JPanel adminPanel;
-    private javax.swing.JComboBox<String> adminStudentGaurdianCombo;
     private javax.swing.JTextField ageTextField;
     private javax.swing.JTextField ageTextField1;
     private javax.swing.JLabel ageTextLabel;
@@ -2026,6 +2106,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel schoolReportPanel;
     private javax.swing.JTable schoolReportTable;
     private javax.swing.JSplitPane schoolSplitPane;
+    private javax.swing.JComboBox<String> selectParentComboBox;
     private javax.swing.JLabel staffTextLabel;
     private javax.swing.JButton studentButton;
     private javax.swing.JButton studentCampRegButton;

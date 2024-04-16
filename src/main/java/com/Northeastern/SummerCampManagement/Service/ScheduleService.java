@@ -4,10 +4,82 @@
  */
 package com.Northeastern.SummerCampManagement.Service;
 
+import com.Northeastern.SummerCampManagement.Dao.ActivityRepository;
+import com.Northeastern.SummerCampManagement.Dao.ScheduleRepository;
+import com.Northeastern.SummerCampManagement.Dao.StudentRepository;
+import com.Northeastern.SummerCampManagement.Entity.Activity;
+import com.Northeastern.SummerCampManagement.Entity.Parent;
+import com.Northeastern.SummerCampManagement.Entity.Schedule;
+import com.Northeastern.SummerCampManagement.Entity.Student;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author vrind
  */
+@Service
 public class ScheduleService {
+    @Autowired
+    ScheduleRepository scheduleRepository;
+    
+    @Autowired
+    StudentRepository studentRepository;
+    
+    @Autowired
+    ActivityRepository activityRepository;
+    
+    
+    //Create Schedule
+    
+     public Schedule addSchedule(Schedule newSchedule) throws CustomException  {
+		
+		return this.scheduleRepository.save(newSchedule);	
+	}
+     
+     public Schedule addScheduleByActivityId(Schedule newSchedule, Integer activityId) throws CustomException  {
+        
+		      Optional<Activity> activity = this.activityRepository.findById(activityId);
+		if (!activity.isPresent())
+			throw new CustomException("Activity not found for id:" + activityId);
+                
+                activity.get().setSchedule(newSchedule);
+                
+                this.activityRepository.save(activity.get());
+  
+		return newSchedule;	
+	}
+
+     
+     
+     
+    
+    
+    //Get Schedules By User Id
+     
+     public List<Schedule> getScheduleByCamperId(Integer camperId) throws CustomException {
+		
+		      Optional<Student> camper = this.studentRepository.findById(camperId);
+		if (!camper.isPresent())
+			throw new CustomException("Camper not found for id:" + camperId);
+                
+                Set<Activity> activities = new HashSet<>();
+                
+                activities = camper.get().getActivities();
+		
+                List<Schedule> schedules = new ArrayList<Schedule>();
+                for (Activity activity : activities){
+                
+                    schedules.add(activity.getSchedule());
+                    
+                }
+                
+		return schedules;
+	}
     
 }
