@@ -708,7 +708,7 @@
                                                           <Group type="102" alignment="0" attributes="0">
                                                               <Component id="firstNameParentTextLabel" min="-2" max="-2" attributes="0"/>
                                                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                                              <Component id="jTextField2" min="-2" pref="71" max="-2" attributes="0"/>
+                                                              <Component id="parentFirstNameField" min="-2" pref="71" max="-2" attributes="0"/>
                                                           </Group>
                                                           <Group type="102" alignment="0" attributes="0">
                                                               <Component id="emailParentTextLabel" min="-2" max="-2" attributes="0"/>
@@ -763,7 +763,7 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="firstNameParentTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="parentFirstNameField" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="lastNameParentTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="lastNameParentTextfield" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -805,7 +805,7 @@
                                 <Property name="text" type="java.lang.String" value="First Name"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="jTextField2">
+                            <Component class="javax.swing.JTextField" name="parentFirstNameField">
                             </Component>
                             <Component class="javax.swing.JLabel" name="lastNameParentTextLabel">
                               <Properties>
@@ -834,6 +834,9 @@
                             <Component class="javax.swing.JTextField" name="addressParentTextField">
                             </Component>
                             <Component class="javax.swing.JTextField" name="emailParentTextField">
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailParentTextFieldActionPerformed"/>
+                              </Events>
                             </Component>
                             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
                               <AuxValues>
@@ -896,6 +899,9 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="CREATE"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createParentButtonActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="editParentButton">
                               <Properties>
