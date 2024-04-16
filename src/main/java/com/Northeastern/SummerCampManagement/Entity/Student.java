@@ -6,16 +6,23 @@ package com.Northeastern.SummerCampManagement.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
  * @author vrind
  */
+
+
 
 @Entity
 public class Student extends AppUser{
@@ -34,6 +41,7 @@ public class Student extends AppUser{
     private Boolean camper;
     private String campUsername;
     private String campPassword;
+
    
     
     //Mappings
@@ -45,9 +53,17 @@ public class Student extends AppUser{
     @JoinColumn(name = "feedbackId")
     private Feedback feedback;
     
-    @OneToMany
-    @JoinColumn(name = "activityId")
-    private List<Activity> activities;
+//    @ManyToMany
+//    @JoinColumn(name = "activityId")
+//    private List<Activity> activities;
+    
+    @ManyToMany
+    @JoinTable(
+        name = "student_activity",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "activity_id")
+    )
+    private Set<Activity> activities = new HashSet<>();
     
    
     
@@ -68,13 +84,14 @@ public class Student extends AppUser{
         this.contactNumber = contactNumber;
         this.address = address;
         this.age = age;
+
         
         
     }
-
     
     
-    //Getters and Setters
+ //Getters and Setters
+    
 
     public String getFirstName() {
         return firstName;
@@ -180,11 +197,11 @@ public class Student extends AppUser{
         this.feedback = feedback;
     }
 
-    public List<Activity> getActivities() {
+    public Set<Activity> getActivities() {
         return activities;
     }
 
-    public void setActivities(List<Activity> activities) {
+    public void setActivities(Set<Activity> activities) {
         this.activities = activities;
     }
 

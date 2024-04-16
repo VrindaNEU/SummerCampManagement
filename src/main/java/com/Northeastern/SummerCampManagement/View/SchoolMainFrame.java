@@ -73,7 +73,8 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         UPDATE = new javax.swing.JButton();
         createButton = new javax.swing.JButton();
-        adminStudentGaurdianCombo = new javax.swing.JComboBox<>();
+        selectParentComboBox = new javax.swing.JComboBox<>();
+
         parentCrudPanel = new javax.swing.JPanel();
         parentCrudtextLabel = new javax.swing.JLabel();
         firstNameParentTextLabel = new javax.swing.JLabel();
@@ -424,7 +425,9 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         createButton.setText("CREATE");
 
-        adminStudentGaurdianCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        selectParentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
 
         javax.swing.GroupLayout studentCrudPanelLayout = new javax.swing.GroupLayout(studentCrudPanel);
         studentCrudPanel.setLayout(studentCrudPanelLayout);
@@ -473,7 +476,9 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                                         .addComponent(addressTextLabel)
                                         .addGap(44, 44, 44)
                                         .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
+
+                                        .addGap(0, 143, Short.MAX_VALUE))
+
                                     .addGroup(studentCrudPanelLayout.createSequentialGroup()
                                         .addComponent(passwordTextLabel)
                                         .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -485,7 +490,9 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                                                 .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE))))))
                             .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                                .addComponent(adminStudentGaurdianCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+
+                                .addComponent(selectParentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(studentCrudPanelLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
@@ -537,15 +544,19 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(guardianTextLabel)
-                            .addComponent(adminStudentGaurdianCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
+                            .addComponent(selectParentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(UPDATE)
                     .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
+                .addContainerGap(77, Short.MAX_VALUE))
+
         );
 
         rightPanel.add(studentCrudPanel, "card3");
@@ -668,7 +679,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         rightPanel.add(parentCrudPanel, "card4");
 
-        campusCrudTextLabel.setText("CAMPUS CRUD");
+        campusCrudTextLabel.setText("CAMPUS CRUD (Optional)");
 
         campusNameTextLabel.setText("Name");
 
@@ -1039,7 +1050,9 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                         .addComponent(editParentButton1)
                         .addGap(107, 107, 107)
                         .addComponent(updateParentButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
+                .addContainerGap(46, Short.MAX_VALUE))
+
         );
         parentProfilePanelLayout.setVerticalGroup(
             parentProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1399,7 +1412,9 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                         .addGroup(studentProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(studentProfilePanelLayout.createSequentialGroup()
                                 .addComponent(contactNumberStudentProfileLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+
                                 .addComponent(ContactNumberStudentText))
                             .addGroup(studentProfilePanelLayout.createSequentialGroup()
                                 .addComponent(jLabel4)
@@ -2026,6 +2041,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel schoolReportPanel;
     private javax.swing.JTable schoolReportTable;
     private javax.swing.JSplitPane schoolSplitPane;
+    private javax.swing.JComboBox<String> selectParentComboBox;
     private javax.swing.JLabel staffTextLabel;
     private javax.swing.JButton studentButton;
     private javax.swing.JButton studentCampRegButton;

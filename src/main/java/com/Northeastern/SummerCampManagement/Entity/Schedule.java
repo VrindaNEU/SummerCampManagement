@@ -29,9 +29,9 @@ public class Schedule {
     private LocalDateTime endTime;
     private String location;
     
-    @OneToMany
-    @JoinColumn(name = "activityId")
-    private List<Activity> activities;
+    
+    
+    
 
     //Constructors
     public Schedule() {
@@ -43,7 +43,7 @@ public class Schedule {
         this.startTime = startTime;
         this.endTime = endTime;
         this.location = location;
-        this.activities = activities;
+        
     }
     
     //Getters and Setters
@@ -85,13 +85,7 @@ public class Schedule {
         this.location = location;
     }
 
-    public List<Activity> getActivities() {
-        return activities;
-    }
-
-    public void setActivities(List<Activity> activities) {
-        this.activities = activities;
-    }
+   
     
     
     
