@@ -109,6 +109,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="X"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -535,7 +538,7 @@
                                               <Component id="staffActivityLabel" min="-2" pref="63" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="82" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -572,7 +575,7 @@
                                           <Component id="saveStaffActivityButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="deleteStaffActivityButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="42" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Component id="jScrollPane4" min="-2" pref="253" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                   </Group>
@@ -788,11 +791,17 @@
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Registration"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campRegButtonActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="campAdmindashboardButton">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="DashBoard"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campAdmindashboardButtonActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="campFeedbackButton">
                           <Properties>
@@ -1531,6 +1540,9 @@
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Activity"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="staffActivityButtonActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="staffDashboardButton">
                           <Properties>
@@ -1544,6 +1556,9 @@
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Schedules"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="staffSchedulesButtonActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="staffDietButton">
                           <Properties>
@@ -2158,11 +2173,17 @@
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Dietary Preference"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="camperDietButtonActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="camperScheduleButton">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Schedules"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="camperScheduleButtonActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -2270,8 +2291,8 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
-                    <StringItem index="0" value="student"/>
-                    <StringItem index="1" value="parent"/>
+                    <StringItem index="0" value="camper"/>
+                    <StringItem index="1" value="staff"/>
                     <StringItem index="2" value="admin"/>
                   </StringArray>
                 </Property>
@@ -2292,6 +2313,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="LOGIN"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginCampButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -796,10 +796,25 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         leftPanel.setBackground(new java.awt.Color(0, 51, 255));
 
         campusButton.setText("Campus");
+        campusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campusButtonActionPerformed(evt);
+            }
+        });
 
         dashboardButton1.setText("DashBoard");
+        dashboardButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dashboardButton1ActionPerformed(evt);
+            }
+        });
 
         parentCrudButton.setText("Parent");
+        parentCrudButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parentCrudButtonActionPerformed(evt);
+            }
+        });
 
         studentCrudButton.setText("Student");
         studentCrudButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1234,6 +1249,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         leftParentPanel.setPreferredSize(new java.awt.Dimension(120, 595));
 
         profileButton.setText("Profile");
+        profileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profileButtonActionPerformed(evt);
+            }
+        });
 
         parentDashboardButton.setText("DashBoard");
         parentDashboardButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1243,6 +1263,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         });
 
         summerCampButton.setText("Summer Camp");
+        summerCampButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                summerCampButtonActionPerformed(evt);
+            }
+        });
 
         schoolReportButton.setText("School Report");
         schoolReportButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1252,6 +1277,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         });
 
         feedbackButton.setText("Feedback");
+        feedbackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                feedbackButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout leftParentPanelLayout = new javax.swing.GroupLayout(leftParentPanel);
         leftParentPanel.setLayout(leftParentPanelLayout);
@@ -1676,6 +1706,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         leftStudentPanel.setPreferredSize(new java.awt.Dimension(120, 595));
 
         studentProfileButton.setText("Profile");
+        studentProfileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                studentProfileButtonActionPerformed(evt);
+            }
+        });
 
         studentDashboardButton.setText("DashBoard");
         studentDashboardButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1684,9 +1719,19 @@ public class SchoolMainFrame extends javax.swing.JFrame {
             }
         });
 
-        studentCampRegButton.setText("Camp \nRegistration");
+        studentCampRegButton.setText("Camp  Registration");
+        studentCampRegButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                studentCampRegButtonActionPerformed(evt);
+            }
+        });
 
         studentReportButton.setText("Report");
+        studentReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                studentReportButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout leftStudentPanelLayout = new javax.swing.GroupLayout(leftStudentPanel);
         leftStudentPanel.setLayout(leftStudentPanelLayout);
@@ -1840,6 +1885,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
     private void studentCrudButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentCrudButtonActionPerformed
         // TODO add your handling code here:
+        rightPanel.removeAll();
+        rightPanel.add(studentCrudPanel);
+        rightPanel.repaint();
+        rightPanel.revalidate();
     }//GEN-LAST:event_studentCrudButtonActionPerformed
 
     private void firstNametextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNametextField1ActionPerformed
@@ -1852,10 +1901,18 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
     private void schoolReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schoolReportButtonActionPerformed
         // TODO add your handling code here:
+        rightParentPanel.removeAll();
+        rightParentPanel.add(schoolReportPanel);
+        rightParentPanel.repaint();
+        rightParentPanel.revalidate();
     }//GEN-LAST:event_schoolReportButtonActionPerformed
 
     private void parentDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentDashboardButtonActionPerformed
         // TODO add your handling code here:
+        rightParentPanel.removeAll();
+        rightParentPanel.add(parentDashboard);
+        rightParentPanel.repaint();
+        rightParentPanel.revalidate();
     }//GEN-LAST:event_parentDashboardButtonActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -1864,6 +1921,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
     private void studentDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentDashboardButtonActionPerformed
         // TODO add your handling code here:
+        rightStudentPanel.removeAll();
+        rightStudentPanel.add(studentDashboard);
+        rightStudentPanel.repaint();
+        rightStudentPanel.revalidate();
     }//GEN-LAST:event_studentDashboardButtonActionPerformed
 
     private void studentMealPrefTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentMealPrefTextField2ActionPerformed
@@ -1898,7 +1959,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         rightPanel.setVisible(true);
         
         rightPanel.removeAll();
-        rightPanel.add(parentCrudPanel);
+        rightPanel.add(adminDashboard);
         rightPanel.repaint();
         rightPanel.revalidate();
             
@@ -1913,6 +1974,15 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         bottomPanel.add(parentPanel);
         bottomPanel.repaint();
         bottomPanel.revalidate();
+        
+        parentSplitPane.setVisible(true);
+        leftParentPanel.setVisible(true);
+        rightParentPanel.setVisible(true);
+        
+        rightParentPanel.removeAll();
+        rightParentPanel.add(parentDashboard);
+        rightParentPanel.repaint();
+        rightParentPanel.revalidate();
             
         }
         
@@ -1926,6 +1996,14 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         bottomPanel.add(studentPanel);
         bottomPanel.repaint();
         bottomPanel.revalidate();
+        studentSplitPane.setVisible(true);
+        leftStudentPanel.setVisible(true);
+        rightStudentPanel.setVisible(true);
+        
+        rightStudentPanel.removeAll();
+        rightStudentPanel.add(studentDashboard);
+        rightStudentPanel.repaint();
+        rightStudentPanel.revalidate();
         
         }
         
@@ -1940,7 +2018,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
         
-        schoolSplitPane.setVisible(true);
+        schoolSplitPane.setVisible(false);
         topPanel.setVisible(false);
         bottomPanel.setVisible(false);
         loginPanel.setVisible(true);
@@ -1970,6 +2048,79 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private void emailParentTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailParentTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailParentTextFieldActionPerformed
+
+    private void dashboardButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardButton1ActionPerformed
+        // TODO add your handling code here:
+        rightPanel.removeAll();
+        rightPanel.add(adminDashboard);
+        rightPanel.repaint();
+        rightPanel.revalidate();
+        
+    }//GEN-LAST:event_dashboardButton1ActionPerformed
+
+    private void campusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campusButtonActionPerformed
+        // TODO add your handling code here:
+        rightPanel.removeAll();
+        rightPanel.add(campusCrudPanel);
+        rightPanel.repaint();
+        rightPanel.revalidate();
+    }//GEN-LAST:event_campusButtonActionPerformed
+
+    private void parentCrudButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentCrudButtonActionPerformed
+        // TODO add your handling code here:
+        rightPanel.removeAll();
+        rightPanel.add(parentCrudPanel);
+        rightPanel.repaint();
+        rightPanel.revalidate();
+    }//GEN-LAST:event_parentCrudButtonActionPerformed
+
+    private void profileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileButtonActionPerformed
+        // TODO add your handling code here:
+        rightParentPanel.removeAll();
+        rightParentPanel.add(parentProfilePanel);
+        rightParentPanel.repaint();
+        rightParentPanel.revalidate();
+    }//GEN-LAST:event_profileButtonActionPerformed
+
+    private void summerCampButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summerCampButtonActionPerformed
+        // TODO add your handling code here:
+        rightParentPanel.removeAll();
+        rightParentPanel.add(campReportPanel);
+        rightParentPanel.repaint();
+        rightParentPanel.revalidate();
+    }//GEN-LAST:event_summerCampButtonActionPerformed
+
+    private void feedbackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackButtonActionPerformed
+        // TODO add your handling code here:
+        rightParentPanel.removeAll();
+        rightParentPanel.add(parentFeedbackPanel);
+        rightParentPanel.repaint();
+        rightParentPanel.revalidate();
+    }//GEN-LAST:event_feedbackButtonActionPerformed
+
+    private void studentProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentProfileButtonActionPerformed
+        // TODO add your handling code here:
+        rightStudentPanel.removeAll();
+        rightStudentPanel.add(studentProfilePanel);
+        rightStudentPanel.repaint();
+        rightStudentPanel.revalidate();
+    }//GEN-LAST:event_studentProfileButtonActionPerformed
+
+    private void studentReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentReportButtonActionPerformed
+        // TODO add your handling code here:
+        rightStudentPanel.removeAll();
+        rightStudentPanel.add(studentschoolReportPanel);
+        rightStudentPanel.repaint();
+        rightStudentPanel.revalidate();
+    }//GEN-LAST:event_studentReportButtonActionPerformed
+
+    private void studentCampRegButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentCampRegButtonActionPerformed
+        // TODO add your handling code here:
+        rightStudentPanel.removeAll();
+        rightStudentPanel.add(studentCampRegistrationPanel);
+        rightStudentPanel.repaint();
+        rightStudentPanel.revalidate();
+    }//GEN-LAST:event_studentCampRegButtonActionPerformed
 
     /**
      * @param args the command line arguments
