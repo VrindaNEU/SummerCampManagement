@@ -15,6 +15,10 @@ public class CampMainFrame extends javax.swing.JFrame {
      */
     public CampMainFrame() {
         initComponents();
+//         campSplitPane.setVisible(false);
+//        topPanel.setVisible(false);
+//        bottomPanel.setVisible(false);
+        loginPanel.setVisible(true);
     }
 
     /**
@@ -187,6 +191,11 @@ public class CampMainFrame extends javax.swing.JFrame {
 
         logoutButton.setForeground(new java.awt.Color(255, 51, 0));
         logoutButton.setText("X");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout topPanelLayout = new javax.swing.GroupLayout(topPanel);
         topPanel.setLayout(topPanelLayout);
@@ -473,7 +482,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                     .addGroup(staffCrudPanelLayout.createSequentialGroup()
                         .addGap(220, 220, 220)
                         .addComponent(staffActivityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 82, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         staffCrudPanelLayout.setVerticalGroup(
             staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -504,7 +513,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                     .addComponent(editStaffActivityButton)
                     .addComponent(saveStaffActivityButton)
                     .addComponent(deleteStaffActivityButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
@@ -516,8 +525,18 @@ public class CampMainFrame extends javax.swing.JFrame {
         leftPanel.setBackground(new java.awt.Color(0, 51, 255));
 
         campRegButton.setText("Registration");
+        campRegButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campRegButtonActionPerformed(evt);
+            }
+        });
 
         campAdmindashboardButton.setText("DashBoard");
+        campAdmindashboardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campAdmindashboardButtonActionPerformed(evt);
+            }
+        });
 
         campFeedbackButton.setText("Feedback");
         campFeedbackButton.addActionListener(new java.awt.event.ActionListener() {
@@ -906,6 +925,11 @@ public class CampMainFrame extends javax.swing.JFrame {
         leftStaffPanel.setPreferredSize(new java.awt.Dimension(120, 595));
 
         staffActivityButton.setText("Activity");
+        staffActivityButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                staffActivityButtonActionPerformed(evt);
+            }
+        });
 
         staffDashboardButton.setText("DashBoard");
         staffDashboardButton.addActionListener(new java.awt.event.ActionListener() {
@@ -915,6 +939,11 @@ public class CampMainFrame extends javax.swing.JFrame {
         });
 
         staffSchedulesButton.setText("Schedules");
+        staffSchedulesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                staffSchedulesButtonActionPerformed(evt);
+            }
+        });
 
         staffDietButton.setText("Dietary Preference");
         staffDietButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1237,8 +1266,18 @@ public class CampMainFrame extends javax.swing.JFrame {
         });
 
         camperDietButton.setText("Dietary Preference");
+        camperDietButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                camperDietButtonActionPerformed(evt);
+            }
+        });
 
         camperScheduleButton.setText("Schedules");
+        camperScheduleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                camperScheduleButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout leftCamperPanelLayout = new javax.swing.GroupLayout(leftCamperPanel);
         leftCamperPanel.setLayout(leftCamperPanelLayout);
@@ -1294,12 +1333,17 @@ public class CampMainFrame extends javax.swing.JFrame {
 
         roleCampLoginLabel.setText("Role");
 
-        roleCampDropBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "student", "parent", "admin" }));
+        roleCampDropBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "camper", "staff", "admin" }));
 
         welcomeCampLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         welcomeCampLabel.setText("WELCOME TO THE CAMP PORTAL");
 
         loginCampButton.setText("LOGIN");
+        loginCampButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginCampButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
@@ -1375,22 +1419,42 @@ public class CampMainFrame extends javax.swing.JFrame {
 
     private void staffDietButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffDietButtonActionPerformed
         // TODO add your handling code here:
+        rightStaffPanel.removeAll();
+        rightStaffPanel.add(dietryPreferencePanel);
+        rightStaffPanel.repaint();
+        rightStaffPanel.revalidate();
     }//GEN-LAST:event_staffDietButtonActionPerformed
 
     private void staffDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffDashboardButtonActionPerformed
         // TODO add your handling code here:
+        rightStaffPanel.removeAll();
+        rightStaffPanel.add(staffDashboard);
+        rightStaffPanel.repaint();
+        rightStaffPanel.revalidate();
     }//GEN-LAST:event_staffDashboardButtonActionPerformed
 
     private void camperDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camperDashboardButtonActionPerformed
         // TODO add your handling code here:
+        rightCamperPanel.removeAll();
+        rightCamperPanel.add(camperDashboard);
+        rightCamperPanel.repaint();
+        rightCamperPanel.revalidate();
     }//GEN-LAST:event_camperDashboardButtonActionPerformed
 
     private void campFeedbackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campFeedbackButtonActionPerformed
         // TODO add your handling code here:
+        rightPanel.removeAll();
+        rightPanel.add(feedbackPanel);
+        rightPanel.repaint();
+        rightPanel.revalidate();
     }//GEN-LAST:event_campFeedbackButtonActionPerformed
 
     private void camperActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camperActivityButtonActionPerformed
         // TODO add your handling code here:
+         rightCamperPanel.removeAll();
+        rightCamperPanel.add(camperActivityPanel);
+        rightCamperPanel.repaint();
+        rightCamperPanel.revalidate();
     }//GEN-LAST:event_camperActivityButtonActionPerformed
 
     private void jTable2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTable2AncestorAdded
@@ -1412,6 +1476,130 @@ public class CampMainFrame extends javax.swing.JFrame {
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void loginCampButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginCampButtonActionPerformed
+        // TODO add your handling code here:
+        if(roleCampDropBox.getSelectedItem().toString()== "admin"){
+            
+        campSplitPane.setVisible(true);
+        topPanel.setVisible(true);
+        bottomPanel.setVisible(true);
+        
+        loginPanel.setVisible(false);
+        bottomPanel.removeAll();
+        bottomPanel.add(adminPanel);
+        bottomPanel.repaint();
+        bottomPanel.revalidate();
+        
+        jSplitPane2.setVisible(true);
+        leftPanel.setVisible(true);
+        rightPanel.setVisible(true);
+        
+        rightPanel.removeAll();
+        rightPanel.add(adminDashboard);
+        rightPanel.repaint();
+        rightPanel.revalidate();
+            
+        }
+        else if(roleCampDropBox.getSelectedItem().toString()== "staff"){
+            
+        campSplitPane.setVisible(true);
+        topPanel.setVisible(true);
+        bottomPanel.setVisible(true);
+        loginPanel.setVisible(false);
+        bottomPanel.removeAll();
+        bottomPanel.add(staffPanel);
+        bottomPanel.repaint();
+        bottomPanel.revalidate();
+        
+        staffSplitPane.setVisible(true);
+        leftStaffPanel.setVisible(true);
+        rightStaffPanel.setVisible(true);
+        
+        rightStaffPanel.removeAll();
+        rightStaffPanel.add(staffDashboard);
+        rightStaffPanel.repaint();
+        rightStaffPanel.revalidate();
+            
+        }
+        
+        else{
+            
+        camperSplitPane.setVisible(true);
+        topPanel.setVisible(true);
+        bottomPanel.setVisible(true);
+        loginPanel.setVisible(false);
+        bottomPanel.removeAll();
+        bottomPanel.add(camperPanel);
+        bottomPanel.repaint();
+        bottomPanel.revalidate();
+        camperSplitPane.setVisible(true);
+        leftCamperPanel.setVisible(true);
+        rightCamperPanel.setVisible(true);
+        
+        rightCamperPanel.removeAll();
+        rightCamperPanel.add(camperDashboard);
+        rightCamperPanel.repaint();
+        rightCamperPanel.revalidate();
+        }
+        
+    }//GEN-LAST:event_loginCampButtonActionPerformed
+
+    private void campAdmindashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campAdmindashboardButtonActionPerformed
+        // TODO add your handling code here:
+        rightPanel.removeAll();
+        rightPanel.add(adminDashboard);
+        rightPanel.repaint();
+        rightPanel.revalidate();
+    }//GEN-LAST:event_campAdmindashboardButtonActionPerformed
+
+    private void campRegButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campRegButtonActionPerformed
+        // TODO add your handling code here:
+        rightPanel.removeAll();
+        rightPanel.add(registrationReportPanel);
+        rightPanel.repaint();
+        rightPanel.revalidate();
+    }//GEN-LAST:event_campRegButtonActionPerformed
+
+    private void staffActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffActivityButtonActionPerformed
+        // TODO add your handling code here:
+        rightStaffPanel.removeAll();
+        rightStaffPanel.add(staffActivityPanel);
+        rightStaffPanel.repaint();
+        rightStaffPanel.revalidate();
+    }//GEN-LAST:event_staffActivityButtonActionPerformed
+
+    private void staffSchedulesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffSchedulesButtonActionPerformed
+        // TODO add your handling code here:
+        rightStaffPanel.removeAll();
+        rightStaffPanel.add(staffSchedulePanel);
+        rightStaffPanel.repaint();
+        rightStaffPanel.revalidate();
+    }//GEN-LAST:event_staffSchedulesButtonActionPerformed
+
+    private void camperScheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camperScheduleButtonActionPerformed
+        // TODO add your handling code here:
+        rightCamperPanel.removeAll();
+        rightCamperPanel.add(camperSchedulePanel);
+        rightCamperPanel.repaint();
+        rightCamperPanel.revalidate();
+    }//GEN-LAST:event_camperScheduleButtonActionPerformed
+
+    private void camperDietButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camperDietButtonActionPerformed
+        // TODO add your handling code here:
+        rightCamperPanel.removeAll();
+        rightCamperPanel.add(camperDietPanel);
+        rightCamperPanel.repaint();
+        rightCamperPanel.revalidate();
+    }//GEN-LAST:event_camperDietButtonActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        // TODO add your handling code here:
+        campSplitPane.setVisible(false);
+        topPanel.setVisible(false);
+        bottomPanel.setVisible(false);
+        loginPanel.setVisible(true);
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
