@@ -26,7 +26,7 @@ public class SummerCampManagementApplication {
         private static void startSchoolApplication() {
         SchoolMainFrame frame = new SchoolMainFrame();
 
-       frame.setSize(800, 600);
+       frame.setSize(700, 700);
        frame.setVisible(true);
     }
 
