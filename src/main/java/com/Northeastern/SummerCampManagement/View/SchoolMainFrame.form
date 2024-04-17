@@ -385,46 +385,6 @@
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="usernameTextLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="ageTextField" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                                          <Component id="usernameTextField" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" attributes="0">
-                                                              <Component id="addressTextLabel" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                                              <Component id="addressTextField" min="-2" pref="71" max="-2" attributes="0"/>
-                                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                          </Group>
-                                                          <Group type="102" attributes="0">
-                                                              <Component id="passwordTextLabel" min="-2" max="-2" attributes="0"/>
-                                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                                  <Group type="102" attributes="0">
-                                                                      <EmptySpace max="32767" attributes="0"/>
-                                                                      <Component id="createButton" min="-2" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                                  <Group type="102" alignment="0" attributes="0">
-                                                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                                                      <Component id="passwordTextField" min="-2" pref="71" max="-2" attributes="0"/>
-                                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                                  </Group>
-                                                              </Group>
-                                                          </Group>
-                                                      </Group>
-                                                  </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="selectParentComboBox" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
@@ -433,12 +393,31 @@
                                               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                      <EmptySpace min="58" pref="76" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="guardianTextLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="selectParentComboBox" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="ageTextField" min="-2" pref="71" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                                              <Component id="addressTextLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                              <Component id="addressTextField" min="-2" pref="71" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
+                                      <Component id="createButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -454,41 +433,28 @@
                                           <Component id="lastNameTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="lastNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                                              <Component id="createButton" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="conactNumbertextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="contactNumberTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="emailTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="emailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="ageTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="ageTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="addressTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="addressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="usernameTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="usernameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="passwordTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="passwordTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="guardianTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="selectParentComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="conactNumbertextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="contactNumberTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="emailTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="emailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="ageTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ageTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addressTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="guardianTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="selectParentComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="34" max="32767" attributes="0"/>
+                                      <Component id="createButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                       <Component id="jScrollPane1" min="-2" pref="123" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -496,7 +462,7 @@
                                           <Component id="UPDATE" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="63" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -547,27 +513,13 @@
                                 <Property name="text" type="java.lang.String" value="Address"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="usernameTextLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="UserName"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="passwordTextLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="PassWord"/>
-                              </Properties>
-                            </Component>
                             <Component class="javax.swing.JTextField" name="contactNumberTextField">
                             </Component>
                             <Component class="javax.swing.JTextField" name="ageTextField">
                             </Component>
-                            <Component class="javax.swing.JTextField" name="usernameTextField">
-                            </Component>
                             <Component class="javax.swing.JTextField" name="emailTextField">
                             </Component>
                             <Component class="javax.swing.JTextField" name="addressTextField">
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="passwordTextField">
                             </Component>
                             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                               <AuxValues>
@@ -576,38 +528,20 @@
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JTable" name="jTable1">
+                                <Component class="javax.swing.JTable" name="studentInfoTable">
                                   <Properties>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="9" rowCount="4">
+                                      <Table columnCount="6" rowCount="4">
                                         <Column editable="true" title="First Name" type="java.lang.Object"/>
                                         <Column editable="true" title="Last Name" type="java.lang.Object"/>
                                         <Column editable="true" title="Contact Number" type="java.lang.Object"/>
                                         <Column editable="true" title="Email" type="java.lang.Object"/>
                                         <Column editable="true" title="Age" type="java.lang.Object"/>
                                         <Column editable="true" title="Address" type="java.lang.Object"/>
-                                        <Column editable="true" title="UserName" type="java.lang.Object"/>
-                                        <Column editable="true" title="Password" type="java.lang.Object"/>
-                                        <Column editable="true" title="Guardian" type="java.lang.Object"/>
                                       </Table>
                                     </Property>
                                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                                       <TableColumnModel selectionModel="0">
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
                                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
@@ -674,16 +608,14 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="CREATE"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createButtonActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JComboBox" name="selectParentComboBox">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="4">
-                                    <StringItem index="0" value="Item 1"/>
-                                    <StringItem index="1" value="Item 2"/>
-                                    <StringItem index="2" value="Item 3"/>
-                                    <StringItem index="3" value="Item 4"/>
-                                  </StringArray>
+                                  <StringArray count="0"/>
                                 </Property>
                               </Properties>
                               <AuxValues>
@@ -756,7 +688,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="25" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
@@ -859,7 +791,7 @@
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JTable" name="jTable2">
+                                <Component class="javax.swing.JTable" name="parentInfoTable">
                                   <Properties>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                       <Table columnCount="5" rowCount="0">
@@ -921,6 +853,9 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="EDIT"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editParentButtonActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="deleteParentButton">
                               <Properties>
