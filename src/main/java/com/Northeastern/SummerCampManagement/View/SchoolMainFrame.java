@@ -7,19 +7,26 @@ package com.Northeastern.SummerCampManagement.View;
 import com.Northeastern.SummerCampManagement.Entity.Parent;
 import com.Northeastern.SummerCampManagement.Service.CustomException;
 import com.Northeastern.SummerCampManagement.Service.ParentService;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author jalan
  */
 
-public class SchoolMainFrame extends javax.swing.JFrame {
 
-         ParentService parentService;
+public class SchoolMainFrame extends javax.swing.JFrame {
+    //********Autowiring********//
+    ParentService parentService ;
+   //****--end---********//
+    
     Parent parent;
     /**
      * Creates new form MainFrame
@@ -31,8 +38,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         bottomPanel.setVisible(false);
         loginPanel.setVisible(true);
         
-        parentService = new ParentService();
-       
+        //********Autowiring********//
+        parentService = (ParentService) BeanUtil.getBean("parentService");
+      //****--end---********//
+        
      parent = new Parent();
     }
     
@@ -2131,6 +2140,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
+        
+        
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
