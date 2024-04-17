@@ -46,20 +46,20 @@ public class SchoolAdminService {
 	}
      
     
+     
       public SchoolAdmin  loginByAdminId(String userName,String password) throws CustomException{
-          
+        SchoolAdmin selectedAdmin = new SchoolAdmin();  
      List<SchoolAdmin> adminLogin = new ArrayList<SchoolAdmin>();
              adminLogin = (List<SchoolAdmin>)getAllAdmins();
-     SchoolAdmin selectedAdmin = new SchoolAdmin();
+     
      for (SchoolAdmin admini: adminLogin){
-                    if(admini.getUsername()==userName && admini.getPassword()== password){
-                        
+                    if(admini.getUsername().equals(userName) && admini.getPassword().equals(password)){
                        selectedAdmin =  admini;
-                       System.out.println(admini.getPassword());
+                       break;            
                     }
-                  
+   
                   }
-       System.out.println(selectedAdmin.getPassword());
+
      return selectedAdmin;
      }
     
