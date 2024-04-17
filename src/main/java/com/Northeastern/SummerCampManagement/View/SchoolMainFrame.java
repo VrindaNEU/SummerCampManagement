@@ -4,33 +4,77 @@
  */
 package com.Northeastern.SummerCampManagement.View;
 
+import com.Northeastern.SummerCampManagement.Entity.AppUser;
 import com.Northeastern.SummerCampManagement.Entity.Parent;
+import com.Northeastern.SummerCampManagement.Entity.SchoolAdmin;
+import com.Northeastern.SummerCampManagement.Entity.Student;
 import com.Northeastern.SummerCampManagement.Service.CustomException;
 import com.Northeastern.SummerCampManagement.Service.ParentService;
+import com.Northeastern.SummerCampManagement.Service.SchoolAdminService;
+import com.Northeastern.SummerCampManagement.Service.StudentService;
+import java.util.ArrayList;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RestController;
+
+
 
 /**
  *
  * @author jalan
  */
 
+
 public class SchoolMainFrame extends javax.swing.JFrame {
- @Autowired
-         ParentService parentService;
+    //********Autowiring********//
+    ParentService parentService ;
+    StudentService studentService;
+    SchoolAdminService schoolAdminService;
+    
+   //****--end---********//
+    public ArrayList<Parent> parentList = new ArrayList<Parent>();
+    public ArrayList<Student> studentList = new ArrayList<Student>();
+    private Parent selectedParent;
+    public ArrayList<Integer> parentIDs = new ArrayList<>();
     Parent parent;
+    Student student;
+    SchoolAdmin schoolAdmin;
+    Integer loggedInUserId;
     /**
      * Creates new form MainFrame
      */
     public SchoolMainFrame() {
         initComponents();
-        schoolSplitPane.setVisible(true);
+        schoolSplitPane.setVisible(false);
         topPanel.setVisible(false);
         bottomPanel.setVisible(false);
         loginPanel.setVisible(true);
-       
+        
+        //********Autowiring********//
+        parentService = (ParentService) BeanUtil.getBean("parentService");
+        
+         schoolAdminService = (SchoolAdminService) BeanUtil.getBean("schoolAdminService");
+        studentService = (StudentService) BeanUtil.getBean("studentService");
+      //****--end---********//
+        
      parent = new Parent();
+     
+     student = new Student();
+      schoolAdmin = new SchoolAdmin();
+
+     
+     //to be moved later
+     
+     
     }
     
 
@@ -75,16 +119,12 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         emailTextLabel = new javax.swing.JLabel();
         ageTextLabel = new javax.swing.JLabel();
         addressTextLabel = new javax.swing.JLabel();
-        usernameTextLabel = new javax.swing.JLabel();
-        passwordTextLabel = new javax.swing.JLabel();
         contactNumberTextField = new javax.swing.JTextField();
         ageTextField = new javax.swing.JTextField();
-        usernameTextField = new javax.swing.JTextField();
         emailTextField = new javax.swing.JTextField();
         addressTextField = new javax.swing.JTextField();
-        passwordTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        studentInfoTable = new javax.swing.JTable();
         guardianTextLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -104,7 +144,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         addressParentTextField = new javax.swing.JTextField();
         emailParentTextField = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        parentInfoTable = new javax.swing.JTable();
         createParentButton = new javax.swing.JButton();
         editParentButton = new javax.swing.JButton();
         deleteParentButton = new javax.swing.JButton();
@@ -291,7 +331,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                 .addComponent(parentButton)
                 .addGap(101, 101, 101)
                 .addComponent(studentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addComponent(logoutButton)
                 .addGap(23, 23, 23))
         );
@@ -423,23 +463,19 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         addressTextLabel.setText("Address");
 
-        usernameTextLabel.setText("UserName");
-
-        passwordTextLabel.setText("PassWord");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        studentInfoTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "First Name", "Last Name", "Contact Number", "Email", "Age", "Address", "UserName", "Password", "Guardian"
+                "First Name", "Last Name", "Contact Number", "Email", "Age", "Address"
             }
         ));
-        jTable1.setPreferredSize(new java.awt.Dimension(599, 120));
-        jScrollPane1.setViewportView(jTable1);
+        studentInfoTable.setPreferredSize(new java.awt.Dimension(599, 120));
+        jScrollPane1.setViewportView(studentInfoTable);
 
         guardianTextLabel.setText("Guardian");
 
@@ -450,8 +486,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         UPDATE.setText("SAVE");
 
         createButton.setText("CREATE");
-
-        selectParentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        createButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout studentCrudPanelLayout = new javax.swing.GroupLayout(studentCrudPanel);
         studentCrudPanel.setLayout(studentCrudPanelLayout);
@@ -486,46 +525,32 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                             .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(usernameTextLabel)
-                        .addGap(42, 42, 42)
-                        .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                                .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(62, 62, 62)
-                                .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                                        .addComponent(addressTextLabel)
-                                        .addGap(44, 44, 44)
-                                        .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                                        .addComponent(passwordTextLabel)
-                                        .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(createButton))
-                                            .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                                                .addGap(34, 34, 34)
-                                                .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 0, Short.MAX_VALUE))))))
-                            .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                                .addComponent(selectParentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(studentCrudPanelLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jButton1)
                         .addGap(109, 109, 109)
                         .addComponent(UPDATE)
                         .addGap(99, 99, 99)
                         .addComponent(jButton2)))
-                .addGap(58, 58, 58))
+                .addGap(58, 76, Short.MAX_VALUE))
             .addGroup(studentCrudPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(guardianTextLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(studentCrudPanelLayout.createSequentialGroup()
+                        .addComponent(selectParentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(studentCrudPanelLayout.createSequentialGroup()
+                        .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)
+                        .addComponent(addressTextLabel)
+                        .addGap(44, 44, 44)
+                        .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(studentCrudPanelLayout.createSequentialGroup()
+                .addGap(194, 194, 194)
+                .addComponent(createButton)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         studentCrudPanelLayout.setVerticalGroup(
             studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -538,41 +563,32 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                     .addComponent(firstNametextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lastNameTextLabel)
                     .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(createButton))
-                    .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(conactNumbertextLabel)
-                            .addComponent(contactNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(emailTextLabel)
-                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ageTextLabel)
-                            .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addressTextLabel)
-                            .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(usernameTextLabel)
-                            .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordTextLabel)
-                            .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
-                        .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(guardianTextLabel)
-                            .addComponent(selectParentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
+                .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(conactNumbertextLabel)
+                    .addComponent(contactNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailTextLabel)
+                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ageTextLabel)
+                    .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addressTextLabel)
+                    .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(guardianTextLabel)
+                    .addComponent(selectParentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(createButton)
+                .addGap(56, 56, 56)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(UPDATE)
                     .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         rightPanel.add(studentCrudPanel, "card3");
@@ -597,7 +613,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        parentInfoTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -605,8 +621,8 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                 "First Name", "Last Name", "Email", "Address", "Contact Number"
             }
         ));
-        jTable2.setPreferredSize(new java.awt.Dimension(300, 120));
-        jScrollPane2.setViewportView(jTable2);
+        parentInfoTable.setPreferredSize(new java.awt.Dimension(300, 120));
+        jScrollPane2.setViewportView(parentInfoTable);
 
         createParentButton.setText("CREATE");
         createParentButton.addActionListener(new java.awt.event.ActionListener() {
@@ -616,6 +632,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         });
 
         editParentButton.setText("EDIT");
+        editParentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editParentButtonActionPerformed(evt);
+            }
+        });
 
         deleteParentButton.setText("DELETE");
 
@@ -661,7 +682,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                             .addGroup(parentCrudPanelLayout.createSequentialGroup()
                                 .addGap(220, 220, 220)
                                 .addComponent(createParentButton)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(parentCrudPanelLayout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(editParentButton)
@@ -793,10 +814,25 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         leftPanel.setBackground(new java.awt.Color(0, 51, 255));
 
         campusButton.setText("Campus");
+        campusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campusButtonActionPerformed(evt);
+            }
+        });
 
         dashboardButton1.setText("DashBoard");
+        dashboardButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dashboardButton1ActionPerformed(evt);
+            }
+        });
 
         parentCrudButton.setText("Parent");
+        parentCrudButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parentCrudButtonActionPerformed(evt);
+            }
+        });
 
         studentCrudButton.setText("Student");
         studentCrudButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1231,6 +1267,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         leftParentPanel.setPreferredSize(new java.awt.Dimension(120, 595));
 
         profileButton.setText("Profile");
+        profileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profileButtonActionPerformed(evt);
+            }
+        });
 
         parentDashboardButton.setText("DashBoard");
         parentDashboardButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1240,6 +1281,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         });
 
         summerCampButton.setText("Summer Camp");
+        summerCampButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                summerCampButtonActionPerformed(evt);
+            }
+        });
 
         schoolReportButton.setText("School Report");
         schoolReportButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1249,6 +1295,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         });
 
         feedbackButton.setText("Feedback");
+        feedbackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                feedbackButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout leftParentPanelLayout = new javax.swing.GroupLayout(leftParentPanel);
         leftParentPanel.setLayout(leftParentPanelLayout);
@@ -1673,6 +1724,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         leftStudentPanel.setPreferredSize(new java.awt.Dimension(120, 595));
 
         studentProfileButton.setText("Profile");
+        studentProfileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                studentProfileButtonActionPerformed(evt);
+            }
+        });
 
         studentDashboardButton.setText("DashBoard");
         studentDashboardButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1681,9 +1737,19 @@ public class SchoolMainFrame extends javax.swing.JFrame {
             }
         });
 
-        studentCampRegButton.setText("Camp \nRegistration");
+        studentCampRegButton.setText("Camp  Registration");
+        studentCampRegButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                studentCampRegButtonActionPerformed(evt);
+            }
+        });
 
         studentReportButton.setText("Report");
+        studentReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                studentReportButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout leftStudentPanelLayout = new javax.swing.GroupLayout(leftStudentPanel);
         leftStudentPanel.setLayout(leftStudentPanelLayout);
@@ -1803,17 +1869,25 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                 .addContainerGap(166, Short.MAX_VALUE))
         );
 
-        schoolSplitPane.setRightComponent(loginPanel);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(schoolSplitPane)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(schoolSplitPane, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(schoolSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -1829,6 +1903,53 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
     private void studentCrudButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentCrudButtonActionPerformed
         // TODO add your handling code here:
+        rightPanel.removeAll();
+        rightPanel.add(studentCrudPanel);
+        rightPanel.repaint();
+        rightPanel.revalidate();
+        
+        try {
+            // TODO add your handling code here:
+
+        parentList = (ArrayList)this.parentService.getAllParents();
+        } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        parentIDs.clear();
+        for(Parent i : parentList)
+       {
+         parentIDs.add(i.getUserId());
+       }
+        DefaultComboBoxModel parentComboModel = new DefaultComboBoxModel();
+        parentComboModel.addAll(parentIDs);
+        selectParentComboBox.setModel(parentComboModel);
+        selectParentComboBox.setSelectedIndex(0);
+        
+          //load the parent info to jtable
+        DefaultTableModel studentModel = (DefaultTableModel)studentInfoTable.getModel();
+        studentModel.setRowCount(0);
+        Object rowData[] = new Object[6]; 
+        
+        try {
+            studentList = (ArrayList)this.studentService.getAllStudents();
+        } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        for(int j = 0; j < studentList.size(); j++)
+        {
+     
+        rowData[0] = studentList.get(j).getFirstName();
+        rowData[1] = studentList.get(j).getLastName();
+        rowData[2] = studentList.get(j).getContactNumber();
+        rowData[3] = studentList.get(j).getEmail();
+        rowData[4] = studentList.get(j).getAge();
+        rowData[5] = studentList.get(j).getAddress();
+              
+       
+        studentModel.addRow(rowData);
+        }
+        
     }//GEN-LAST:event_studentCrudButtonActionPerformed
 
     private void firstNametextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNametextField1ActionPerformed
@@ -1841,10 +1962,18 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
     private void schoolReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schoolReportButtonActionPerformed
         // TODO add your handling code here:
+        rightParentPanel.removeAll();
+        rightParentPanel.add(schoolReportPanel);
+        rightParentPanel.repaint();
+        rightParentPanel.revalidate();
     }//GEN-LAST:event_schoolReportButtonActionPerformed
 
     private void parentDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentDashboardButtonActionPerformed
         // TODO add your handling code here:
+        rightParentPanel.removeAll();
+        rightParentPanel.add(parentDashboard);
+        rightParentPanel.repaint();
+        rightParentPanel.revalidate();
     }//GEN-LAST:event_parentDashboardButtonActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -1853,6 +1982,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
     private void studentDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentDashboardButtonActionPerformed
         // TODO add your handling code here:
+        rightStudentPanel.removeAll();
+        rightStudentPanel.add(studentDashboard);
+        rightStudentPanel.repaint();
+        rightStudentPanel.revalidate();
     }//GEN-LAST:event_studentDashboardButtonActionPerformed
 
     private void studentMealPrefTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentMealPrefTextField2ActionPerformed
@@ -1870,18 +2003,56 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private void loginSchoolButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginSchoolButtonActionPerformed
         // TODO add your handling code here:
         
+        // Create new admin
+//        SchoolAdmin newAdmin = new SchoolAdmin();
+//        newAdmin.setUsername("yashj");
+//        newAdmin.setPassword("admin@123");
+//        newAdmin.setRole(AppUser.Role.SchoolAdmin);
+//        try {
+//            schoolAdminService.addSchoolAdmin(newAdmin);
+//        } catch (CustomException ex) {
+//            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        
+        /// Admin Created //
+        
         if(roleSchoolDropBox.getSelectedItem().toString()== "admin"){
+          // SchoolAdmin isLoggedIn = new SchoolAdmin();
+            try {
+                schoolAdmin = schoolAdminService.loginByAdminId(usernameSchoolTextField.getText(), passwordSchoolTextField.getText());
+               
+            } catch (CustomException ex) {
+                Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         if(schoolAdmin.getUserId() == null){
+             System.out.println(schoolAdmin.getUserId());
+             JOptionPane.showInternalMessageDialog(loginPanel, "did not match");
+         }
+         else{
+             
+         
             
         schoolSplitPane.setVisible(true);
         topPanel.setVisible(true);
         bottomPanel.setVisible(true);
+        
         loginPanel.setVisible(false);
         bottomPanel.removeAll();
         bottomPanel.add(adminPanel);
         bottomPanel.repaint();
         bottomPanel.revalidate();
-        adminPanel.add(parentPanel);
-            
+        
+        jSplitPane2.setVisible(true);
+        leftPanel.setVisible(true);
+        rightPanel.setVisible(true);
+        
+        rightPanel.removeAll();
+        rightPanel.add(adminDashboard);
+        rightPanel.repaint();
+        rightPanel.revalidate();
+        }
+        // OnPageLoad
+        
             
         }
         else if(roleSchoolDropBox.getSelectedItem().toString()== "parent"){
@@ -1894,6 +2065,15 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         bottomPanel.add(parentPanel);
         bottomPanel.repaint();
         bottomPanel.revalidate();
+        
+        parentSplitPane.setVisible(true);
+        leftParentPanel.setVisible(true);
+        rightParentPanel.setVisible(true);
+        
+        rightParentPanel.removeAll();
+        rightParentPanel.add(parentDashboard);
+        rightParentPanel.repaint();
+        rightParentPanel.revalidate();
             
         }
         
@@ -1907,6 +2087,14 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         bottomPanel.add(studentPanel);
         bottomPanel.repaint();
         bottomPanel.revalidate();
+        studentSplitPane.setVisible(true);
+        leftStudentPanel.setVisible(true);
+        rightStudentPanel.setVisible(true);
+        
+        rightStudentPanel.removeAll();
+        rightStudentPanel.add(studentDashboard);
+        rightStudentPanel.repaint();
+        rightStudentPanel.revalidate();
         
         }
         
@@ -1921,7 +2109,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // TODO add your handling code here:
         
-        schoolSplitPane.setVisible(true);
+        schoolSplitPane.setVisible(false);
         topPanel.setVisible(false);
         bottomPanel.setVisible(false);
         loginPanel.setVisible(true);
@@ -1937,8 +2125,39 @@ public class SchoolMainFrame extends javax.swing.JFrame {
       parent.setEmail(emailParentTextField.getText());
       parent.setContactNumber(contactNumberParentTextField.getText());
       parent.setAddress(addressParentTextField.getText());
+      parent.setUsername(emailParentTextField.getText());
+      parent.setPassword(contactNumberParentTextField.getText());
+      parent.setRole(AppUser.Role.Parent);
      try {
-         parentService.addParent(parent);
+         this.parentService.addParent(parent);
+         
+         //clear the text fields
+         parentFirstNameField.setText("");
+         lastNameParentTextfield.setText("");
+         emailParentTextField.setText("");
+         contactNumberParentTextField.setText("");
+         addressParentTextField.setText("");
+         
+        
+         //load the parent info to jtable
+        DefaultTableModel parentModel = (DefaultTableModel)parentInfoTable.getModel();
+        parentModel.setRowCount(0);
+        Object rowData[] = new Object[5]; 
+        
+        parentList = (ArrayList)this.parentService.getAllParents();
+        
+        for(int i = 0; i < parentList.size(); i++)
+        {
+     
+        rowData[0] = parentList.get(i).getFirstName();
+        rowData[1] = parentList.get(i).getLastName();
+        rowData[2] = parentList.get(i).getEmail();
+        rowData[3] = parentList.get(i).getAddress();
+        rowData[4] = parentList.get(i).getContactNumber();      
+       
+        parentModel.addRow(rowData);
+        
+        }
      } catch (CustomException ex) {
          Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
      }
@@ -1952,6 +2171,147 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_emailParentTextFieldActionPerformed
 
+    private void dashboardButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardButton1ActionPerformed
+        // TODO add your handling code here:
+        rightPanel.removeAll();
+        rightPanel.add(adminDashboard);
+        rightPanel.repaint();
+        rightPanel.revalidate();
+        
+    }//GEN-LAST:event_dashboardButton1ActionPerformed
+
+    private void campusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campusButtonActionPerformed
+        // TODO add your handling code here:
+        rightPanel.removeAll();
+        rightPanel.add(campusCrudPanel);
+        rightPanel.repaint();
+        rightPanel.revalidate();
+    }//GEN-LAST:event_campusButtonActionPerformed
+
+    private void parentCrudButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentCrudButtonActionPerformed
+        // TODO add your handling code here:
+        rightPanel.removeAll();
+        rightPanel.add(parentCrudPanel);
+        rightPanel.repaint();
+        rightPanel.revalidate();
+    }//GEN-LAST:event_parentCrudButtonActionPerformed
+
+    private void profileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileButtonActionPerformed
+        // TODO add your handling code here:
+        rightParentPanel.removeAll();
+        rightParentPanel.add(parentProfilePanel);
+        rightParentPanel.repaint();
+        rightParentPanel.revalidate();
+    }//GEN-LAST:event_profileButtonActionPerformed
+
+    private void summerCampButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summerCampButtonActionPerformed
+        // TODO add your handling code here:
+        rightParentPanel.removeAll();
+        rightParentPanel.add(campReportPanel);
+        rightParentPanel.repaint();
+        rightParentPanel.revalidate();
+    }//GEN-LAST:event_summerCampButtonActionPerformed
+
+    private void feedbackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackButtonActionPerformed
+        // TODO add your handling code here:
+        rightParentPanel.removeAll();
+        rightParentPanel.add(parentFeedbackPanel);
+        rightParentPanel.repaint();
+        rightParentPanel.revalidate();
+    }//GEN-LAST:event_feedbackButtonActionPerformed
+
+    private void studentProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentProfileButtonActionPerformed
+        // TODO add your handling code here:
+        rightStudentPanel.removeAll();
+        rightStudentPanel.add(studentProfilePanel);
+        rightStudentPanel.repaint();
+        rightStudentPanel.revalidate();
+    }//GEN-LAST:event_studentProfileButtonActionPerformed
+
+    private void studentReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentReportButtonActionPerformed
+        // TODO add your handling code here:
+        rightStudentPanel.removeAll();
+        rightStudentPanel.add(studentschoolReportPanel);
+        rightStudentPanel.repaint();
+        rightStudentPanel.revalidate();
+    }//GEN-LAST:event_studentReportButtonActionPerformed
+
+    private void studentCampRegButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentCampRegButtonActionPerformed
+        // TODO add your handling code here:
+        rightStudentPanel.removeAll();
+        rightStudentPanel.add(studentCampRegistrationPanel);
+        rightStudentPanel.repaint();
+        rightStudentPanel.revalidate();
+    }//GEN-LAST:event_studentCampRegButtonActionPerformed
+
+    private void editParentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editParentButtonActionPerformed
+        try {
+            // TODO add your handling code here:
+            this.parentList = (ArrayList)this.parentService.getAllParents();
+        } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         int selectedIndex = parentInfoTable.getSelectedRow();
+        if(selectedIndex == -1)
+        {
+            JOptionPane.showMessageDialog(this, "Please select a user to edit", "Cannot edit User", JOptionPane.INFORMATION_MESSAGE);
+        }
+        selectedParent = parentList.get(selectedIndex);
+       // editnameTextField.setText(selectedUser.getName());
+        //editageTextField.setText(Integer.toString(selectedUser.getAge()));
+    }//GEN-LAST:event_editParentButtonActionPerformed
+
+    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
+       
+       Integer parentId  = Integer.parseInt(selectParentComboBox.getSelectedItem().toString());
+        
+        student.setFirstName(firstNametextField.getText());
+        student.setLastName(lastNameTextField.getText());
+        student.setEmail(emailTextField.getText());
+        student.setContactNumber(contactNumberTextField.getText());
+        student.setAge(Integer.parseInt(ageTextField.getText()));
+        student.setAddress(addressTextField.getText());
+        student.setUsername(emailTextField.getText());
+        student.setPassword(contactNumberTextField.getText());
+        student.setRole(AppUser.Role.Student);
+        
+     try {
+         this.studentService.addStudentByParentId(student, parentId);
+         
+         //clear the text fields
+         parentFirstNameField.setText("");
+         lastNameParentTextfield.setText("");
+         emailParentTextField.setText("");
+         contactNumberParentTextField.setText("");
+         addressParentTextField.setText("");
+         
+        
+         //load the parent info to jtable
+        DefaultTableModel studentModel = (DefaultTableModel)studentInfoTable.getModel();
+        studentModel.setRowCount(0);
+        Object rowData[] = new Object[6]; 
+        
+        studentList = (ArrayList)this.studentService.getAllStudents();
+        
+        for(int j = 0; j < studentList.size(); j++)
+        {
+     
+        rowData[0] = studentList.get(j).getFirstName();
+        rowData[1] = studentList.get(j).getLastName();
+        rowData[2] = studentList.get(j).getContactNumber();
+        rowData[3] = studentList.get(j).getEmail();
+        rowData[4] = studentList.get(j).getAge();
+        rowData[5] = studentList.get(j).getAddress();
+              
+       
+        studentModel.addRow(rowData);
+        
+        }
+     } catch (CustomException ex) {
+         Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+     }
+    }//GEN-LAST:event_createButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1961,6 +2321,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
+        
+        
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -2094,8 +2458,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable7;
     private javax.swing.JTextArea jTextArea1;
@@ -2132,14 +2494,13 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel parentDashboardLabel1;
     private javax.swing.JPanel parentFeedbackPanel;
     private javax.swing.JTextField parentFirstNameField;
+    private javax.swing.JTable parentInfoTable;
     private javax.swing.JPanel parentPanel;
     private javax.swing.JPanel parentProfilePanel;
     private javax.swing.JSplitPane parentSplitPane;
     private javax.swing.JLabel parentsTextLabel;
     private javax.swing.JLabel passwordLoginPanel;
     private javax.swing.JTextField passwordSchoolTextField;
-    private javax.swing.JTextField passwordTextField;
-    private javax.swing.JLabel passwordTextLabel;
     private javax.swing.JButton profileButton;
     private javax.swing.JTextField profileFirstNameTextfield;
     private javax.swing.JPanel rightPanel;
@@ -2169,6 +2530,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel studentDashboardLabel4;
     private javax.swing.JLabel studentDashboardLabel5;
     private javax.swing.JLabel studentFirstNameTextLabel;
+    private javax.swing.JTable studentInfoTable;
     private javax.swing.JLabel studentMealPrefLabel;
     private javax.swing.JLabel studentMealPrefLabel1;
     private javax.swing.JTextField studentMealPrefTextField;
@@ -2189,9 +2551,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton updateParentButton1;
     private javax.swing.JLabel userNameLoginLabel;
     private javax.swing.JTextField usernameSchoolTextField;
-    private javax.swing.JTextField usernameTextField;
     private javax.swing.JTextField usernameTextField1;
-    private javax.swing.JLabel usernameTextLabel;
     private javax.swing.JLabel usernameTextLabel1;
     private javax.swing.JButton viewCampReportButton;
     private javax.swing.JButton viewCampReportButton1;

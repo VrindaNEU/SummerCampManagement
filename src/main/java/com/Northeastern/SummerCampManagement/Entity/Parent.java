@@ -4,6 +4,7 @@
  */
 package com.Northeastern.SummerCampManagement.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
@@ -23,10 +24,12 @@ public class Parent extends AppUser{
     String contactNumber;
     String address;
     
+    @JsonIgnore
     @OneToMany
     @JoinColumn(name = "studentId")
     private List<Student> student;
     
+   
     //Constructors
 
     public Parent() {
