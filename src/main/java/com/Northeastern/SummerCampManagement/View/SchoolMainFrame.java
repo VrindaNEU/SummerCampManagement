@@ -10,6 +10,7 @@ import com.Northeastern.SummerCampManagement.Service.ParentService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
@@ -17,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 
 public class SchoolMainFrame extends javax.swing.JFrame {
- @Autowired
+
          ParentService parentService;
     Parent parent;
     /**
@@ -25,10 +26,12 @@ public class SchoolMainFrame extends javax.swing.JFrame {
      */
     public SchoolMainFrame() {
         initComponents();
-        schoolSplitPane.setVisible(true);
+        schoolSplitPane.setVisible(false);
         topPanel.setVisible(false);
         bottomPanel.setVisible(false);
         loginPanel.setVisible(true);
+        
+        parentService = new ParentService();
        
      parent = new Parent();
     }
@@ -291,7 +294,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                 .addComponent(parentButton)
                 .addGap(101, 101, 101)
                 .addComponent(studentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addComponent(logoutButton)
                 .addGap(23, 23, 23))
         );
@@ -1803,17 +1806,25 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                 .addContainerGap(166, Short.MAX_VALUE))
         );
 
-        schoolSplitPane.setRightComponent(loginPanel);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(schoolSplitPane)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(schoolSplitPane, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(schoolSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -1875,13 +1886,21 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         schoolSplitPane.setVisible(true);
         topPanel.setVisible(true);
         bottomPanel.setVisible(true);
+        
         loginPanel.setVisible(false);
         bottomPanel.removeAll();
         bottomPanel.add(adminPanel);
         bottomPanel.repaint();
         bottomPanel.revalidate();
-        adminPanel.add(parentPanel);
-            
+        
+        jSplitPane2.setVisible(true);
+        leftPanel.setVisible(true);
+        rightPanel.setVisible(true);
+        
+        rightPanel.removeAll();
+        rightPanel.add(parentCrudPanel);
+        rightPanel.repaint();
+        rightPanel.revalidate();
             
         }
         else if(roleSchoolDropBox.getSelectedItem().toString()== "parent"){
@@ -1938,7 +1957,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
       parent.setContactNumber(contactNumberParentTextField.getText());
       parent.setAddress(addressParentTextField.getText());
      try {
-         parentService.addParent(parent);
+         this.parentService.addParent(parent);
      } catch (CustomException ex) {
          Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
      }
