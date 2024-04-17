@@ -42,7 +42,7 @@ public class StudentService {
 		if (!parent.isPresent())
 			throw new CustomException("Parent not found for id:" + parentId);
                 
-               // this.studentRepository.save(newStudent);
+                this.studentRepository.save(newStudent);
                 
                 List<Student> students = new ArrayList();
                 
