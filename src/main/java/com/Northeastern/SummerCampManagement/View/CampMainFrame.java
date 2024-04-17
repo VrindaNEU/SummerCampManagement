@@ -15,9 +15,9 @@ public class CampMainFrame extends javax.swing.JFrame {
      */
     public CampMainFrame() {
         initComponents();
-//         campSplitPane.setVisible(false);
-//        topPanel.setVisible(false);
-//        bottomPanel.setVisible(false);
+         campSplitPane.setVisible(false);
+        topPanel.setVisible(false);
+        bottomPanel.setVisible(false);
         loginPanel.setVisible(true);
     }
 
@@ -31,12 +31,19 @@ public class CampMainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLocaleChooser1 = new com.toedter.components.JLocaleChooser();
+        loginPanel = new javax.swing.JPanel();
+        userNameCampLoginLabel = new javax.swing.JLabel();
+        passwordLoginCampLabel = new javax.swing.JLabel();
+        roleCampLoginLabel = new javax.swing.JLabel();
+        usernameCampTextField = new javax.swing.JTextField();
+        passwordCampTextField = new javax.swing.JTextField();
+        roleCampDropBox = new javax.swing.JComboBox<>();
+        welcomeCampLabel = new javax.swing.JLabel();
+        loginCampButton = new javax.swing.JButton();
         campSplitPane = new javax.swing.JSplitPane();
         topPanel = new javax.swing.JPanel();
-        adminButton = new javax.swing.JButton();
-        staffButton = new javax.swing.JButton();
-        camperButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
+        topPanelHeaderLabel = new javax.swing.JLabel();
         bottomPanel = new javax.swing.JPanel();
         adminPanel = new javax.swing.JPanel();
         jSplitPane2 = new javax.swing.JSplitPane();
@@ -163,31 +170,81 @@ public class CampMainFrame extends javax.swing.JFrame {
         camperDashboardButton = new javax.swing.JButton();
         camperDietButton = new javax.swing.JButton();
         camperScheduleButton = new javax.swing.JButton();
-        loginPanel = new javax.swing.JPanel();
-        userNameCampLoginLabel = new javax.swing.JLabel();
-        passwordLoginCampLabel = new javax.swing.JLabel();
-        roleCampLoginLabel = new javax.swing.JLabel();
-        usernameCampTextField = new javax.swing.JTextField();
-        passwordCampTextField = new javax.swing.JTextField();
-        roleCampDropBox = new javax.swing.JComboBox<>();
-        welcomeCampLabel = new javax.swing.JLabel();
-        loginCampButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        campSplitPane.setDividerLocation(70);
-        campSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        userNameCampLoginLabel.setText("Username");
 
-        adminButton.setText("Admin");
+        passwordLoginCampLabel.setText("Password");
 
-        staffButton.setText("Staff");
-        staffButton.addActionListener(new java.awt.event.ActionListener() {
+        roleCampLoginLabel.setText("Role");
+
+        roleCampDropBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "camper", "staff", "admin" }));
+
+        welcomeCampLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        welcomeCampLabel.setText("WELCOME TO THE CAMP PORTAL");
+
+        loginCampButton.setText("LOGIN");
+        loginCampButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                staffButtonActionPerformed(evt);
+                loginCampButtonActionPerformed(evt);
             }
         });
 
-        camperButton.setText("Camper");
+        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
+        loginPanel.setLayout(loginPanelLayout);
+        loginPanelLayout.setHorizontalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(loginPanelLayout.createSequentialGroup()
+                                    .addComponent(passwordLoginCampLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(passwordCampTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(loginPanelLayout.createSequentialGroup()
+                                    .addComponent(userNameCampLoginLabel)
+                                    .addGap(97, 97, 97)
+                                    .addComponent(usernameCampTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, loginPanelLayout.createSequentialGroup()
+                                .addComponent(roleCampLoginLabel)
+                                .addGap(127, 127, 127)
+                                .addComponent(roleCampDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(204, 204, 204)
+                        .addComponent(welcomeCampLabel))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(293, 293, 293)
+                        .addComponent(loginCampButton)))
+                .addContainerGap(209, Short.MAX_VALUE))
+        );
+        loginPanelLayout.setVerticalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(welcomeCampLabel)
+                .addGap(65, 65, 65)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userNameCampLoginLabel)
+                    .addComponent(usernameCampTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordLoginCampLabel)
+                    .addComponent(passwordCampTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(roleCampLoginLabel)
+                    .addComponent(roleCampDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61)
+                .addComponent(loginCampButton)
+                .addContainerGap(346, Short.MAX_VALUE))
+        );
+
+        campSplitPane.setDividerLocation(70);
+        campSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         logoutButton.setForeground(new java.awt.Color(255, 51, 0));
         logoutButton.setText("X");
@@ -202,26 +259,20 @@ public class CampMainFrame extends javax.swing.JFrame {
         topPanelLayout.setHorizontalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(adminButton)
-                .addGap(105, 105, 105)
-                .addComponent(staffButton)
-                .addGap(101, 101, 101)
-                .addComponent(camperButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addContainerGap(309, Short.MAX_VALUE)
+                .addComponent(topPanelHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(278, 278, 278)
                 .addComponent(logoutButton)
                 .addGap(23, 23, 23))
         );
         topPanelLayout.setVerticalGroup(
             topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topPanelLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(34, 34, 34)
                 .addGroup(topPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(staffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(camperButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logoutButton))
-                .addContainerGap(8, Short.MAX_VALUE))
+                    .addComponent(logoutButton)
+                    .addComponent(topPanelHeaderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         campSplitPane.setTopComponent(topPanel);
@@ -1327,95 +1378,29 @@ public class CampMainFrame extends javax.swing.JFrame {
 
         campSplitPane.setRightComponent(bottomPanel);
 
-        userNameCampLoginLabel.setText("Username");
-
-        passwordLoginCampLabel.setText("Password");
-
-        roleCampLoginLabel.setText("Role");
-
-        roleCampDropBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "camper", "staff", "admin" }));
-
-        welcomeCampLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        welcomeCampLabel.setText("WELCOME TO THE CAMP PORTAL");
-
-        loginCampButton.setText("LOGIN");
-        loginCampButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginCampButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
-        loginPanel.setLayout(loginPanelLayout);
-        loginPanelLayout.setHorizontalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(loginPanelLayout.createSequentialGroup()
-                                    .addComponent(passwordLoginCampLabel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(passwordCampTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(loginPanelLayout.createSequentialGroup()
-                                    .addComponent(userNameCampLoginLabel)
-                                    .addGap(97, 97, 97)
-                                    .addComponent(usernameCampTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, loginPanelLayout.createSequentialGroup()
-                                .addComponent(roleCampLoginLabel)
-                                .addGap(127, 127, 127)
-                                .addComponent(roleCampDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addComponent(welcomeCampLabel))
-                    .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addGap(293, 293, 293)
-                        .addComponent(loginCampButton)))
-                .addContainerGap(209, Short.MAX_VALUE))
-        );
-        loginPanelLayout.setVerticalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(welcomeCampLabel)
-                .addGap(65, 65, 65)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(userNameCampLoginLabel)
-                    .addComponent(usernameCampTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordLoginCampLabel)
-                    .addComponent(passwordCampTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(roleCampLoginLabel)
-                    .addComponent(roleCampDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
-                .addComponent(loginCampButton)
-                .addContainerGap(346, Short.MAX_VALUE))
-        );
-
-        campSplitPane.setRightComponent(loginPanel);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(campSplitPane)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(campSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+            .addComponent(campSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void staffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_staffButtonActionPerformed
 
     private void staffDietButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffDietButtonActionPerformed
         // TODO add your handling code here:
@@ -1479,7 +1464,7 @@ public class CampMainFrame extends javax.swing.JFrame {
 
     private void loginCampButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginCampButtonActionPerformed
         // TODO add your handling code here:
-        if(roleCampDropBox.getSelectedItem().toString()== "admin"){
+        if(roleCampDropBox.getSelectedItem().toString()==("admin")){
             
         campSplitPane.setVisible(true);
         topPanel.setVisible(true);
@@ -1499,7 +1484,7 @@ public class CampMainFrame extends javax.swing.JFrame {
         rightPanel.add(adminDashboard);
         rightPanel.repaint();
         rightPanel.revalidate();
-            
+        topPanelHeaderLabel.setText("ADMIN LOGIN");
         }
         else if(roleCampDropBox.getSelectedItem().toString()== "staff"){
             
@@ -1520,12 +1505,12 @@ public class CampMainFrame extends javax.swing.JFrame {
         rightStaffPanel.add(staffDashboard);
         rightStaffPanel.repaint();
         rightStaffPanel.revalidate();
-            
+        topPanelHeaderLabel.setText("STAFF LOGIN"); 
         }
         
         else{
             
-        camperSplitPane.setVisible(true);
+        campSplitPane.setVisible(true);
         topPanel.setVisible(true);
         bottomPanel.setVisible(true);
         loginPanel.setVisible(false);
@@ -1541,6 +1526,7 @@ public class CampMainFrame extends javax.swing.JFrame {
         rightCamperPanel.add(camperDashboard);
         rightCamperPanel.repaint();
         rightCamperPanel.revalidate();
+        topPanelHeaderLabel.setText("CAMPER LOGIN");
         }
         
     }//GEN-LAST:event_loginCampButtonActionPerformed
@@ -1658,7 +1644,6 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField activityStartTimeText;
     private javax.swing.JTable activityTable;
     private javax.swing.JLabel activityTitle;
-    private javax.swing.JButton adminButton;
     private javax.swing.JPanel adminDashboard;
     private javax.swing.JPanel adminPanel;
     private javax.swing.JLabel allergiesDietLabel;
@@ -1673,7 +1658,6 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton camperActivityButton;
     private javax.swing.JLabel camperActivityLabel;
     private javax.swing.JPanel camperActivityPanel;
-    private javax.swing.JButton camperButton;
     private javax.swing.JPanel camperDashboard;
     private javax.swing.JButton camperDashboardButton;
     private javax.swing.JLabel camperDashboardLabel;
@@ -1763,7 +1747,6 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> staffActivityStatusDropDown;
     private javax.swing.JLabel staffActivityStatusLabel;
     private javax.swing.JTable staffActivityTable;
-    private javax.swing.JButton staffButton;
     private javax.swing.JPanel staffCrudPanel;
     private javax.swing.JPanel staffDashboard;
     private javax.swing.JButton staffDashboardButton;
@@ -1778,6 +1761,7 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel staffTextLabel1;
     private javax.swing.JLabel studentTextLabel;
     private javax.swing.JPanel topPanel;
+    private javax.swing.JLabel topPanelHeaderLabel;
     private javax.swing.JLabel userNameCampLoginLabel;
     private javax.swing.JTextField usernameCampTextField;
     private javax.swing.JButton viewRegisteredCampersButton;
