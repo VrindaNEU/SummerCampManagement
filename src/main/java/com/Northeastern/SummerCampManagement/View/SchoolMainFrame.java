@@ -6,9 +6,11 @@ package com.Northeastern.SummerCampManagement.View;
 
 import com.Northeastern.SummerCampManagement.Entity.AppUser;
 import com.Northeastern.SummerCampManagement.Entity.Parent;
+import com.Northeastern.SummerCampManagement.Entity.SchoolAdmin;
 import com.Northeastern.SummerCampManagement.Entity.Student;
 import com.Northeastern.SummerCampManagement.Service.CustomException;
 import com.Northeastern.SummerCampManagement.Service.ParentService;
+import com.Northeastern.SummerCampManagement.Service.SchoolAdminService;
 import com.Northeastern.SummerCampManagement.Service.StudentService;
 import java.util.ArrayList;
 
@@ -24,6 +26,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
 /**
  *
  * @author jalan
@@ -34,6 +38,8 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     //********Autowiring********//
     ParentService parentService ;
     StudentService studentService;
+    SchoolAdminService schoolAdminService;
+    
    //****--end---********//
     public ArrayList<Parent> parentList = new ArrayList<Parent>();
     public ArrayList<Student> studentList = new ArrayList<Student>();
@@ -41,6 +47,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     public ArrayList<Integer> parentIDs = new ArrayList<>();
     Parent parent;
     Student student;
+    Integer loggedInUserId;
     /**
      * Creates new form MainFrame
      */
@@ -54,6 +61,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         //********Autowiring********//
         parentService = (ParentService) BeanUtil.getBean("parentService");
         
+         schoolAdminService = (SchoolAdminService) BeanUtil.getBean("schoolAdminService");
         studentService = (StudentService) BeanUtil.getBean("studentService");
       //****--end---********//
         
@@ -1993,8 +2001,30 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
     private void loginSchoolButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginSchoolButtonActionPerformed
         // TODO add your handling code here:
-        
+//        SchoolAdmin newAdmin = new SchoolAdmin();
+//        newAdmin.setUsername("yashj");
+//        newAdmin.setPassword("admin@123");
+//        newAdmin.setRole(AppUser.Role.SchoolAdmin);
+//        try {
+//            schoolAdminService.addSchoolAdmin(newAdmin);
+//        } catch (CustomException ex) {
+//            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         if(roleSchoolDropBox.getSelectedItem().toString()== "admin"){
+           SchoolAdmin isLoggedIn = new SchoolAdmin();
+            try {
+                isLoggedIn= schoolAdminService.loginByAdminId(usernameSchoolTextField.getText(), passwordSchoolTextField.getText());
+                System.out.println(usernameSchoolTextField.getText());
+            } catch (CustomException ex) {
+                Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         if(isLoggedIn.getUserId() == null){
+             System.out.println(isLoggedIn.getUserId());
+             JOptionPane.showInternalMessageDialog(loginPanel, "did not match");
+         }
+         else{
+             
+         
             
         schoolSplitPane.setVisible(true);
         topPanel.setVisible(true);
@@ -2014,6 +2044,9 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         rightPanel.add(adminDashboard);
         rightPanel.repaint();
         rightPanel.revalidate();
+        }
+        // OnPageLoad
+        
             
         }
         else if(roleSchoolDropBox.getSelectedItem().toString()== "parent"){
