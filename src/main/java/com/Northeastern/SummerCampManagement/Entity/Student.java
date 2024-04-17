@@ -9,6 +9,7 @@ import jakarta.persistence.JoinColumn;
 
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -56,6 +57,12 @@ public class Student extends AppUser{
 //    @ManyToMany
 //    @JoinColumn(name = "activityId")
 //    private List<Activity> activities;
+    
+    @ManyToOne
+    @JoinColumn(name = "parentId")
+    private Parent parent;
+
+    
     
     @ManyToMany
     @JoinTable(
@@ -245,8 +252,16 @@ public class Student extends AppUser{
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
+
+    public Parent getParent() {
+        return parent;
+    }
+
+    public void setParent(Parent parent) {
+        this.parent = parent;
+    }
     
-    
+ 
 
   
     

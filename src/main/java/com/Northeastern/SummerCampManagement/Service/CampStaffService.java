@@ -9,6 +9,7 @@ import com.Northeastern.SummerCampManagement.Entity.CampStaff;
 import com.Northeastern.SummerCampManagement.Entity.Parent;
 import com.Northeastern.SummerCampManagement.Entity.Student;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +53,18 @@ public class CampStaffService {
 		return campStaff.get();
 	}
      
+        public CampStaff  loginByCampStaffId(String userName,String password) throws CustomException{
+     List<CampStaff> campStaffLogin = (List<CampStaff>) getAllCampStaff();
+     CampStaff selectedCampStaff = new CampStaff();
+     for (CampStaff campStaffi: campStaffLogin){
+                    if(campStaffi.getUsername()==userName && campStaffi.getPassword()== password){
+                        
+                       selectedCampStaff=  campStaffi;
+                    }
+                  }
+     
+     return selectedCampStaff;
+     }
     
     // Create Staff
       

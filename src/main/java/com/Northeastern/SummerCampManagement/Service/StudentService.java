@@ -11,6 +11,7 @@ import com.Northeastern.SummerCampManagement.Entity.Activity;
 import com.Northeastern.SummerCampManagement.Entity.Feedback;
 import com.Northeastern.SummerCampManagement.Dao.StudentRepository;
 import com.Northeastern.SummerCampManagement.Entity.Parent;
+import com.Northeastern.SummerCampManagement.Entity.SchoolAdmin;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -42,14 +43,15 @@ public class StudentService {
 		if (!parent.isPresent())
 			throw new CustomException("Parent not found for id:" + parentId);
                 
+                newStudent.setParent(parent.get());
                 this.studentRepository.save(newStudent);
                 
-                List<Student> students = new ArrayList();
-                
-                parent.get().setStudent(students);
-                
-                this.parentRepository.save(parent.get());
-                
+//                List<Student> students = new ArrayList();
+//                
+//                parent.get().setStudent(students);
+//                
+//                this.parentRepository.save(parent.get());
+//                
 		
 		return newStudent;	
 	}
@@ -108,6 +110,35 @@ public class StudentService {
                  }
      
      }
+     
+     // loginForCamper
+         public  Student loginByCamperId(String userName,String password) throws CustomException{
+     List<Student> camperLogin = (List<Student>) getAllStudents();
+     Student selectedCamper = new Student();
+     for (Student camperi: camperLogin){
+                    if(camperi.getCampUsername()==userName && camperi.getCampPassword()== password && camperi.getCamper()==true){
+                        
+                       selectedCamper=  camperi;
+                    }
+                  }
+     
+     return selectedCamper;
+     }
+         
+         
+      public Student  loginByStudentId(String userName,String password) throws CustomException{
+     List<Student> studentLogin = (List<Student>) getAllStudents();
+     Student selectedStudent = new Student();
+     for (Student studenti: studentLogin){
+                    if(studenti.getUsername()==userName && studenti.getPassword()== password){
+                        
+                       selectedStudent=  studenti;
+                    }
+                  }
+     
+     return selectedStudent;
+     }
+    
     
     
     // Update Student(School) By Id
