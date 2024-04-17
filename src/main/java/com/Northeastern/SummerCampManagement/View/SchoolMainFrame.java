@@ -47,6 +47,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     public ArrayList<Integer> parentIDs = new ArrayList<>();
     Parent parent;
     Student student;
+    SchoolAdmin schoolAdmin;
     Integer loggedInUserId;
     /**
      * Creates new form MainFrame
@@ -68,7 +69,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
      parent = new Parent();
      
      student = new Student();
-
+      schoolAdmin = new SchoolAdmin();
 
      
      //to be moved later
@@ -2001,6 +2002,8 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
     private void loginSchoolButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginSchoolButtonActionPerformed
         // TODO add your handling code here:
+        
+        // Create new admin
 //        SchoolAdmin newAdmin = new SchoolAdmin();
 //        newAdmin.setUsername("yashj");
 //        newAdmin.setPassword("admin@123");
@@ -2010,16 +2013,19 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 //        } catch (CustomException ex) {
 //            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
 //        }
+        
+        /// Admin Created //
+        
         if(roleSchoolDropBox.getSelectedItem().toString()== "admin"){
-           SchoolAdmin isLoggedIn = new SchoolAdmin();
+          // SchoolAdmin isLoggedIn = new SchoolAdmin();
             try {
-                isLoggedIn= schoolAdminService.loginByAdminId(usernameSchoolTextField.getText(), passwordSchoolTextField.getText());
-                System.out.println(usernameSchoolTextField.getText());
+                schoolAdmin = schoolAdminService.loginByAdminId(usernameSchoolTextField.getText(), passwordSchoolTextField.getText());
+               
             } catch (CustomException ex) {
                 Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-         if(isLoggedIn.getUserId() == null){
-             System.out.println(isLoggedIn.getUserId());
+         if(schoolAdmin.getUserId() == null){
+             System.out.println(schoolAdmin.getUserId());
              JOptionPane.showInternalMessageDialog(loginPanel, "did not match");
          }
          else{
