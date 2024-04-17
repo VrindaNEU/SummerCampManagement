@@ -88,6 +88,9 @@ public class Student extends AppUser{
         
         
     }
+
+    public Student() {
+    }
     
     
  //Getters and Setters
