@@ -10,6 +10,8 @@ import com.Northeastern.SummerCampManagement.Dao.ParentRepository;
 import com.Northeastern.SummerCampManagement.Dao.StudentRepository;
 import com.Northeastern.SummerCampManagement.Entity.Parent;
 import com.Northeastern.SummerCampManagement.Entity.Student;
+import com.Northeastern.SummerCampManagement.Entity.AppUser.Role;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -37,6 +39,7 @@ public class ParentService {
     
      public Parent addParent(Parent newParent) throws CustomException  {
 		
+         
 		return this.parentRepository.save(newParent);	
 	}
     

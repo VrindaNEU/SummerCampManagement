@@ -11,13 +11,7 @@ import jakarta.persistence.Id;
 import java.time.LocalDate;
 
 
-enum Role {
-  Parent,
-  SchoolAdmin,
-  CampAdmin,
-  Student,
-  CampStaff
-}
+
 
 /**
  *
@@ -25,6 +19,14 @@ enum Role {
  */
 @Entity
 public class AppUser {
+    
+   public enum Role {
+  Parent,
+  SchoolAdmin,
+  CampAdmin,
+  Student,
+  CampStaff
+}
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
