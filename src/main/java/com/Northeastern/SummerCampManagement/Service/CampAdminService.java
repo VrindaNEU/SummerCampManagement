@@ -4,10 +4,48 @@
  */
 package com.Northeastern.SummerCampManagement.Service;
 
+import com.Northeastern.SummerCampManagement.Dao.CampAdminRepository;
+import com.Northeastern.SummerCampManagement.Entity.CampAdmin;
+import com.Northeastern.SummerCampManagement.Entity.Student;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  *
  * @author vrind
  */
 public class CampAdminService {
+    
+     @Autowired
+    CampAdminRepository campAdminRepository;
+    
+    //ViewAllAdmin - 
+     
+     public Collection<CampAdmin> getAllCampAdmins() throws CustomException {
+		
+		     
+                      Optional<Collection> campAdmins = Optional.of(this.campAdminRepository.findAll());
+                      
+                      
+		if (campAdmins.isEmpty())
+			throw new CustomException("No Admins Found");
+		
+		return campAdmins.get();
+	}
+    
+     public CampAdmin  loginByCampAdminId(String userName,String password) throws CustomException{
+     List<CampAdmin> campAdminLogin = (List<CampAdmin>) getAllCampAdmins();
+     CampAdmin selectedCampAdmin = new CampAdmin();
+     for (CampAdmin campAdmini: campAdminLogin){
+                    if(campAdmini.getUsername()==userName && campAdmini.getPassword()== password){
+                        
+                       selectedCampAdmin=  campAdmini;
+                    }
+                  }
+     
+     return selectedCampAdmin;
+     }
     
 }

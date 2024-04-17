@@ -70,6 +70,20 @@ public class ParentService {
 		
 		return parent.get();
 	}
+     
+     public Parent  loginByParentId(String userName,String password) throws CustomException{
+     List<Parent> parentLogin = (List<Parent>) getAllParents();
+     Parent selectedParent = new Parent();
+     for (Parent parenti: parentLogin){
+                    if(parenti.getUsername()==userName && parenti.getPassword()== password){
+                        
+                       selectedParent=  parenti;
+                    }
+                  }
+     
+     return selectedParent;
+     }
+
     
      
      
