@@ -147,7 +147,15 @@ public class CampMainFrame extends javax.swing.JFrame {
         camperRegistrationReportTable = new javax.swing.JTable();
         feedbackPanel = new javax.swing.JPanel();
         parentCrudtextLabel = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        activityFeedbackLabel = new javax.swing.JLabel();
+        activityFeedbackText = new javax.swing.JLabel();
+        managementFeedbackLabel = new javax.swing.JLabel();
+        managementFeedbackText = new javax.swing.JLabel();
+        staffFeedbackLabel = new javax.swing.JLabel();
+        staffFeedbackText = new javax.swing.JLabel();
+        foodFeedbackLabel = new javax.swing.JLabel();
+        foodFeedbackText = new javax.swing.JLabel();
+        feedbackChartButton = new javax.swing.JButton();
         staffCrudPanel = new javax.swing.JPanel();
         staffActivityLabel = new javax.swing.JLabel();
         firstNameStaffActivityLabel = new javax.swing.JLabel();
@@ -485,29 +493,82 @@ public class CampMainFrame extends javax.swing.JFrame {
 
         parentCrudtextLabel.setText("FEEDBACK");
 
-        jLabel9.setText("VISUALIZATION");
+        activityFeedbackLabel.setText("Feedback for Activity:");
+
+        activityFeedbackText.setText("jLabel4");
+
+        managementFeedbackLabel.setText("Feedback for Managenment:");
+
+        managementFeedbackText.setText("jLabel4");
+
+        staffFeedbackLabel.setText("Feedback for Staff");
+
+        staffFeedbackText.setText("jLabel4");
+
+        foodFeedbackLabel.setText("Feedback for Food:");
+
+        foodFeedbackText.setText("jLabel4");
+
+        feedbackChartButton.setText("Feedback View");
+        feedbackChartButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                feedbackChartButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout feedbackPanelLayout = new javax.swing.GroupLayout(feedbackPanel);
         feedbackPanel.setLayout(feedbackPanelLayout);
         feedbackPanelLayout.setHorizontalGroup(
             feedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(feedbackPanelLayout.createSequentialGroup()
-                .addGap(245, 245, 245)
-                .addComponent(parentCrudtextLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, feedbackPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74))
+                .addGroup(feedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(feedbackPanelLayout.createSequentialGroup()
+                        .addGap(245, 245, 245)
+                        .addComponent(parentCrudtextLabel))
+                    .addGroup(feedbackPanelLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(feedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(feedbackPanelLayout.createSequentialGroup()
+                                .addComponent(activityFeedbackLabel)
+                                .addGap(47, 47, 47)
+                                .addComponent(activityFeedbackText))
+                            .addGroup(feedbackPanelLayout.createSequentialGroup()
+                                .addComponent(managementFeedbackLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(managementFeedbackText)))
+                        .addGap(49, 49, 49)
+                        .addGroup(feedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(staffFeedbackLabel)
+                            .addComponent(foodFeedbackLabel))
+                        .addGap(32, 32, 32)
+                        .addGroup(feedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(foodFeedbackText)
+                            .addComponent(staffFeedbackText)))
+                    .addGroup(feedbackPanelLayout.createSequentialGroup()
+                        .addGap(246, 246, 246)
+                        .addComponent(feedbackChartButton)))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         feedbackPanelLayout.setVerticalGroup(
             feedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(feedbackPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(parentCrudtextLabel)
-                .addGap(101, 101, 101)
-                .addComponent(jLabel9)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(159, 159, 159)
+                .addGroup(feedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(activityFeedbackLabel)
+                    .addComponent(activityFeedbackText)
+                    .addComponent(staffFeedbackLabel)
+                    .addComponent(staffFeedbackText))
+                .addGap(57, 57, 57)
+                .addGroup(feedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(managementFeedbackLabel)
+                    .addComponent(managementFeedbackText)
+                    .addComponent(foodFeedbackLabel)
+                    .addComponent(foodFeedbackText))
+                .addGap(76, 76, 76)
+                .addComponent(feedbackChartButton)
+                .addContainerGap(226, Short.MAX_VALUE))
         );
 
         rightPanel.add(feedbackPanel, "card4");
@@ -1560,21 +1621,21 @@ public class CampMainFrame extends javax.swing.JFrame {
         rightPanel.repaint();
         rightPanel.revalidate();
         
-        ArrayList<Feedback> feedbackList = new ArrayList<>();
-        try {
-            feedbackList = (ArrayList<Feedback>) feedbackService.getAllFeedbacks();
-        } catch (CustomException ex) {
-            Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        PieDataset dataset = createDataset();
-        
-        JFreeChart chart = CreateChart(dataset, "CAMP FEEDBACK");
-        feedbackPanel  = new ChartPanel(chart);
-        feedbackPanel.setPreferredSize(new java.awt.Dimension(500,300));
-        //setContentPane(feedbackPanel);
-        getContentPane().add(feedbackPanel);
-        setVisible(true);
+//        ArrayList<Feedback> feedbackList = new ArrayList<>();
+//        try {
+//            feedbackList = (ArrayList<Feedback>) feedbackService.getAllFeedbacks();
+//        } catch (CustomException ex) {
+//            Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//        PieDataset dataset = createDataset();
+//        
+//        JFreeChart chart = CreateChart(dataset, "CAMP FEEDBACK");
+//        feedbackPanel  = new ChartPanel(chart);
+//        feedbackPanel.setPreferredSize(new java.awt.Dimension(500,300));
+//        //setContentPane(feedbackPanel);
+//        getContentPane().add(feedbackPanel);
+//        setVisible(true);
        // CreateChart CC = new CreateChart("PiechartTest","OS Comparison");
 //        CC.pack();
 //        CC.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -1603,6 +1664,7 @@ public class CampMainFrame extends javax.swing.JFrame {
     
     private JFreeChart CreateChart(PieDataset dataset, String title)
     {
+        
         JFreeChart chart = ChartFactory.createPieChart3D(title, dataset,true,true,false);
         PiePlot3D plot = (PiePlot3D) chart.getPlot();
         plot.setStartAngle(0);
@@ -2282,6 +2344,15 @@ public class CampMainFrame extends javax.swing.JFrame {
          
     }//GEN-LAST:event_saveDietButtonActionPerformed
 
+    private void feedbackChartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackChartButtonActionPerformed
+        // TODO add your handling code here:
+        PieDataset dataset = createDataset();
+        CreateChart CC = new CreateChart("Feedback","Feedback", dataset );
+        CC.pack();
+        CC.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        CC.setVisible(true);
+    }//GEN-LAST:event_feedbackChartButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2333,6 +2404,8 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea activityDescriptionTextarea;
     private javax.swing.JLabel activityEndTimeLabel;
     private javax.swing.JTextField activityEndTimeText;
+    private javax.swing.JLabel activityFeedbackLabel;
+    private javax.swing.JLabel activityFeedbackText;
     private javax.swing.JLabel activityListTextLabel;
     private javax.swing.JLabel activityLocationLabel;
     private javax.swing.JLabel activityNameTextLabel;
@@ -2386,16 +2459,18 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton editDietButton;
     private javax.swing.JButton editStaffActivityButton;
     private javax.swing.JLabel emailStaffActivityLabel;
+    private javax.swing.JButton feedbackChartButton;
     private javax.swing.JPanel feedbackPanel;
     private javax.swing.JTextField firstNameStaffActivityField;
     private javax.swing.JLabel firstNameStaffActivityLabel;
     private javax.swing.JComboBox<String> foodDietComboBox;
     private javax.swing.JLabel foodDietLabel;
+    private javax.swing.JLabel foodFeedbackLabel;
+    private javax.swing.JLabel foodFeedbackText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
     private com.toedter.components.JLocaleChooser jLocaleChooser1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -2414,6 +2489,8 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton loginCampButton;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JLabel managementFeedbackLabel;
+    private javax.swing.JLabel managementFeedbackText;
     private javax.swing.JLabel medicalDietLabel;
     private javax.swing.JTextField medicalDietTextField;
     private javax.swing.JLabel parentCrudtextLabel;
@@ -2443,6 +2520,8 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel staffDashboard;
     private javax.swing.JButton staffDashboardButton;
     private javax.swing.JButton staffDietButton;
+    private javax.swing.JLabel staffFeedbackLabel;
+    private javax.swing.JLabel staffFeedbackText;
     private javax.swing.JPanel staffPanel;
     private javax.swing.JLabel staffScheduleLabel;
     private javax.swing.JPanel staffSchedulePanel;

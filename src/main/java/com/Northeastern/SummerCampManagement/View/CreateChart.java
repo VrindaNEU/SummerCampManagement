@@ -20,9 +20,9 @@ import org.jfree.util.Rotation;
  */
 public class CreateChart extends JFrame{
 
-    public CreateChart(String appTitle, String chartTitle)
+    public CreateChart(String appTitle, String chartTitle, PieDataset dataset)
     {
-        PieDataset dataset = createDataset();
+       // PieDataset dataset = createDataset();
         JFreeChart chart = CreateChart(dataset, chartTitle);
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(new java.awt.Dimension(500,300));
@@ -30,13 +30,13 @@ public class CreateChart extends JFrame{
       
     }
     
-    private PieDataset createDataset(){
-        DefaultPieDataset  result = new DefaultPieDataset();
-        result.setValue("Windows", 65);
-        result.setValue("Linux", 15);
-        result.setValue("MAC", 20);
-        return result;
-    }
+//    private PieDataset createDataset(){
+//        DefaultPieDataset  result = new DefaultPieDataset();
+//        result.setValue("Windows", 65);
+//        result.setValue("Linux", 15);
+//        result.setValue("MAC", 20);
+//        return result;
+//    }
     
     private JFreeChart CreateChart(PieDataset dataset, String title)
     {
