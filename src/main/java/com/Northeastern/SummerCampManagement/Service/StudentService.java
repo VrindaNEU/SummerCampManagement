@@ -43,6 +43,7 @@ public class StudentService {
 		if (!parent.isPresent())
 			throw new CustomException("Parent not found for id:" + parentId);
                 
+                newStudent.setCamper(Boolean.FALSE);
                 newStudent.setParent(parent.get());
                 this.studentRepository.save(newStudent);
                 
@@ -112,13 +113,16 @@ public class StudentService {
      }
      
      // loginForCamper
-         public  Student loginByCamperId(String userName,String password) throws CustomException{
-     List<Student> camperLogin = (List<Student>) getAllStudents();
-     Student selectedCamper = new Student();
-     for (Student camperi: camperLogin){
-                    if(camperi.getCampUsername()==userName && camperi.getCampPassword()== password && camperi.getCamper()==true){
+        public  Student loginByCamperId(String userName,String password) throws CustomException{
+          Student selectedCamper = new Student();
+        List<Student> camperLogin = new ArrayList<Student>();
+        camperLogin = (List<Student>)getAllStudents();
+
+        for (Student camperi: camperLogin){
+                    if(camperi.getCampUsername().equals(userName) && camperi.getCampPassword().equals(password) && camperi.getCamper().equals(true)){
                         
                        selectedCamper=  camperi;
+                       break;
                     }
                   }
      
@@ -127,12 +131,16 @@ public class StudentService {
          
          
       public Student  loginByStudentId(String userName,String password) throws CustomException{
-     List<Student> studentLogin = (List<Student>) getAllStudents();
+     
      Student selectedStudent = new Student();
+     List<Student> studentLogin = new ArrayList<Student>();
+     studentLogin = (List<Student>)getAllStudents();
+        
      for (Student studenti: studentLogin){
-                    if(studenti.getUsername()==userName && studenti.getPassword()== password){
+                    if(studenti.getUsername().equals(userName) && studenti.getPassword().equals(password)){
                         
                        selectedStudent=  studenti;
+                       break;
                     }
                   }
      

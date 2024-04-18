@@ -12,6 +12,8 @@ import com.Northeastern.SummerCampManagement.Service.CustomException;
 import com.Northeastern.SummerCampManagement.Service.ParentService;
 import com.Northeastern.SummerCampManagement.Service.SchoolAdminService;
 import com.Northeastern.SummerCampManagement.Service.StudentService;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import java.util.logging.Level;
@@ -19,13 +21,15 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.*;
 
 
 /**
@@ -173,7 +177,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         parentDashboardDownloadButton = new javax.swing.JButton();
         parentDashboardLabel = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable7 = new javax.swing.JTable();
+        parentDashboardStudentTable = new javax.swing.JTable();
         parentFeedbackPanel = new javax.swing.JPanel();
         studentCrudTextLabel1 = new javax.swing.JLabel();
         Q1Label = new javax.swing.JLabel();
@@ -497,6 +501,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         studentCrudPanelLayout.setHorizontalGroup(
             studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(studentCrudPanelLayout.createSequentialGroup()
+                .addGap(194, 194, 194)
+                .addComponent(createButton)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(studentCrudPanelLayout.createSequentialGroup()
                 .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(studentCrudPanelLayout.createSequentialGroup()
                         .addGap(153, 153, 153)
@@ -530,27 +538,20 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                         .addGap(109, 109, 109)
                         .addComponent(UPDATE)
                         .addGap(99, 99, 99)
-                        .addComponent(jButton2)))
-                .addGap(58, 76, Short.MAX_VALUE))
-            .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(guardianTextLabel)
-                .addGap(50, 50, 50)
-                .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton2))
                     .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                        .addComponent(selectParentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                        .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
-                        .addComponent(addressTextLabel)
-                        .addGap(44, 44, 44)
-                        .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                .addGap(194, 194, 194)
-                .addComponent(createButton)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(guardianTextLabel)
+                        .addGap(50, 50, 50)
+                        .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(selectParentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(studentCrudPanelLayout.createSequentialGroup()
+                                .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(62, 62, 62)
+                                .addComponent(addressTextLabel)
+                                .addGap(44, 44, 44)
+                                .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         studentCrudPanelLayout.setVerticalGroup(
             studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -898,19 +899,24 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         rightParentPanel.setLayout(new java.awt.CardLayout());
 
         parentDashboardDownloadButton.setText("DOWNLOAD REPORT");
+        parentDashboardDownloadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parentDashboardDownloadButtonActionPerformed(evt);
+            }
+        });
 
         parentDashboardLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         parentDashboardLabel.setText("DASHBOARD");
 
-        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+        parentDashboardStudentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Student", "Age", "Campus", "In Summer Camp"
+                "Student", "Age", "In Summer Camp"
             }
         ));
-        jScrollPane7.setViewportView(jTable7);
+        jScrollPane7.setViewportView(parentDashboardStudentTable);
 
         javax.swing.GroupLayout parentDashboardLayout = new javax.swing.GroupLayout(parentDashboard);
         parentDashboard.setLayout(parentDashboardLayout);
@@ -969,6 +975,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         });
 
         createButton1.setText("SUBMIT");
+        createButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("5. Please provide any recommendations or suggestions for improving the camp experience.");
 
@@ -1063,8 +1074,18 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         addressParentProfileLabel.setText("Address");
 
         editParentButton1.setText("EDIT");
+        editParentButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editParentButton1ActionPerformed(evt);
+            }
+        });
 
         updateParentButton1.setText("SAVE");
+        updateParentButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateParentButton1ActionPerformed(evt);
+            }
+        });
 
         NoOfKidsEnrolledLabel.setText("No. Of Kids Enrolled");
 
@@ -1966,6 +1987,26 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         rightParentPanel.add(schoolReportPanel);
         rightParentPanel.repaint();
         rightParentPanel.revalidate();
+        //student by parentid
+         DefaultTableModel studentModel = (DefaultTableModel)schoolReportTable.getModel();
+        studentModel.setRowCount(0);
+        Object rowData[] = new Object[3]; 
+        
+        try {
+            studentList = (ArrayList)this.studentService.getAllStudents();
+        } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        for(int j = 0; j < studentList.size(); j++)
+        {
+     
+        rowData[0] = studentList.get(j).getFirstName() + " " + studentList.get(j).getLastName();
+        rowData[1] = studentList.get(j).getAttendance();
+        rowData[2] = studentList.get(j).getGrade();
+       
+        studentModel.addRow(rowData);
+        }
     }//GEN-LAST:event_schoolReportButtonActionPerformed
 
     private void parentDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentDashboardButtonActionPerformed
@@ -2004,16 +2045,16 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         // Create new admin
-//        SchoolAdmin newAdmin = new SchoolAdmin();
-//        newAdmin.setUsername("yashj");
-//        newAdmin.setPassword("admin@123");
-//        newAdmin.setRole(AppUser.Role.SchoolAdmin);
-//        try {
-//            schoolAdminService.addSchoolAdmin(newAdmin);
-//        } catch (CustomException ex) {
-//            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        
+      // SchoolAdmin newAdmin = new SchoolAdmin();
+       // newAdmin.setUsername("yashj");
+       // newAdmin.setPassword("admin@123");
+      // newAdmin.setRole(AppUser.Role.SchoolAdmin);
+      // try {          
+         //  schoolAdminService.addSchoolAdmin(newAdmin);
+     // } catch (CustomException ex) {
+          // Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+      // }
+        //
         /// Admin Created //
         
         if(roleSchoolDropBox.getSelectedItem().toString()== "admin"){
@@ -2024,78 +2065,141 @@ public class SchoolMainFrame extends javax.swing.JFrame {
             } catch (CustomException ex) {
                 Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-         if(schoolAdmin.getUserId() == null){
-             System.out.println(schoolAdmin.getUserId());
-             JOptionPane.showInternalMessageDialog(loginPanel, "did not match");
-         }
-         else{
-             
-         
-            
-        schoolSplitPane.setVisible(true);
-        topPanel.setVisible(true);
-        bottomPanel.setVisible(true);
-        
-        loginPanel.setVisible(false);
-        bottomPanel.removeAll();
-        bottomPanel.add(adminPanel);
-        bottomPanel.repaint();
-        bottomPanel.revalidate();
-        
-        jSplitPane2.setVisible(true);
-        leftPanel.setVisible(true);
-        rightPanel.setVisible(true);
-        
-        rightPanel.removeAll();
-        rightPanel.add(adminDashboard);
-        rightPanel.repaint();
-        rightPanel.revalidate();
+            if(schoolAdmin.getUserId() == null){
+                System.out.println(schoolAdmin.getUserId());
+                JOptionPane.showInternalMessageDialog(loginPanel, "did not match");
+            }
+            else {
+
+
+
+                schoolSplitPane.setVisible(true);
+                topPanel.setVisible(true);
+                bottomPanel.setVisible(true);
+
+                loginPanel.setVisible(false);
+                bottomPanel.removeAll();
+                bottomPanel.add(adminPanel);
+                bottomPanel.repaint();
+                bottomPanel.revalidate();
+
+                jSplitPane2.setVisible(true);
+                leftPanel.setVisible(true);
+                rightPanel.setVisible(true);
+
+                rightPanel.removeAll();
+                rightPanel.add(adminDashboard);
+                rightPanel.repaint();
+                rightPanel.revalidate();
         }
-        // OnPageLoad
-        
+            try {
+                // OnPageLoad
+                parentList = (ArrayList)this.parentService.getAllParents();
+               
+                parentsTextLabel.setText(String.valueOf(parentList.size()));
+                studentTextLabel.setText(String.valueOf(studentList.size()));
+               // staffTextLabel.setText(String.valueOf(staffList.size()));
+               
+               
+               
+
+                 
+                        
+            } catch (CustomException ex) {
+                Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
         }
-        else if(roleSchoolDropBox.getSelectedItem().toString()== "parent"){
+        else if(roleSchoolDropBox.getSelectedItem().toString()=="parent"){
+           
+            try {
+                parent = parentService.loginByParentId(usernameSchoolTextField.getText(), passwordSchoolTextField.getText());
+            } catch (CustomException ex) {
+                Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
-        schoolSplitPane.setVisible(true);
-        topPanel.setVisible(true);
-        bottomPanel.setVisible(true);
-        loginPanel.setVisible(false);
-        bottomPanel.removeAll();
-        bottomPanel.add(parentPanel);
-        bottomPanel.repaint();
-        bottomPanel.revalidate();
-        
-        parentSplitPane.setVisible(true);
-        leftParentPanel.setVisible(true);
-        rightParentPanel.setVisible(true);
-        
-        rightParentPanel.removeAll();
-        rightParentPanel.add(parentDashboard);
-        rightParentPanel.repaint();
-        rightParentPanel.revalidate();
-            
+            if(parent.getUserId() == null){
+                System.out.println(parent.getUserId());
+                JOptionPane.showInternalMessageDialog(loginPanel, "did not match");
+            }
+            else {
+                    loggedInUserId = parent.getUserId();
+                    schoolSplitPane.setVisible(true);
+                    topPanel.setVisible(true);
+                    bottomPanel.setVisible(true);
+                    loginPanel.setVisible(false);
+                    bottomPanel.removeAll();
+                    bottomPanel.add(parentPanel);
+                    bottomPanel.repaint();
+                    bottomPanel.revalidate();
+
+                    parentSplitPane.setVisible(true);
+                    leftParentPanel.setVisible(true);
+                    rightParentPanel.setVisible(true);
+
+                    rightParentPanel.removeAll();
+                    rightParentPanel.add(parentDashboard);
+                    rightParentPanel.repaint();
+                    rightParentPanel.revalidate();
+                try {
+                    studentList = (ArrayList<Student>) studentService.getAllStudents();
+                } 
+                catch (CustomException ex) {
+                    Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                DefaultTableModel parentModel = (DefaultTableModel)parentDashboardStudentTable.getModel();
+                parentModel.setRowCount(0);
+                Object rowData[] = new Object[3]; 
+
+
+                for(int j = 0; j < studentList.size(); j++)
+                {
+
+                rowData[0] = studentList.get(j).getFirstName() + " " + studentList.get(j).getLastName();
+                rowData[1] = studentList.get(j).getAge();
+                rowData[2] = studentList.get(j).getCamper();
+
+
+                parentModel.addRow(rowData);
+
+                }
+            }
         }
         
         else{
+         try {
+                student = studentService.loginByStudentId(usernameSchoolTextField.getText(), passwordSchoolTextField.getText());
+            } catch (CustomException ex) {
+                Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
-        schoolSplitPane.setVisible(true);
-        topPanel.setVisible(true);
-        bottomPanel.setVisible(true);
-        loginPanel.setVisible(false);
-        bottomPanel.removeAll();
-        bottomPanel.add(studentPanel);
-        bottomPanel.repaint();
-        bottomPanel.revalidate();
-        studentSplitPane.setVisible(true);
-        leftStudentPanel.setVisible(true);
-        rightStudentPanel.setVisible(true);
+            if(student.getUserId() == null){
+                System.out.println(student.getUserId());
+                JOptionPane.showInternalMessageDialog(loginPanel, "did not match");
+            }
+            else
+            {  
+                loggedInUserId = student.getUserId(); 
+                
+                schoolSplitPane.setVisible(true);
+                topPanel.setVisible(true);
+                bottomPanel.setVisible(true);
+                loginPanel.setVisible(false);
+                bottomPanel.removeAll();
+                bottomPanel.add(studentPanel);
+                bottomPanel.repaint();
+                bottomPanel.revalidate();
+                studentSplitPane.setVisible(true);
+                leftStudentPanel.setVisible(true);
+                rightStudentPanel.setVisible(true);
+
+                rightStudentPanel.removeAll();
+                rightStudentPanel.add(studentDashboard);
+                rightStudentPanel.repaint();
+                rightStudentPanel.revalidate();
         
-        rightStudentPanel.removeAll();
-        rightStudentPanel.add(studentDashboard);
-        rightStudentPanel.repaint();
-        rightStudentPanel.revalidate();
-        
+            }
         }
         
         
@@ -2202,6 +2306,25 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         rightParentPanel.add(parentProfilePanel);
         rightParentPanel.repaint();
         rightParentPanel.revalidate();
+        try {
+            parent = parentService.getParentById(loggedInUserId);
+        } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        profileFirstNameTextfield.setText(parent.getFirstName());
+        profileFirstNameTextfield.setEnabled(false);
+        lastNameProfileTextfield.setText(parent.getLastName());
+        lastNameProfileTextfield.setEnabled(false);
+        emailParentProfileTextField.setText(parent.getEmail());
+        emailParentProfileTextField.setEnabled(false);
+        contactNoParentProfileTextField.setText(parent.getContactNumber());
+        contactNoParentProfileTextField.setEnabled(false);
+        addressParentProfileTextField.setText(parent.getAddress());
+        addressParentProfileTextField.setEnabled(false);
+        studentList = (ArrayList<Student>) parent.getStudent();
+        noOfKidsEnrolledTextLabel.setText(String.valueOf(studentList.size()));
+        noOfKidsEnrolledTextLabel.setEnabled(false);
+        
     }//GEN-LAST:event_profileButtonActionPerformed
 
     private void summerCampButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summerCampButtonActionPerformed
@@ -2261,6 +2384,44 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         //editageTextField.setText(Integer.toString(selectedUser.getAge()));
     }//GEN-LAST:event_editParentButtonActionPerformed
 
+    
+    private void downloadReport(JTable table, String reportName) {         
+        // Create Workbook and Sheet
+       try { 
+        
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet("Report");
+             
+            XSSFRow headerRow= sheet.createRow(0);        
+            for(int i= 0; i < table.getColumnCount(); i++) {
+                headerRow.createCell(i).setCellValue(table.getColumnName(i));         
+            }
+            // Write data from JTable to Excel
+            for (int i = 0; i < table.getRowCount(); i++) {
+            XSSFRow row = sheet.createRow(i+1);
+            for (int j = 0; j < table.getColumnCount(); j++) {
+                Object value = table.getValueAt(i, j);
+                if(value == null)
+                {
+                    value = "";
+                }
+                row.createCell(j).setCellValue(value.toString());                
+            }             
+        }            
+        // Save workbook to file
+        FileOutputStream outputStream = new FileOutputStream( reportName + ".xlsx");             
+        workbook.write(outputStream);             
+        workbook.close();             
+        outputStream.close();             
+        JOptionPane.showMessageDialog(this, "Report downloaded successfully!");         
+    } 
+    catch (IOException e) {
+        e.printStackTrace();            
+        JOptionPane.showMessageDialog(this, "Error downloading report: " + e.getMessage());         
+        }     
+    }
+
+    
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
        
        Integer parentId  = Integer.parseInt(selectParentComboBox.getSelectedItem().toString());
@@ -2287,21 +2448,20 @@ public class SchoolMainFrame extends javax.swing.JFrame {
          
         
          //load the parent info to jtable
-        DefaultTableModel studentModel = (DefaultTableModel)studentInfoTable.getModel();
+        DefaultTableModel studentModel = (DefaultTableModel)parentDashboardStudentTable.getModel();
         studentModel.setRowCount(0);
-        Object rowData[] = new Object[6]; 
+        Object rowData[] = new Object[3]; 
         
         studentList = (ArrayList)this.studentService.getAllStudents();
         
         for(int j = 0; j < studentList.size(); j++)
         {
      
-        rowData[0] = studentList.get(j).getFirstName();
-        rowData[1] = studentList.get(j).getLastName();
-        rowData[2] = studentList.get(j).getContactNumber();
-        rowData[3] = studentList.get(j).getEmail();
-        rowData[4] = studentList.get(j).getAge();
-        rowData[5] = studentList.get(j).getAddress();
+        rowData[0] = studentList.get(j).getFirstName() + " " + studentList.get(j).getLastName();
+
+ 
+        rowData[1] = studentList.get(j).getAge();
+        rowData[2] = studentList.get(j).getCamper();
               
        
         studentModel.addRow(rowData);
@@ -2311,6 +2471,55 @@ public class SchoolMainFrame extends javax.swing.JFrame {
          Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
      }
     }//GEN-LAST:event_createButtonActionPerformed
+
+    private void parentDashboardDownloadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentDashboardDownloadButtonActionPerformed
+        // TODO add your handling code here:
+        downloadReport(parentDashboardStudentTable, "Student Information");
+    }//GEN-LAST:event_parentDashboardDownloadButtonActionPerformed
+
+    private void createButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_createButton1ActionPerformed
+
+    private void editParentButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editParentButton1ActionPerformed
+        // TODO add your handling code here:
+         profileFirstNameTextfield.setText(parent.getFirstName());
+        profileFirstNameTextfield.setEnabled(false);
+        lastNameProfileTextfield.setText(parent.getLastName());
+        emailParentProfileTextField.setText(parent.getEmail());
+        lastNameProfileTextfield.setEnabled(false);
+        contactNoParentProfileTextField.setText(parent.getContactNumber());
+        contactNoParentProfileTextField.setEnabled(true);
+        addressParentProfileTextField.setText(parent.getAddress());
+        addressParentProfileTextField.setEnabled(true);
+        studentList = (ArrayList<Student>) parent.getStudent();
+        noOfKidsEnrolledTextLabel.setText(String.valueOf(studentList.size()));
+        noOfKidsEnrolledTextLabel.setEnabled(false);
+        
+    }//GEN-LAST:event_editParentButton1ActionPerformed
+
+    private void updateParentButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateParentButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        parent.setFirstName(profileFirstNameTextfield.getText());
+        profileFirstNameTextfield.setEnabled(false);
+        parent.setLastName(lastNameProfileTextfield.getText());
+        lastNameProfileTextfield.setEnabled(false);
+        parent.setEmail(emailParentProfileTextField.getText());
+        emailParentProfileTextField.setEnabled(false);
+        parent.setContactNumber(contactNoParentProfileTextField.getText());
+        contactNoParentProfileTextField.setEnabled(false);
+        parent.setAddress(addressParentProfileTextField.getText());
+        addressParentProfileTextField.setEnabled(false);       
+        noOfKidsEnrolledTextLabel.setEnabled(false);
+        try {
+            parentService.updateParentById(loggedInUserId, parent);
+        } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_updateParentButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2459,7 +2668,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable7;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
@@ -2492,6 +2700,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton parentDashboardDownloadButton;
     private javax.swing.JLabel parentDashboardLabel;
     private javax.swing.JLabel parentDashboardLabel1;
+    private javax.swing.JTable parentDashboardStudentTable;
     private javax.swing.JPanel parentFeedbackPanel;
     private javax.swing.JTextField parentFirstNameField;
     private javax.swing.JTable parentInfoTable;
