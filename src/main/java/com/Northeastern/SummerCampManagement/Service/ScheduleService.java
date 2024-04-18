@@ -48,9 +48,10 @@ public class ScheduleService {
 		if (!activity.isPresent())
 			throw new CustomException("Activity not found for id:" + activityId);
                 
-                activity.get().setSchedule(newSchedule);
+                newSchedule.setActivity(activity.get());
                 
-                this.activityRepository.save(activity.get());
+                               
+                this.scheduleRepository.save(newSchedule);
   
 		return newSchedule;	
 	}
