@@ -1654,29 +1654,29 @@ public class CampMainFrame extends javax.swing.JFrame {
     private void loginCampButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginCampButtonActionPerformed
         // TODO add your handling code here:
          // Create new admin
-//       CampAdmin newAdmin = new CampAdmin();
-//        newAdmin.setUsername("yashj");
-//        newAdmin.setPassword("admin@123");
-//       newAdmin.setRole(AppUser.Role.CampAdmin);
-//       try {          
-//           adminService.addCampAdmin(newAdmin);
-//      } catch (CustomException ex) {
-//           Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
-//       }
-//        
+       CampAdmin newAdmin = new CampAdmin();
+        newAdmin.setUsername("yashj");
+        newAdmin.setPassword("admin@123");
+       newAdmin.setRole(AppUser.Role.CampAdmin);
+       try {          
+           adminService.addCampAdmin(newAdmin);
+      } catch (CustomException ex) {
+           Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        
         /// Admin Created //
         
         /// Create new staff //
         
-//        CampStaff newStaff = new CampStaff();
-//        newStaff.setUsername("Vrinda");
-//        newStaff.setPassword("admin@123");
-//       newStaff.setRole(AppUser.Role.CampStaff);
-//       try {          
-//           staffService.addCampStaff(newStaff);
-//      } catch (CustomException ex) {
-//           Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
-//       }
+        CampStaff newStaff = new CampStaff();
+        newStaff.setUsername("Vrinda");
+        newStaff.setPassword("admin@123");
+       newStaff.setRole(AppUser.Role.CampStaff);
+       try {          
+           staffService.addCampStaff(newStaff);
+      } catch (CustomException ex) {
+           Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+       }
         
         
         ////////Staff Created//////

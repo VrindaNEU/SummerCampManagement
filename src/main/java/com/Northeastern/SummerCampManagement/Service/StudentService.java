@@ -57,19 +57,24 @@ public class StudentService {
                 // Generate a random number between 1 and 100 (inclusive)
                 int randomNumber = random.nextInt(100) + 1;
                 
-                newStudent.setAttendance(String.valueOf(random));
-                newStudent.setGrade(String.valueOf(random));
+                newStudent.setAttendance(String.valueOf(randomNumber));
+                int randomNumber2 = random.nextInt(100) + 1;
+                
+                newStudent.setGrade(String.valueOf(String.valueOf(randomNumber)));
 
                 //////////////////
                 
                 newStudent.setParent(parent.get());
-                this.studentRepository.save(newStudent);
+                Student addedStudent = this.studentRepository.save(newStudent);
                 
-//                List<Student> students = new ArrayList();
+               
+                List<Student> students = new ArrayList();
+                
+                students.add(addedStudent);
 //                
-//                parent.get().setStudent(students);
+               parent.get().setStudent(students);
 //                
-//                this.parentRepository.save(parent.get());
+               this.parentRepository.save(parent.get());
 //                
 		
 		return newStudent;	
