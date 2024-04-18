@@ -11,6 +11,7 @@ import com.Northeastern.SummerCampManagement.Dao.StudentRepository;
 import com.Northeastern.SummerCampManagement.Entity.Parent;
 import com.Northeastern.SummerCampManagement.Entity.Student;
 import com.Northeastern.SummerCampManagement.Entity.AppUser.Role;
+import com.Northeastern.SummerCampManagement.Entity.SchoolAdmin;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -72,12 +73,18 @@ public class ParentService {
 	}
      
      public Parent  loginByParentId(String userName,String password) throws CustomException{
-     List<Parent> parentLogin = (List<Parent>) getAllParents();
-     Parent selectedParent = new Parent();
+     
+     Parent selectedParent = new Parent();    
+     List<Parent> parentLogin = new ArrayList<Parent>();
+     parentLogin = (List<Parent>)getAllParents();
+     
+     
      for (Parent parenti: parentLogin){
-                    if(parenti.getUsername()==userName && parenti.getPassword()== password){
+                    if(parenti.getUsername().equals(userName) && parenti.getPassword().equals(password)){
                         
                        selectedParent=  parenti;
+                       
+                       break;
                     }
                   }
      

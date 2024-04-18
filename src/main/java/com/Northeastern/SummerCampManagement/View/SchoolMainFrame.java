@@ -12,6 +12,8 @@ import com.Northeastern.SummerCampManagement.Service.CustomException;
 import com.Northeastern.SummerCampManagement.Service.ParentService;
 import com.Northeastern.SummerCampManagement.Service.SchoolAdminService;
 import com.Northeastern.SummerCampManagement.Service.StudentService;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import java.util.logging.Level;
@@ -19,13 +21,15 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.*;
 
 
 /**
@@ -895,6 +899,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         rightParentPanel.setLayout(new java.awt.CardLayout());
 
         parentDashboardDownloadButton.setText("DOWNLOAD REPORT");
+        parentDashboardDownloadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parentDashboardDownloadButtonActionPerformed(evt);
+            }
+        });
 
         parentDashboardLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         parentDashboardLabel.setText("DASHBOARD");
@@ -966,6 +975,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         });
 
         createButton1.setText("SUBMIT");
+        createButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("5. Please provide any recommendations or suggestions for improving the camp experience.");
 
@@ -1060,8 +1074,18 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         addressParentProfileLabel.setText("Address");
 
         editParentButton1.setText("EDIT");
+        editParentButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editParentButton1ActionPerformed(evt);
+            }
+        });
 
         updateParentButton1.setText("SAVE");
+        updateParentButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateParentButton1ActionPerformed(evt);
+            }
+        });
 
         NoOfKidsEnrolledLabel.setText("No. Of Kids Enrolled");
 
@@ -1963,6 +1987,26 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         rightParentPanel.add(schoolReportPanel);
         rightParentPanel.repaint();
         rightParentPanel.revalidate();
+        //student by parentid
+         DefaultTableModel studentModel = (DefaultTableModel)schoolReportTable.getModel();
+        studentModel.setRowCount(0);
+        Object rowData[] = new Object[3]; 
+        
+        try {
+            studentList = (ArrayList)this.studentService.getAllStudents();
+        } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        for(int j = 0; j < studentList.size(); j++)
+        {
+     
+        rowData[0] = studentList.get(j).getFirstName() + " " + studentList.get(j).getLastName();
+        rowData[1] = studentList.get(j).getAttendance();
+        rowData[2] = studentList.get(j).getGrade();
+       
+        studentModel.addRow(rowData);
+        }
     }//GEN-LAST:event_schoolReportButtonActionPerformed
 
     private void parentDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentDashboardButtonActionPerformed
@@ -2021,32 +2065,32 @@ public class SchoolMainFrame extends javax.swing.JFrame {
             } catch (CustomException ex) {
                 Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-         if(schoolAdmin.getUserId() == null){
-             System.out.println(schoolAdmin.getUserId());
-             JOptionPane.showInternalMessageDialog(loginPanel, "did not match");
-         }
-         else{
-             
-         
-            
-        schoolSplitPane.setVisible(true);
-        topPanel.setVisible(true);
-        bottomPanel.setVisible(true);
-        
-        loginPanel.setVisible(false);
-        bottomPanel.removeAll();
-        bottomPanel.add(adminPanel);
-        bottomPanel.repaint();
-        bottomPanel.revalidate();
-        
-        jSplitPane2.setVisible(true);
-        leftPanel.setVisible(true);
-        rightPanel.setVisible(true);
-        
-        rightPanel.removeAll();
-        rightPanel.add(adminDashboard);
-        rightPanel.repaint();
-        rightPanel.revalidate();
+            if(schoolAdmin.getUserId() == null){
+                System.out.println(schoolAdmin.getUserId());
+                JOptionPane.showInternalMessageDialog(loginPanel, "did not match");
+            }
+            else {
+
+
+
+                schoolSplitPane.setVisible(true);
+                topPanel.setVisible(true);
+                bottomPanel.setVisible(true);
+
+                loginPanel.setVisible(false);
+                bottomPanel.removeAll();
+                bottomPanel.add(adminPanel);
+                bottomPanel.repaint();
+                bottomPanel.revalidate();
+
+                jSplitPane2.setVisible(true);
+                leftPanel.setVisible(true);
+                rightPanel.setVisible(true);
+
+                rightPanel.removeAll();
+                rightPanel.add(adminDashboard);
+                rightPanel.repaint();
+                rightPanel.revalidate();
         }
             try {
                 // OnPageLoad
@@ -2066,56 +2110,96 @@ public class SchoolMainFrame extends javax.swing.JFrame {
             }
             
         }
-        else if(roleSchoolDropBox.getSelectedItem().toString()== "parent"){
-            
-        schoolSplitPane.setVisible(true);
-        topPanel.setVisible(true);
-        bottomPanel.setVisible(true);
-        loginPanel.setVisible(false);
-        bottomPanel.removeAll();
-        bottomPanel.add(parentPanel);
-        bottomPanel.repaint();
-        bottomPanel.revalidate();
-        
-        parentSplitPane.setVisible(true);
-        leftParentPanel.setVisible(true);
-        rightParentPanel.setVisible(true);
-        
-        rightParentPanel.removeAll();
-        rightParentPanel.add(parentDashboard);
-        rightParentPanel.repaint();
-        rightParentPanel.revalidate();
-        
-        
-        
-        
+        else if(roleSchoolDropBox.getSelectedItem().toString()=="parent"){
+           
             try {
-                studentList = (ArrayList<Student>) studentService.getAllStudents();
+                parent = parentService.loginByParentId(usernameSchoolTextField.getText(), passwordSchoolTextField.getText());
             } catch (CustomException ex) {
                 Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            if(parent.getUserId() == null){
+                System.out.println(parent.getUserId());
+                JOptionPane.showInternalMessageDialog(loginPanel, "did not match");
+            }
+            else {
+                    loggedInUserId = parent.getUserId();
+                    schoolSplitPane.setVisible(true);
+                    topPanel.setVisible(true);
+                    bottomPanel.setVisible(true);
+                    loginPanel.setVisible(false);
+                    bottomPanel.removeAll();
+                    bottomPanel.add(parentPanel);
+                    bottomPanel.repaint();
+                    bottomPanel.revalidate();
+
+                    parentSplitPane.setVisible(true);
+                    leftParentPanel.setVisible(true);
+                    rightParentPanel.setVisible(true);
+
+                    rightParentPanel.removeAll();
+                    rightParentPanel.add(parentDashboard);
+                    rightParentPanel.repaint();
+                    rightParentPanel.revalidate();
+                try {
+                    studentList = (ArrayList<Student>) studentService.getAllStudents();
+                } 
+                catch (CustomException ex) {
+                    Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                DefaultTableModel parentModel = (DefaultTableModel)parentDashboardStudentTable.getModel();
+                parentModel.setRowCount(0);
+                Object rowData[] = new Object[3]; 
+
+
+                for(int j = 0; j < studentList.size(); j++)
+                {
+
+                rowData[0] = studentList.get(j).getFirstName() + " " + studentList.get(j).getLastName();
+                rowData[1] = studentList.get(j).getAge();
+                rowData[2] = studentList.get(j).getCamper();
+
+
+                parentModel.addRow(rowData);
+
+                }
+            }
         }
         
         else{
+         try {
+                student = studentService.loginByStudentId(usernameSchoolTextField.getText(), passwordSchoolTextField.getText());
+            } catch (CustomException ex) {
+                Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
-        schoolSplitPane.setVisible(true);
-        topPanel.setVisible(true);
-        bottomPanel.setVisible(true);
-        loginPanel.setVisible(false);
-        bottomPanel.removeAll();
-        bottomPanel.add(studentPanel);
-        bottomPanel.repaint();
-        bottomPanel.revalidate();
-        studentSplitPane.setVisible(true);
-        leftStudentPanel.setVisible(true);
-        rightStudentPanel.setVisible(true);
+            if(student.getUserId() == null){
+                System.out.println(student.getUserId());
+                JOptionPane.showInternalMessageDialog(loginPanel, "did not match");
+            }
+            else
+            {  
+                loggedInUserId = student.getUserId(); 
+                
+                schoolSplitPane.setVisible(true);
+                topPanel.setVisible(true);
+                bottomPanel.setVisible(true);
+                loginPanel.setVisible(false);
+                bottomPanel.removeAll();
+                bottomPanel.add(studentPanel);
+                bottomPanel.repaint();
+                bottomPanel.revalidate();
+                studentSplitPane.setVisible(true);
+                leftStudentPanel.setVisible(true);
+                rightStudentPanel.setVisible(true);
+
+                rightStudentPanel.removeAll();
+                rightStudentPanel.add(studentDashboard);
+                rightStudentPanel.repaint();
+                rightStudentPanel.revalidate();
         
-        rightStudentPanel.removeAll();
-        rightStudentPanel.add(studentDashboard);
-        rightStudentPanel.repaint();
-        rightStudentPanel.revalidate();
-        
+            }
         }
         
         
@@ -2222,6 +2306,25 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         rightParentPanel.add(parentProfilePanel);
         rightParentPanel.repaint();
         rightParentPanel.revalidate();
+        try {
+            parent = parentService.getParentById(loggedInUserId);
+        } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        profileFirstNameTextfield.setText(parent.getFirstName());
+        profileFirstNameTextfield.setEnabled(false);
+        lastNameProfileTextfield.setText(parent.getLastName());
+        lastNameProfileTextfield.setEnabled(false);
+        emailParentProfileTextField.setText(parent.getEmail());
+        emailParentProfileTextField.setEnabled(false);
+        contactNoParentProfileTextField.setText(parent.getContactNumber());
+        contactNoParentProfileTextField.setEnabled(false);
+        addressParentProfileTextField.setText(parent.getAddress());
+        addressParentProfileTextField.setEnabled(false);
+        studentList = (ArrayList<Student>) parent.getStudent();
+        noOfKidsEnrolledTextLabel.setText(String.valueOf(studentList.size()));
+        noOfKidsEnrolledTextLabel.setEnabled(false);
+        
     }//GEN-LAST:event_profileButtonActionPerformed
 
     private void summerCampButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summerCampButtonActionPerformed
@@ -2281,6 +2384,44 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         //editageTextField.setText(Integer.toString(selectedUser.getAge()));
     }//GEN-LAST:event_editParentButtonActionPerformed
 
+    
+    private void downloadReport(JTable table, String reportName) {         
+        // Create Workbook and Sheet
+       try { 
+        
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet("Report");
+             
+            XSSFRow headerRow= sheet.createRow(0);        
+            for(int i= 0; i < table.getColumnCount(); i++) {
+                headerRow.createCell(i).setCellValue(table.getColumnName(i));         
+            }
+            // Write data from JTable to Excel
+            for (int i = 0; i < table.getRowCount(); i++) {
+            XSSFRow row = sheet.createRow(i+1);
+            for (int j = 0; j < table.getColumnCount(); j++) {
+                Object value = table.getValueAt(i, j);
+                if(value == null)
+                {
+                    value = "";
+                }
+                row.createCell(j).setCellValue(value.toString());                
+            }             
+        }            
+        // Save workbook to file
+        FileOutputStream outputStream = new FileOutputStream( reportName + ".xlsx");             
+        workbook.write(outputStream);             
+        workbook.close();             
+        outputStream.close();             
+        JOptionPane.showMessageDialog(this, "Report downloaded successfully!");         
+    } 
+    catch (IOException e) {
+        e.printStackTrace();            
+        JOptionPane.showMessageDialog(this, "Error downloading report: " + e.getMessage());         
+        }     
+    }
+
+    
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
        
        Integer parentId  = Integer.parseInt(selectParentComboBox.getSelectedItem().toString());
@@ -2330,6 +2471,55 @@ public class SchoolMainFrame extends javax.swing.JFrame {
          Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
      }
     }//GEN-LAST:event_createButtonActionPerformed
+
+    private void parentDashboardDownloadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parentDashboardDownloadButtonActionPerformed
+        // TODO add your handling code here:
+        downloadReport(parentDashboardStudentTable, "Student Information");
+    }//GEN-LAST:event_parentDashboardDownloadButtonActionPerformed
+
+    private void createButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_createButton1ActionPerformed
+
+    private void editParentButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editParentButton1ActionPerformed
+        // TODO add your handling code here:
+         profileFirstNameTextfield.setText(parent.getFirstName());
+        profileFirstNameTextfield.setEnabled(false);
+        lastNameProfileTextfield.setText(parent.getLastName());
+        emailParentProfileTextField.setText(parent.getEmail());
+        lastNameProfileTextfield.setEnabled(false);
+        contactNoParentProfileTextField.setText(parent.getContactNumber());
+        contactNoParentProfileTextField.setEnabled(true);
+        addressParentProfileTextField.setText(parent.getAddress());
+        addressParentProfileTextField.setEnabled(true);
+        studentList = (ArrayList<Student>) parent.getStudent();
+        noOfKidsEnrolledTextLabel.setText(String.valueOf(studentList.size()));
+        noOfKidsEnrolledTextLabel.setEnabled(false);
+        
+    }//GEN-LAST:event_editParentButton1ActionPerformed
+
+    private void updateParentButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateParentButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        parent.setFirstName(profileFirstNameTextfield.getText());
+        profileFirstNameTextfield.setEnabled(false);
+        parent.setLastName(lastNameProfileTextfield.getText());
+        lastNameProfileTextfield.setEnabled(false);
+        parent.setEmail(emailParentProfileTextField.getText());
+        emailParentProfileTextField.setEnabled(false);
+        parent.setContactNumber(contactNoParentProfileTextField.getText());
+        contactNoParentProfileTextField.setEnabled(false);
+        parent.setAddress(addressParentProfileTextField.getText());
+        addressParentProfileTextField.setEnabled(false);       
+        noOfKidsEnrolledTextLabel.setEnabled(false);
+        try {
+            parentService.updateParentById(loggedInUserId, parent);
+        } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_updateParentButton1ActionPerformed
 
     /**
      * @param args the command line arguments
