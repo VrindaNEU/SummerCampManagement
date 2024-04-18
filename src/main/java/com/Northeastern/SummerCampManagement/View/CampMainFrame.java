@@ -62,6 +62,7 @@ public class CampMainFrame extends javax.swing.JFrame {
      public ArrayList<Integer> activityIds  = new ArrayList<Integer>();
      public ArrayList<String> camperNames  = new ArrayList<String>();
      public ArrayList<MealPreference> mealPreferenceList = new ArrayList<MealPreference>();
+     public ArrayList<Schedule> scheduleList = new ArrayList<Schedule>();
     /**
      * Creates new form MainFrame
      */
@@ -223,7 +224,7 @@ public class CampMainFrame extends javax.swing.JFrame {
         camperSchedulePanel = new javax.swing.JPanel();
         camperScheduleLabel = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        viewMySchedulesTable = new javax.swing.JTable();
         camperDietPanel = new javax.swing.JPanel();
         dietPreferencesLabel = new javax.swing.JLabel();
         allergiesDietLabel = new javax.swing.JLabel();
@@ -233,8 +234,8 @@ public class CampMainFrame extends javax.swing.JFrame {
         allergiesDietTextField = new javax.swing.JTextField();
         medicalDietTextField = new javax.swing.JTextField();
         editDietButton = new javax.swing.JButton();
+        beverageDietComboBox = new javax.swing.JComboBox<>();
         foodDietComboBox = new javax.swing.JComboBox<>();
-        beveragesDietComboBox = new javax.swing.JComboBox<>();
         saveDietButton = new javax.swing.JButton();
         leftCamperPanel = new javax.swing.JPanel();
         camperActivityButton = new javax.swing.JButton();
@@ -1253,7 +1254,7 @@ public class CampMainFrame extends javax.swing.JFrame {
         camperScheduleLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         camperScheduleLabel.setText("SCHEDULE");
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        viewMySchedulesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -1264,7 +1265,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                 "Date", "Start Time", "End Time", "Location", "Activity"
             }
         ));
-        jScrollPane6.setViewportView(jTable4);
+        jScrollPane6.setViewportView(viewMySchedulesTable);
 
         javax.swing.GroupLayout camperSchedulePanelLayout = new javax.swing.GroupLayout(camperSchedulePanel);
         camperSchedulePanel.setLayout(camperSchedulePanelLayout);
@@ -1304,12 +1305,22 @@ public class CampMainFrame extends javax.swing.JFrame {
         foodDietLabel.setText("Food Preferences");
 
         editDietButton.setText("EDIT");
+        editDietButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editDietButtonActionPerformed(evt);
+            }
+        });
 
-        foodDietComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "juice", "coke" }));
+        beverageDietComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "juice", "coke" }));
 
-        beveragesDietComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vegetarian", "NonVegetarian", "Vegan" }));
+        foodDietComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vegetarian", "NonVegetarian", "Vegan" }));
 
         saveDietButton.setText("SAVE");
+        saveDietButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveDietButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout camperDietPanelLayout = new javax.swing.GroupLayout(camperDietPanel);
         camperDietPanel.setLayout(camperDietPanelLayout);
@@ -1326,15 +1337,15 @@ public class CampMainFrame extends javax.swing.JFrame {
                         .addComponent(allergiesDietLabel)
                         .addGap(46, 46, 46)
                         .addComponent(allergiesDietTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(camperDietPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(foodDietLabel)
                     .addComponent(beveragesDietlabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addGroup(camperDietPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(beveragesDietComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(beverageDietComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(foodDietComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44))
+                .addGap(56, 56, 56))
             .addGroup(camperDietPanelLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addComponent(editDietButton)
@@ -1362,12 +1373,12 @@ public class CampMainFrame extends javax.swing.JFrame {
                     .addComponent(medicalDietLabel)
                     .addComponent(medicalDietTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(beveragesDietlabel)
-                    .addComponent(beveragesDietComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(beverageDietComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(90, 90, 90)
                 .addGroup(camperDietPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editDietButton)
                     .addComponent(saveDietButton))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 304, Short.MAX_VALUE))
         );
 
         rightCamperPanel.add(camperDietPanel, "card6");
@@ -1980,6 +1991,33 @@ public class CampMainFrame extends javax.swing.JFrame {
         rightCamperPanel.add(camperSchedulePanel);
         rightCamperPanel.repaint();
         rightCamperPanel.revalidate();
+        
+        
+        //Load Data in table
+        
+           try {
+            scheduleList = (ArrayList<Schedule>) scheduleService.getScheduleByCamperId(userLoggedInId);
+        } catch (CustomException ex) {
+            Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+         DefaultTableModel scheduleModel = (DefaultTableModel)viewMySchedulesTable.getModel();
+        scheduleModel.setRowCount(0);
+        Object rowData[] = new Object[5]; 
+        
+        for(int j = 0; j < scheduleList.size(); j++)
+        {
+        rowData[0] = scheduleList.get(j).getDate();
+        rowData[1] = scheduleList.get(j).getStartTime();
+        rowData[2] = scheduleList.get(j).getEndTime();
+        rowData[3] = scheduleList.get(j).getLocation();
+        rowData[4] = scheduleList.get(j).getActivity().getActivityName();
+       
+        scheduleModel.addRow(rowData);
+        
+        }
+        
     }//GEN-LAST:event_camperScheduleButtonActionPerformed
 
     private void camperDietButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camperDietButtonActionPerformed
@@ -1988,6 +2026,38 @@ public class CampMainFrame extends javax.swing.JFrame {
         rightCamperPanel.add(camperDietPanel);
         rightCamperPanel.repaint();
         rightCamperPanel.revalidate();
+        
+        //Load existing dietry preferences
+        
+           try {
+            mealPreference =  mealPreferenceService.getMealPreferenceByStudentId(userLoggedInId);
+        } catch (CustomException ex) {
+            Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
+           allergiesDietTextField.setText(mealPreference.getAllergies());
+            medicalDietTextField.setText(mealPreference.getMedicalConditions());
+            if (mealPreference.getBeveragePreferance()== MealPreference.Beverage.juice){
+            beverageDietComboBox.setSelectedIndex(0);}
+            else{
+                beverageDietComboBox.setSelectedIndex(0);
+            }
+            
+            if (mealPreference.getFoodPreference()== MealPreference.FoodPreference.vegetarian){
+            foodDietComboBox.setSelectedIndex(0);}
+            else if (mealPreference.getFoodPreference()== MealPreference.FoodPreference.nonvegetarian){
+                foodDietComboBox.setSelectedIndex(1);
+            }
+            else{
+                 foodDietComboBox.setSelectedIndex(2);
+            }
+            
+            //Disable from editing
+            allergiesDietTextField.setEditable(false);
+             medicalDietTextField.setEditable(false);
+             beverageDietComboBox.setEditable(false);
+             foodDietComboBox.setEditable(false);
+        
     }//GEN-LAST:event_camperDietButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
@@ -2097,6 +2167,48 @@ public class CampMainFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_registerActivityButtonActionPerformed
 
+    private void editDietButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDietButtonActionPerformed
+        // TODO add your handling code here:
+        
+        //Enable Editing
+      
+            allergiesDietTextField.setEditable(true);
+             medicalDietTextField.setEditable(true);
+             beverageDietComboBox.setEditable(true);
+             foodDietComboBox.setEditable(true);
+    }//GEN-LAST:event_editDietButtonActionPerformed
+
+    private void saveDietButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveDietButtonActionPerformed
+        // TODO add your handling code here:
+        mealPreference.setMedicalConditions(medicalDietTextField.getText());
+        mealPreference.setAllergies(allergiesDietTextField.getText());
+        
+         if(beverageDietComboBox.getSelectedItem().toString() == "juice"){
+            mealPreference.setBeveragePreferance(MealPreference.Beverage.juice);
+        }
+        else {
+         mealPreference.setBeveragePreferance(MealPreference.Beverage.coke);
+        }
+        
+        if(foodDietComboBox.getSelectedItem().toString() == "Vegetarian"){
+            mealPreference.setFoodPreference(MealPreference.FoodPreference.vegetarian);
+        }
+        else if(foodDietComboBox.getSelectedItem().toString() == "NonVegetarian") {
+          mealPreference.setFoodPreference(MealPreference.FoodPreference.nonvegetarian);
+        }
+        else{
+         mealPreference.setFoodPreference(MealPreference.FoodPreference.vegan);
+        }
+        
+        //Disable Editing
+      
+            allergiesDietTextField.setEditable(false);
+             medicalDietTextField.setEditable(false);
+             beverageDietComboBox.setEditable(false);
+             foodDietComboBox.setEditable(false);
+         
+    }//GEN-LAST:event_saveDietButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2161,7 +2273,7 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel adminPanel;
     private javax.swing.JLabel allergiesDietLabel;
     private javax.swing.JTextField allergiesDietTextField;
-    private javax.swing.JComboBox<String> beveragesDietComboBox;
+    private javax.swing.JComboBox<String> beverageDietComboBox;
     private javax.swing.JLabel beveragesDietlabel;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JButton campAdmindashboardButton;
@@ -2220,7 +2332,6 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lastNameStaffActivityLabel;
@@ -2272,6 +2383,7 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel userNameCampLoginLabel;
     private javax.swing.JTextField usernameCampTextField;
     private javax.swing.JTable viewMealPrefTable;
+    private javax.swing.JTable viewMySchedulesTable;
     private javax.swing.JButton viewRegisteredCampersButton;
     private javax.swing.JLabel welcomeCampLabel;
     // End of variables declaration//GEN-END:variables
