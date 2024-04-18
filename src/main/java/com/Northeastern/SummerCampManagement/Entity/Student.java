@@ -59,7 +59,7 @@ public class Student extends AppUser{
 //    @JoinColumn(name = "activityId")
 //    private List<Activity> activities;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parentId")
     private Parent parent;
 
