@@ -12,6 +12,7 @@ import com.Northeastern.SummerCampManagement.Entity.Parent;
 import com.Northeastern.SummerCampManagement.Entity.Schedule;
 import com.Northeastern.SummerCampManagement.Entity.Student;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -82,5 +83,26 @@ public class ScheduleService {
                 
 		return schedules;
 	}
+     
+     
+     //Get Schedules for activity by camperid
+     
+     public Collection<Schedule> getSchedulesForUserById(Integer camperId) throws CustomException{
+           Optional<Student> student = this.studentRepository.findById(camperId);
+		if (!student.isPresent())
+	    throw new CustomException("Student not found for id:" + camperId);
+                
+                List<Activity> activities = new ArrayList<Activity>();
+                activities = (List<Activity>) student.get().getActivities();
+                
+                List<Schedule> schedules = new ArrayList<Schedule>();
+                
+                for(Activity activityi : activities){
+                schedules.add(activityi.getSchedule());
+                }
+                
+                return schedules;
+     
+     }
     
 }

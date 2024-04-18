@@ -1850,7 +1850,7 @@
                                               <Component id="jScrollPane7" min="-2" pref="434" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="79" max="32767" attributes="0"/>
+                                      <EmptySpace pref="55" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2005,7 +2005,7 @@
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JTable" name="jTable4">
+                                <Component class="javax.swing.JTable" name="viewMySchedulesTable">
                                   <Properties>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                       <Table columnCount="5" rowCount="4">
@@ -2078,17 +2078,17 @@
                                               <Component id="allergiesDietTextField" min="-2" pref="71" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="40" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="foodDietLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="beveragesDietlabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="beveragesDietComboBox" min="-2" max="-2" attributes="0"/>
+                                          <Component id="beverageDietComboBox" min="-2" max="-2" attributes="0"/>
                                           <Component id="foodDietComboBox" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
@@ -2121,14 +2121,14 @@
                                           <Component id="medicalDietLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="medicalDietTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="beveragesDietlabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="beveragesDietComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="beverageDietComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="editDietButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="saveDietButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="304" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2170,8 +2170,11 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="EDIT"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editDietButtonActionPerformed"/>
+                              </Events>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="foodDietComboBox">
+                            <Component class="javax.swing.JComboBox" name="beverageDietComboBox">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="2">
@@ -2184,7 +2187,7 @@
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="beveragesDietComboBox">
+                            <Component class="javax.swing.JComboBox" name="foodDietComboBox">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="3">
@@ -2202,6 +2205,9 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="SAVE"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveDietButtonActionPerformed"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
