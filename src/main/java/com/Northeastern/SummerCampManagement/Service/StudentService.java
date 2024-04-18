@@ -243,9 +243,10 @@ public class StudentService {
                     
                     mealpreference.setStudent(student);
                     
-                    this.mealPreferenceRepository.save(mealpreference);
+                   MealPreference savedPref = this.mealPreferenceRepository.save(mealpreference);
                   
-                    
+                   student.setMealPreference(savedPref);
+                   
 		return this.studentRepository.save(student);
 	}
      
@@ -289,7 +290,7 @@ public class StudentService {
      return "Registered for Activity";
      }
        
-    
+     
     
 
 
