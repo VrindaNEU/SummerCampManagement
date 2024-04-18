@@ -458,17 +458,16 @@
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JTable" name="jTable1">
+                                <Component class="javax.swing.JTable" name="camperRegistrationReportTable">
                                   <Properties>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="7" rowCount="4">
+                                      <Table columnCount="6" rowCount="4">
                                         <Column editable="true" title="First Name" type="java.lang.Object"/>
                                         <Column editable="true" title="Last Name" type="java.lang.Object"/>
                                         <Column editable="true" title="Registration Date" type="java.lang.Object"/>
                                         <Column editable="true" title="Email" type="java.lang.Object"/>
                                         <Column editable="true" title="Age" type="java.lang.Object"/>
                                         <Column editable="true" title="Address" type="java.lang.Object"/>
-                                        <Column editable="true" title="Guardian" type="java.lang.Object"/>
                                       </Table>
                                     </Property>
                                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -484,11 +483,6 @@
                                           <Renderer/>
                                         </Column>
                                         <Column maxWidth="-1" minWidth="10" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
@@ -981,6 +975,11 @@
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
                       <SubComponents>
                         <Container class="javax.swing.JPanel" name="staffDashboard">
+                          <Properties>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[695, 695]"/>
+                            </Property>
+                          </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                               <CardConstraints cardName="card2"/>
@@ -1004,12 +1003,12 @@
                                               </Group>
                                               <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="camperCount" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="activityCount" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="232" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1021,14 +1020,14 @@
                                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="camperCount" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="activityCount" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="363" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1052,12 +1051,12 @@
                                 <Property name="text" type="java.lang.String" value="No. of Activities"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel12">
+                            <Component class="javax.swing.JLabel" name="camperCount">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="jLabel12"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel13">
+                            <Component class="javax.swing.JLabel" name="activityCount">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="jLabel13"/>
                               </Properties>
@@ -1205,6 +1204,9 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="CREATE ACTIVITY"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="activityCreateButtonActionPerformed"/>
+                              </Events>
                             </Component>
                             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
                               <AuxValues>
@@ -1262,10 +1264,11 @@
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JTable" name="jTable2">
+                                <Component class="javax.swing.JTable" name="activityViewTable">
                                   <Properties>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="4" rowCount="4">
+                                      <Table columnCount="5" rowCount="4">
+                                        <Column editable="true" title="Activity Id" type="java.lang.Object"/>
                                         <Column editable="true" title="Name" type="java.lang.Object"/>
                                         <Column editable="true" title="Description" type="java.lang.Object"/>
                                         <Column editable="true" title="Category" type="java.lang.Object"/>
@@ -1294,6 +1297,11 @@
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
                                       </TableColumnModel>
                                     </Property>
                                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -1301,7 +1309,7 @@
                                     </Property>
                                   </Properties>
                                   <Events>
-                                    <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="jTable2AncestorAdded"/>
+                                    <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="activityViewTableAncestorAdded"/>
                                   </Events>
                                 </Component>
                               </SubComponents>
@@ -1344,10 +1352,10 @@
                                                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                                               <Component id="activityEndTimeText" min="-2" pref="71" max="-2" attributes="0"/>
                                                               <Component id="activityStartTimeText" min="-2" pref="71" max="-2" attributes="0"/>
-                                                              <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="selectActivityCombo" min="-2" max="-2" attributes="0"/>
                                                           </Group>
                                                           <Group type="102" alignment="1" attributes="0">
-                                                              <Component id="jComboBox4" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="selectLocationCombo" min="-2" max="-2" attributes="0"/>
                                                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                                           </Group>
                                                       </Group>
@@ -1371,7 +1379,7 @@
                                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="scheduleActivityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="selectActivityCombo" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
@@ -1391,7 +1399,7 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="activityLocationLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jComboBox4" min="-2" max="-2" attributes="0"/>
+                                          <Component id="selectLocationCombo" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                                       <Component id="staffScheduleSubmitButton" min="-2" max="-2" attributes="0"/>
@@ -1429,7 +1437,7 @@
                                 <Property name="text" type="java.lang.String" value="End Time"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox3">
+                            <Component class="javax.swing.JComboBox" name="selectActivityCombo">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="4">
@@ -1453,14 +1461,13 @@
                                 <Property name="text" type="java.lang.String" value="Location"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox4">
+                            <Component class="javax.swing.JComboBox" name="selectLocationCombo">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="4">
-                                    <StringItem index="0" value="Item 1"/>
-                                    <StringItem index="1" value="Item 2"/>
-                                    <StringItem index="2" value="Item 3"/>
-                                    <StringItem index="3" value="Item 4"/>
+                                  <StringArray count="3">
+                                    <StringItem index="0" value="Main Park"/>
+                                    <StringItem index="1" value="Common Room"/>
+                                    <StringItem index="2" value="Playground"/>
                                   </StringArray>
                                 </Property>
                               </Properties>
@@ -1472,6 +1479,9 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="SUBMIT"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="staffScheduleSubmitButtonActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="com.toedter.calendar.JDateChooser" name="scheduleStaffDate">
                             </Component>
@@ -1497,14 +1507,8 @@
                                               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                                               <Component id="jScrollPane3" min="-2" pref="452" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
-                                              <Component id="selectStudentForDietPrefLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                              <Component id="selectStudentForMealPref" min="-2" max="-2" attributes="0"/>
-                                          </Group>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="58" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1513,14 +1517,9 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                       <Component id="dietaryPrefLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="selectStudentForMealPref" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="selectStudentForDietPrefLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                                       <Component id="jScrollPane3" min="-2" pref="174" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="318" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1538,7 +1537,7 @@
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JTable" name="jTable3">
+                                <Component class="javax.swing.JTable" name="viewMealPrefTable">
                                   <Properties>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                       <Table columnCount="3" rowCount="0">
@@ -1573,26 +1572,6 @@
                                 </Component>
                               </SubComponents>
                             </Container>
-                            <Component class="javax.swing.JComboBox" name="selectStudentForMealPref">
-                              <Properties>
-                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="4">
-                                    <StringItem index="0" value="Item 1"/>
-                                    <StringItem index="1" value="Item 2"/>
-                                    <StringItem index="2" value="Item 3"/>
-                                    <StringItem index="3" value="Item 4"/>
-                                  </StringArray>
-                                </Property>
-                              </Properties>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                              </AuxValues>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="selectStudentForDietPrefLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Select Student"/>
-                              </Properties>
-                            </Component>
                           </SubComponents>
                         </Container>
                       </SubComponents>
@@ -1849,19 +1828,6 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                                              <Component id="jScrollPane7" min="-2" pref="375" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="253" max="-2" attributes="0"/>
-                                              <Component id="camperActivityLabel" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
                                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -1872,6 +1838,19 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="253" max="-2" attributes="0"/>
+                                              <Component id="camperActivityLabel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                                              <Component id="jScrollPane7" min="-2" pref="434" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace pref="79" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1913,7 +1892,8 @@
                                 <Component class="javax.swing.JTable" name="activityTable">
                                   <Properties>
                                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="5" rowCount="4">
+                                      <Table columnCount="6" rowCount="4">
+                                        <Column editable="true" title="Activity Id" type="java.lang.Object"/>
                                         <Column editable="true" title="Name" type="java.lang.Object"/>
                                         <Column editable="true" title="Category" type="java.lang.Object"/>
                                         <Column editable="true" title="Description" type="java.lang.Object"/>
@@ -1923,6 +1903,11 @@
                                     </Property>
                                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                                       <TableColumnModel selectionModel="0">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
                                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
@@ -1961,6 +1946,9 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="REGISTER"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerActivityButtonActionPerformed"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>

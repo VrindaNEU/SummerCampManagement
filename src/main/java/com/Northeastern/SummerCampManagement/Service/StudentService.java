@@ -13,6 +13,7 @@ import com.Northeastern.SummerCampManagement.Entity.Feedback;
 import com.Northeastern.SummerCampManagement.Dao.StudentRepository;
 import com.Northeastern.SummerCampManagement.Entity.Parent;
 import com.Northeastern.SummerCampManagement.Entity.SchoolAdmin;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -238,7 +239,10 @@ public class StudentService {
                     student.setCamper(true);
                     student.setCampUsername(Username);
                     student.setCampPassword(Password);
+                    student.setRegistrationDate(LocalDate.now());
+                    
                     mealpreference.setStudent(student);
+                    
                     this.mealPreferenceRepository.save(mealpreference);
                   
                     

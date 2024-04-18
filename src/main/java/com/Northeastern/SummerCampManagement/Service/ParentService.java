@@ -45,7 +45,7 @@ public class ParentService {
 	}
     
     
-    //ViewAll - Todo 
+    //ViewAll 
      
      public Collection<Parent> getAllParents() throws CustomException {
 		

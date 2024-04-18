@@ -53,6 +53,17 @@ public class ActivityService {
 	
 	}
       
+      //ViewById
+     
+     public Activity getActivityById(Integer activityId) throws CustomException {
+		
+		      Optional<Activity> activity = this.activityRepository.findById(activityId);
+		if (!activity.isPresent())
+			throw new CustomException("Activity not found for id:" + activity);
+		
+		return activity.get();
+	}
+      
       
     //Register Student For Activity - done in Student Service
       
