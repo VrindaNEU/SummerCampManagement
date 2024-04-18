@@ -17,6 +17,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import static com.Northeastern.SummerCampManagement.Entity.MealPreference.FoodPreference;
+import com.Northeastern.SummerCampManagement.cellModifier.TableActionCellEditor;
+import com.Northeastern.SummerCampManagement.cellModifier.TableActionCellRender;
+import com.Northeastern.SummerCampManagement.cellModifier.TableActionEvent;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +30,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -135,9 +139,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         studentInfoTable = new javax.swing.JTable();
         guardianTextLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        UPDATE = new javax.swing.JButton();
         createButton = new javax.swing.JButton();
         selectParentComboBox = new javax.swing.JComboBox<>();
         parentCrudPanel = new javax.swing.JPanel();
@@ -472,25 +473,29 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         studentInfoTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "First Name", "Last Name", "Contact Number", "Email", "Age", "Address"
+                "Student ID", "First Name", "Last Name", "Contact Number", "Email", "Age", "Address", "Action"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, true, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         studentInfoTable.setPreferredSize(new java.awt.Dimension(599, 120));
+        studentInfoTable.setRowHeight(40);
         jScrollPane1.setViewportView(studentInfoTable);
 
         guardianTextLabel.setText("Guardian");
-
-        jButton1.setText("EDIT");
-
-        jButton2.setText("DELETE");
-
-        UPDATE.setText("SAVE");
 
         createButton.setText("CREATE");
         createButton.addActionListener(new java.awt.event.ActionListener() {
@@ -514,9 +519,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                         .addComponent(studentCrudTextLabel))
                     .addGroup(studentCrudPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(studentCrudPanelLayout.createSequentialGroup()
                                 .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -536,13 +538,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                             .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(studentCrudPanelLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton1)
-                        .addGap(109, 109, 109)
-                        .addComponent(UPDATE)
-                        .addGap(99, 99, 99)
-                        .addComponent(jButton2))
-                    .addGroup(studentCrudPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(guardianTextLabel)
                         .addGap(50, 50, 50)
@@ -553,8 +548,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                                 .addGap(62, 62, 62)
                                 .addComponent(addressTextLabel)
                                 .addGap(44, 44, 44)
-                                .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(studentCrudPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         studentCrudPanelLayout.setVerticalGroup(
             studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -585,14 +583,9 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                     .addComponent(selectParentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(createButton)
-                .addGap(56, 56, 56)
+                .addGap(68, 68, 68)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(UPDATE)
-                    .addComponent(jButton2))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         rightPanel.add(studentCrudPanel, "card3");
@@ -1901,7 +1894,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(schoolSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 595, Short.MAX_VALUE)
+            .addComponent(schoolSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -1947,7 +1940,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
           //load the parent info to jtable
         DefaultTableModel studentModel = (DefaultTableModel)studentInfoTable.getModel();
         studentModel.setRowCount(0);
-        Object rowData[] = new Object[6]; 
+        Object rowData[] = new Object[8]; 
         
         try {
             studentList = (ArrayList)this.studentService.getAllStudents();
@@ -1957,18 +1950,62 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         
         for(int j = 0; j < studentList.size(); j++)
         {
-     
-        rowData[0] = studentList.get(j).getFirstName();
-        rowData[1] = studentList.get(j).getLastName();
-        rowData[2] = studentList.get(j).getContactNumber();
-        rowData[3] = studentList.get(j).getEmail();
-        rowData[4] = studentList.get(j).getAge();
-        rowData[5] = studentList.get(j).getAddress();
-              
+        rowData[0] = studentList.get(j).getUserId();
+        rowData[1] = studentList.get(j).getFirstName();
+        rowData[2] = studentList.get(j).getLastName();
+        rowData[3] = studentList.get(j).getContactNumber();
+        rowData[4] = studentList.get(j).getEmail();
+        rowData[5] = studentList.get(j).getAge();
+        rowData[6] = studentList.get(j).getAddress();
+        rowData[7] = new JButton("Action");    
        
         studentModel.addRow(rowData);
         }
         
+        TableActionEvent event = new TableActionEvent() {
+            @Override
+            public void onSave(int row) {
+               String contactNo = studentModel.getValueAt(row, 2).toString();
+                studentList.get(row).setContactNumber(contactNo);
+                String email = studentModel.getValueAt(row, 3).toString();
+                studentList.get(row).setEmail(email);
+                String address = studentModel.getValueAt(row, 5).toString();
+                studentList.get(row).setEmail(address);
+                
+                Student student = new Student();
+                try {
+                    student = studentService.getStudentById(Integer.parseInt(studentModel.getValueAt(row, 2).toString()));
+                } catch (CustomException ex) {
+                    Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    studentService.updateStudentById(row,student );
+                } catch (CustomException ex) {
+                    Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            @Override
+            public void onDelete(int row) {
+                
+                 if(studentInfoTable.isEditing()){
+                    studentInfoTable.getCellEditor().stopCellEditing();
+                }
+                studentModel.removeRow(row);
+                studentList.remove(row);
+                try {
+                    String deleteStudentById = studentService.deleteStudentById(Integer.valueOf(studentModel.getValueAt(row, 2).toString()));
+                } catch (CustomException ex) {
+                    Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+        studentInfoTable.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
+        studentInfoTable.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
+        studentInfoTable.getColumnModel().getColumn(7).setPreferredWidth(50);
+//        studentInfoTable.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
+//       studentInfoTable.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor());
+//        studentInfoTable.getColumnModel().getColumn(7).setPreferredWidth(100);
     }//GEN-LAST:event_studentCrudButtonActionPerformed
 
     private void firstNametextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNametextField1ActionPerformed
@@ -2579,7 +2616,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
          //load the parent info to jtable
         DefaultTableModel studentModel = (DefaultTableModel)studentInfoTable.getModel();
         studentModel.setRowCount(0);
-        Object rowData[] = new Object[6]; 
+        Object rowData[] = new Object[7]; 
         
         studentList = (ArrayList)this.studentService.getAllStudents();
         
@@ -2592,10 +2629,57 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         rowData[3] = studentList.get(j).getEmail();
         rowData[4] = studentList.get(j).getAge();
         rowData[5] = studentList.get(j).getAddress();     
-       
+        rowData[6] = new JButton("Action");
         studentModel.addRow(rowData);
         
         }
+        
+        TableActionEvent event = new TableActionEvent() {
+            @Override
+            public void onSave(int row) {
+               String contactNo = studentModel.getValueAt(row, 2).toString();
+                studentList.get(row).setContactNumber(contactNo);
+                String email = studentModel.getValueAt(row, 3).toString();
+                studentList.get(row).setEmail(email);
+                String address = studentModel.getValueAt(row, 5).toString();
+                studentList.get(row).setEmail(address);
+                
+                Student student = new Student();
+                try {
+                    student = studentService.getStudentById(Integer.parseInt(studentModel.getValueAt(row, 2).toString()));
+                } catch (CustomException ex) {
+                    Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    studentService.updateStudentById(row,student );
+                } catch (CustomException ex) {
+                    Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            @Override
+            public void onDelete(int row) {
+                
+                 if(studentInfoTable.isEditing()){
+                    studentInfoTable.getCellEditor().stopCellEditing();
+                }
+                studentModel.removeRow(row);
+                studentList.remove(row);
+                try {
+                    String deleteStudentById = studentService.deleteStudentById(Integer.valueOf(studentModel.getValueAt(row, 2).toString()));
+                } catch (CustomException ex) {
+                    Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+        studentInfoTable.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
+        studentInfoTable.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
+        studentInfoTable.getColumnModel().getColumn(7).setPreferredWidth(50);
+       
+//        DocBotPanel.removeAll();
+//        DocBotPanel.add(viewPatientPanel);
+//        DocBotPanel.repaint();
+//        DocBotPanel.revalidate();
      } catch (CustomException ex) {
          Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
      }
@@ -2788,7 +2872,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel NoOfKidsEnrolledLabel;
     private javax.swing.JLabel Q1Label;
     private javax.swing.JTextField StudentActivityCountTextField;
-    private javax.swing.JButton UPDATE;
     private com.toedter.calendar.JDateChooser activityRegistrationDateChooser;
     private javax.swing.JLabel activityRegistrationDateLabel;
     private javax.swing.JButton addCampRegistrationButton;
@@ -2868,8 +2951,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField guardianTextField1;
     private javax.swing.JLabel guardianTextLabel;
     private javax.swing.JLabel guardianTextLabel1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

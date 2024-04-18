@@ -1,22 +1,19 @@
-package com.Northeastern.SummerCampManagement.cellModifier;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
-/**
- *
- * @author HP PC
- */
-
+package com.Northeastern.SummerCampManagement.cellModifier;
 
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
- public class TableActionCellRender extends DefaultTableCellRenderer{
+/**
+ *
+ * @author HP PC
+ */
+public class TableActionCellRender extends DefaultTableCellRenderer{
 
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -34,5 +31,6 @@ import javax.swing.table.DefaultTableCellRenderer;
         
         return action;
     }
+    
     
 }
