@@ -8,22 +8,37 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
-enum Beverage{
-juice,
-coke,
-}
-enum FoodPreference{
-vegetarian,
-nonvegetarian,
-vegan
-}
+
 /**
  *
  * @author vrind
  */
 @Entity
 public class MealPreference {
+    
+    public enum Beverage{
+    juice,
+    coke,
+    }
+    
+    
+    public enum FoodPreference{
+    vegetarian,
+    nonvegetarian,
+    vegan
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer preferenceId;
@@ -31,6 +46,11 @@ public class MealPreference {
     private FoodPreference foodPreference;
     private Beverage beveragePreferance;
     private String medicalConditions;
+    
+     @OneToOne
+    @JoinColumn(name = "studentId")
+    private Student student;
+    
 
     //Constructors
     public MealPreference() {
@@ -67,6 +87,14 @@ public class MealPreference {
 
     public FoodPreference getFoodPreference() {
         return foodPreference;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     
