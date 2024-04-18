@@ -4,6 +4,7 @@
  */
 package com.Northeastern.SummerCampManagement.Service;
 
+import com.Northeastern.SummerCampManagement.Dao.MealPreferenceRepository;
 import com.Northeastern.SummerCampManagement.Dao.ParentRepository;
 import com.Northeastern.SummerCampManagement.Entity.Student;
 import com.Northeastern.SummerCampManagement.Entity.MealPreference;
@@ -17,6 +18,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +38,9 @@ public class StudentService {
     @Autowired
     ParentRepository parentRepository;
     
+    @Autowired
+    MealPreferenceRepository mealPreferenceRepository;
+    
     // Create Student
     public Student addStudentByParentId(Student newStudent, Integer parentId) throws CustomException  {
         
@@ -44,6 +49,18 @@ public class StudentService {
 			throw new CustomException("Parent not found for id:" + parentId);
                 
                 newStudent.setCamper(Boolean.FALSE);
+                
+                //Adding attendance and Grades
+                Random random = new Random();
+
+                // Generate a random number between 1 and 100 (inclusive)
+                int randomNumber = random.nextInt(100) + 1;
+                
+                newStudent.setAttendance(String.valueOf(random));
+                newStudent.setGrade(String.valueOf(random));
+
+                //////////////////
+                
                 newStudent.setParent(parent.get());
                 this.studentRepository.save(newStudent);
                 
@@ -128,6 +145,27 @@ public class StudentService {
      
      return selectedCamper;
      }
+        
+        //Get all Campers
+         public  List<Student> getAllCampers() throws CustomException{
+         
+        List<Student> students = new ArrayList<Student>();
+         students = this.studentRepository.findAll();
+         
+         
+         List<Student> campers = new ArrayList<Student>();
+
+        for (Student camperi: students){
+                    if( camperi.getCamper().equals(true)){
+                        
+                       campers.add(camperi);
+                    }
+                  }
+     
+     return campers;
+     }
+        
+        ///
          
          
       public Student  loginByStudentId(String userName,String password) throws CustomException{
@@ -200,7 +238,9 @@ public class StudentService {
                     student.setCamper(true);
                     student.setCampUsername(Username);
                     student.setCampPassword(Password);
-                    student.setMealPreference(mealpreference);
+                    mealpreference.setStudent(student);
+                    this.mealPreferenceRepository.save(mealpreference);
+                  
                     
 		return this.studentRepository.save(student);
 	}

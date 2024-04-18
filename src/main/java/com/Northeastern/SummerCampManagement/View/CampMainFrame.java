@@ -4,12 +4,47 @@
  */
 package com.Northeastern.SummerCampManagement.View;
 
+import com.Northeastern.SummerCampManagement.Entity.Activity;
+import com.Northeastern.SummerCampManagement.Entity.AppUser;
+import com.Northeastern.SummerCampManagement.Entity.CampAdmin;
+import com.Northeastern.SummerCampManagement.Entity.CampStaff;
+import com.Northeastern.SummerCampManagement.Entity.Parent;
+import com.Northeastern.SummerCampManagement.Entity.Student;
+
+import com.Northeastern.SummerCampManagement.Service.ActivityService;
+import com.Northeastern.SummerCampManagement.Service.CampAdminService;
+import com.Northeastern.SummerCampManagement.Service.CampStaffService;
+import com.Northeastern.SummerCampManagement.Service.CustomException;
+import com.Northeastern.SummerCampManagement.Service.ParentService;
+import com.Northeastern.SummerCampManagement.Service.SchoolAdminService;
+import com.Northeastern.SummerCampManagement.Service.StudentService;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jalan
  */
 public class CampMainFrame extends javax.swing.JFrame {
 
+    //********Autowiring********//
+    CampAdminService adminService ;
+    StudentService camperService;
+    CampStaffService staffService;
+    ActivityService activityService;
+    
+   //****--end---********//
+    
+    CampAdmin admin;
+    CampStaff staff;
+    Student camper;
+    
+     public ArrayList<Student> camperList = new ArrayList<Student>();
+     public ArrayList<Activity> activityList = new ArrayList<Activity>();
+     public ArrayList<CampStaff> staffList = new ArrayList<CampStaff>();
+    
     /**
      * Creates new form MainFrame
      */
@@ -19,6 +54,22 @@ public class CampMainFrame extends javax.swing.JFrame {
         topPanel.setVisible(false);
         bottomPanel.setVisible(false);
         loginPanel.setVisible(true);
+        
+          //********Autowiring********//
+       adminService = (CampAdminService) BeanUtil.getBean("campAdminService");
+         camperService = (StudentService) BeanUtil.getBean("studentService");
+        staffService = (CampStaffService) BeanUtil.getBean("campStaffService");
+        activityService = (ActivityService) BeanUtil.getBean("activityService");
+      //****--end---********//
+        
+        //Initialize
+        admin = new CampAdmin();
+        staff = new CampStaff();
+        camper = new Student();
+        
+        
+        
+        
     }
 
     /**
@@ -55,7 +106,7 @@ public class CampMainFrame extends javax.swing.JFrame {
         staffTextLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         dashboardStaffLabel1 = new javax.swing.JLabel();
-        staffTextLabel1 = new javax.swing.JLabel();
+        activityListTextLabel = new javax.swing.JLabel();
         registrationReportPanel = new javax.swing.JPanel();
         RegistrationReportTextLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -300,7 +351,7 @@ public class CampMainFrame extends javax.swing.JFrame {
 
         dashboardStaffLabel1.setText("No. Of Activities");
 
-        staffTextLabel1.setText("jLabel1");
+        activityListTextLabel.setText("jLabel1");
 
         javax.swing.GroupLayout adminDashboardLayout = new javax.swing.GroupLayout(adminDashboard);
         adminDashboard.setLayout(adminDashboardLayout);
@@ -321,7 +372,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                                 .addGap(65, 65, 65)
                                 .addComponent(dashboardStaffLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(staffTextLabel1))))
+                                .addComponent(activityListTextLabel))))
                     .addGroup(adminDashboardLayout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(staffTextLabel)))
@@ -337,7 +388,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                             .addComponent(dashboardCampLabel)
                             .addComponent(studentTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dashboardStaffLabel1)
-                            .addComponent(staffTextLabel1)))
+                            .addComponent(activityListTextLabel)))
                     .addGroup(adminDashboardLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(jLabel2)))
@@ -1464,8 +1515,42 @@ public class CampMainFrame extends javax.swing.JFrame {
 
     private void loginCampButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginCampButtonActionPerformed
         // TODO add your handling code here:
+         // Create new admin
+//       CampAdmin newAdmin = new CampAdmin();
+//        newAdmin.setUsername("yashj");
+//        newAdmin.setPassword("admin@123");
+//       newAdmin.setRole(AppUser.Role.CampAdmin);
+//       try {          
+//           adminService.addCampAdmin(newAdmin);
+//      } catch (CustomException ex) {
+//           Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+//       }
+//        
+        /// Admin Created //
+        
+        
+        
         if(roleCampDropBox.getSelectedItem().toString()==("admin")){
             
+            
+            
+           try {
+               admin = adminService.loginByCampAdminId(usernameCampTextField.getText(), passwordCampTextField.getText());
+           } catch (CustomException ex) {
+               Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           
+           
+         if(admin.getUserId() == null){
+                System.out.println(admin.getUserId());
+               
+                JOptionPane.showMessageDialog(this, "Incorrect Username or Password", "Failed", JOptionPane.INFORMATION_MESSAGE);
+
+         }
+         
+         
+         else{   //Logging In
+           
         campSplitPane.setVisible(true);
         topPanel.setVisible(true);
         bottomPanel.setVisible(true);
@@ -1485,6 +1570,41 @@ public class CampMainFrame extends javax.swing.JFrame {
         rightPanel.repaint();
         rightPanel.revalidate();
         topPanelHeaderLabel.setText("ADMIN LOGIN");
+        //Views Ended
+         // Dashboard
+               try {
+                  
+                   camperList = (ArrayList<Student>) camperService.getAllCampers();
+               } catch (CustomException ex) {
+                   Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+               }
+        studentTextLabel.setText(String.valueOf(camperList.size()));
+        
+               try {
+                   activityList = (ArrayList<Activity>) activityService.getAllActivities();
+               } catch (CustomException ex) {
+                   Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+               }
+        
+            activityListTextLabel.setText(String.valueOf(activityList.size()));
+            
+            
+               try {
+                   staffList = (ArrayList<CampStaff>) staffService.getAllCampStaff();
+                
+               } catch (CustomException ex) {
+                   Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+               }
+               
+               staffTextLabel.setText(String.valueOf(staffList.size()));
+               
+               
+                   
+                   // Dashboard ends
+        
+        
+         } // Else for logged in ended
+        
         }
         else if(roleCampDropBox.getSelectedItem().toString()== "staff"){
             
@@ -1637,6 +1757,7 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea activityDescriptionTextarea;
     private javax.swing.JLabel activityEndTimeLabel;
     private javax.swing.JTextField activityEndTimeText;
+    private javax.swing.JLabel activityListTextLabel;
     private javax.swing.JLabel activityLocationLabel;
     private javax.swing.JLabel activityNameTextLabel;
     private javax.swing.JTextField activityNameTextfield1;
@@ -1758,7 +1879,6 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton staffSchedulesButton;
     private javax.swing.JSplitPane staffSplitPane;
     private javax.swing.JLabel staffTextLabel;
-    private javax.swing.JLabel staffTextLabel1;
     private javax.swing.JLabel studentTextLabel;
     private javax.swing.JPanel topPanel;
     private javax.swing.JLabel topPanelHeaderLabel;

@@ -372,7 +372,7 @@
                                                       </Group>
                                                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="firstNametextField" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
+                                                          <Component id="firstNameTextField" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                                                           <Component id="contactNumberTextField" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
@@ -425,7 +425,7 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="firstNameTextLabel" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                                          <Component id="firstNametextField" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                          <Component id="firstNameTextField" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                                           <Component id="lastNameTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="lastNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -477,9 +477,9 @@
                                 <Property name="text" type="java.lang.String" value="First Name"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="firstNametextField">
+                            <Component class="javax.swing.JTextField" name="firstNameTextField">
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="firstNametextFieldActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="firstNameTextFieldActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="lastNameTextLabel">
@@ -2114,13 +2114,11 @@
                                                   <Component id="firstNameProfileLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="emailStudentProfileLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="addressStudentProfileLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="UserNameStudentTextLabel" min="-2" max="-2" attributes="0"/>
                                                   <Component id="AddressStudentTextLabel" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="lastNameStudentTextLabel" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="emailStudentTextLabel" min="-2" max="-2" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
@@ -2131,7 +2129,7 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="contactNumberStudentProfileLabel" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <EmptySpace pref="22" max="32767" attributes="0"/>
                                                       <Component id="ContactNumberStudentText" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" attributes="0">
@@ -2172,7 +2170,7 @@
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="emailStudentProfileLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="contactNumberStudentProfileLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lastNameStudentTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="emailStudentTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="ContactNumberStudentText" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
@@ -2182,12 +2180,7 @@
                                           <Component id="AddressStudentTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="AgeStudentText" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="UserNameStudentTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="369" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -2231,14 +2224,9 @@
                                 <Property name="text" type="java.lang.String" value="Age"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel5">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="UserName"/>
-                              </Properties>
-                            </Component>
                             <Component class="javax.swing.JLabel" name="jLabel6">
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lastNameStudentTextLabel">
+                            <Component class="javax.swing.JLabel" name="emailStudentTextLabel">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="jLabel7"/>
                               </Properties>
@@ -2249,11 +2237,6 @@
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="AddressStudentTextLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="jLabel7"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="UserNameStudentTextLabel">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="jLabel7"/>
                               </Properties>
@@ -2377,8 +2360,8 @@
                                                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                                       <Component id="campRegistrationPassword" min="-2" max="-2" attributes="0"/>
                                                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                                          <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="beveragePreference" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="foodPreferences" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                                   <Component id="jScrollPane5" min="-2" pref="176" max="-2" attributes="0"/>
@@ -2404,18 +2387,18 @@
                                                           <Component id="campRegistrationMedCondition" alignment="1" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                                      <Component id="studentMealPrefTextField3" min="-2" pref="71" max="-2" attributes="0"/>
+                                                      <Component id="studentCampUsername" min="-2" pref="71" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="studentMealPrefTextField2" min="-2" pref="71" max="-2" attributes="0"/>
+                                      <Component id="studentCampPassword" min="-2" pref="71" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
-                                      <Component id="viewCampReportButton1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="addCampRegistrationButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
@@ -2432,21 +2415,21 @@
                                       <Component id="campReportLabel1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="studentMealPrefTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="studentCampUsername" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="campRegistrationUserName" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="campRegistrationPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="studentMealPrefTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="studentCampPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                       <Component id="studentMealPrefLabel1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="beveragePreference" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="campRegistrationBeverageLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="foodPreferences" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="campRegistrationFoodLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -2465,7 +2448,7 @@
                                           <Component id="jScrollPane5" min="-2" pref="54" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                                      <Component id="viewCampReportButton1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="addCampRegistrationButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -2488,12 +2471,12 @@
                                 <Property name="text" type="java.lang.String" value="Meal Preference"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JButton" name="viewCampReportButton1">
+                            <Component class="javax.swing.JButton" name="addCampRegistrationButton">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="SUBMIT"/>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewCampReportButton1ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addCampRegistrationButtonActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="campRegistrationUserName">
@@ -2506,23 +2489,22 @@
                                 <Property name="text" type="java.lang.String" value="Password"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="studentMealPrefTextField2">
+                            <Component class="javax.swing.JTextField" name="studentCampPassword">
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="studentMealPrefTextField2ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="studentCampPasswordActionPerformed"/>
                               </Events>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="studentMealPrefTextField3">
+                            <Component class="javax.swing.JTextField" name="studentCampUsername">
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="studentMealPrefTextField3ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="studentCampUsernameActionPerformed"/>
                               </Events>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox1">
+                            <Component class="javax.swing.JComboBox" name="beveragePreference">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="3">
+                                  <StringArray count="2">
                                     <StringItem index="0" value="Juice"/>
                                     <StringItem index="1" value="Coke"/>
-                                    <StringItem index="2" value=" "/>
                                   </StringArray>
                                 </Property>
                               </Properties>
@@ -2545,7 +2527,7 @@
                                 <Property name="text" type="java.lang.String" value="Allergies"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="jComboBox2">
+                            <Component class="javax.swing.JComboBox" name="foodPreferences">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="3">
@@ -2555,6 +2537,9 @@
                                   </StringArray>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="foodPreferencesActionPerformed"/>
+                              </Events>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
@@ -2571,7 +2556,7 @@
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JTextArea" name="jTextArea1">
+                                <Component class="javax.swing.JTextArea" name="allergies">
                                   <Properties>
                                     <Property name="columns" type="int" value="20"/>
                                     <Property name="rows" type="int" value="5"/>
@@ -2586,7 +2571,7 @@
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JTextArea" name="jTextArea2">
+                                <Component class="javax.swing.JTextArea" name="medicalConditions">
                                   <Properties>
                                     <Property name="columns" type="int" value="20"/>
                                     <Property name="rows" type="int" value="5"/>
