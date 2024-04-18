@@ -19,8 +19,10 @@ public class SummerCampManagementApplication {
                 .web(WebApplicationType.NONE)
                 .run(args);
                 
-              // startSchoolApplication();
-               startCampApplication();
+                
+                
+               startSchoolApplication();
+             // startCampApplication();
                 
         
     }

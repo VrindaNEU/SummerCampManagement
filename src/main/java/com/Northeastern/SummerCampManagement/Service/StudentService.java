@@ -74,8 +74,8 @@ public class StudentService {
                 Student addedStudent = this.studentRepository.save(newStudent);
                 
                
-                List<Student> students = new ArrayList();
-                
+                List<Student> students = new ArrayList(); 
+                students = parent.get().getStudent();
                 students.add(addedStudent);
 //                
                parent.get().setStudent(students);
