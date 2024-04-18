@@ -11,6 +11,7 @@ import java.util.Optional;
 import com.Northeastern.SummerCampManagement.Dao.MealPreferenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.Northeastern.SummerCampManagement.Dao.StudentRepository;
+import java.util.Collection;
 import org.springframework.stereotype.Service;
 
 /**
@@ -38,6 +39,20 @@ StudentRepository studentRepository;
     return mealpreference;
 
     }
+    
+     //ViewAll 
+     
+     public Collection<MealPreference> getAllMealPreferences() throws CustomException {
+		
+		     
+                      Optional<Collection> mealPreferences = Optional.of(this.mealPreferenceRepository.findAll());
+                      
+                      
+		if (mealPreferences.isEmpty())
+			throw new CustomException("No MealPreference Found");
+		
+		return mealPreferences.get();
+	}
 
    
     // Update Meal Preference by Student Id

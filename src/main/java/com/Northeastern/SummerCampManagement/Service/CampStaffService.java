@@ -61,9 +61,10 @@ public class CampStaffService {
         campStaffLogin = (List<CampStaff>)getAllCampStaff();
 
         for (CampStaff campStaffi: campStaffLogin){
-                    if(campStaffi.getUsername()==userName && campStaffi.getPassword()== password){
+                    if(campStaffi.getUsername().equals(userName) && campStaffi.getPassword().equals(password)){
                         
                        selectedCampStaff=  campStaffi;
+                       break;
                     }
                   }
      

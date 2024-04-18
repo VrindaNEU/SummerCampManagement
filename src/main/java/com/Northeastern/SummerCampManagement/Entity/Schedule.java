@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -24,12 +25,14 @@ public class Schedule {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Integer scheduleId;
-    private LocalDate date;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private String date;
+    private String startTime;
+    private String endTime;
     private String location;
     
-    
+    @OneToOne
+    @JoinColumn(name = "activityId")
+    private Activity activity;
     
     
 
@@ -37,7 +40,7 @@ public class Schedule {
     public Schedule() {
     }
 
-    public Schedule( LocalDate date, LocalDateTime startTime, LocalDateTime endTime, String location, List<Activity> activities) {
+    public Schedule( String date, String startTime, String endTime, String location, List<Activity> activities) {
         
         this.date = date;
         this.startTime = startTime;
@@ -48,32 +51,42 @@ public class Schedule {
     
     //Getters and Setters
 
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
+
+    
+    
     public Integer getScheduleId() {
         return scheduleId;
     }
 
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public LocalDateTime getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
