@@ -92,14 +92,17 @@ public class ScheduleService {
 		if (!student.isPresent())
 	    throw new CustomException("Student not found for id:" + camperId);
                 
-                List<Activity> activities = new ArrayList<Activity>();
-                activities = (List<Activity>) student.get().getActivities();
+                Set<Activity> activities = new HashSet<Activity>();
+                activities =  student.get().getActivities();
                 
                 List<Schedule> schedules = new ArrayList<Schedule>();
                 
                 for(Activity activityi : activities){
                 schedules.add(activityi.getSchedule());
+                    
                 }
+                System.out.println(schedules.get(0).getDate());
+                
                 
                 return schedules;
      

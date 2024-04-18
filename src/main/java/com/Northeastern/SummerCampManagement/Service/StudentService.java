@@ -4,6 +4,7 @@
  */
 package com.Northeastern.SummerCampManagement.Service;
 
+import com.Northeastern.SummerCampManagement.Dao.ActivityRepository;
 import com.Northeastern.SummerCampManagement.Dao.MealPreferenceRepository;
 import com.Northeastern.SummerCampManagement.Dao.ParentRepository;
 import com.Northeastern.SummerCampManagement.Entity.Student;
@@ -42,6 +43,9 @@ public class StudentService {
     @Autowired
     MealPreferenceRepository mealPreferenceRepository;
     
+     @Autowired
+     ActivityRepository activityRepository;
+    
     // Create Student
     public Student addStudentByParentId(Student newStudent, Integer parentId) throws CustomException  {
         
@@ -53,14 +57,16 @@ public class StudentService {
                 
                 //Adding attendance and Grades
                 Random random = new Random();
+                Random random2 = new Random();
 
                 // Generate a random number between 1 and 100 (inclusive)
                 int randomNumber = random.nextInt(100) + 1;
                 
                 newStudent.setAttendance(String.valueOf(randomNumber));
-                int randomNumber2 = random.nextInt(100) + 1;
                 
-                newStudent.setGrade(String.valueOf(String.valueOf(randomNumber)));
+                int randomNumber2 = random2.nextInt(100) + 1;
+                
+                newStudent.setGrade(String.valueOf(String.valueOf(randomNumber2)));
 
                 //////////////////
                 
@@ -286,10 +292,18 @@ public class StudentService {
                     Student student = studentOpt.get();
                     
                    Set<Activity> activities = new HashSet<>();
+                   activities = student.getActivities();
                    activities.add(activity);
                     student.setActivities(activities);
                     
-                    studentRepository.save(student);
+                   student = studentRepository.save(student);
+                    
+                     Set<Student> students = new HashSet<>();
+                     students = activity.getStudents();
+                   students.add(student);
+                    activity.setStudents(students);
+                    
+                    activityRepository.save(activity);
      
     
      return "Registered for Activity";
