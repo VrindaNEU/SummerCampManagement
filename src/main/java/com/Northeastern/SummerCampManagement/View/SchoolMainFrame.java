@@ -120,7 +120,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         staffTextLabel = new javax.swing.JLabel();
         campusTextLabel = new javax.swing.JLabel();
         parentsTextLabel = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        adminPanelDashboardRptButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         studentCrudPanel = new javax.swing.JPanel();
         studentCrudTextLabel = new javax.swing.JLabel();
@@ -383,7 +383,12 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         parentsTextLabel.setText("jLabel1");
 
-        jButton3.setText("DOWNLOAD REPORT");
+        adminPanelDashboardRptButton.setText("DOWNLOAD REPORT");
+        adminPanelDashboardRptButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminPanelDashboardRptButtonActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("DASHBOARD");
@@ -405,7 +410,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addGroup(adminDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(studentTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3)
+                            .addComponent(adminPanelDashboardRptButton)
                             .addComponent(jLabel2))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(adminDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,7 +447,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                     .addComponent(staffTextLabel)
                     .addComponent(campusTextLabel))
                 .addGap(79, 79, 79)
-                .addComponent(jButton3)
+                .addComponent(adminPanelDashboardRptButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1975,12 +1980,14 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                 Student student = new Student();
                 try {
                     student = studentService.getStudentById(Integer.valueOf(studentModel.getValueAt(row, 0).toString()));
-                    
+                    student.setContactNumber(contactNo);
+                    student.setEmail(email);
+                    student.setAddress(address);
                 } catch (CustomException ex) {
                     Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 try {
-                    studentService.updateStudentById(row,student );
+                    studentService.updateStudentById(Integer.valueOf(studentModel.getValueAt(row, 0).toString()),student );
                 } catch (CustomException ex) {
                     Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2659,11 +2666,15 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                 Student student = new Student();
                 try {
                     student = studentService.getStudentById(Integer.valueOf(studentModel.getValueAt(row, 0).toString()));
+                    student.setContactNumber(contactNo);
+                    student.setEmail(email);
+                    student.setAddress(address);
+                            
                 } catch (CustomException ex) {
                     Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 try {
-                    studentService.updateStudentById(row,student );
+                    studentService.updateStudentById(Integer.valueOf(studentModel.getValueAt(row, 0).toString()),student );
                 } catch (CustomException ex) {
                     Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2835,6 +2846,12 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_foodPreferencesActionPerformed
 
+    private void adminPanelDashboardRptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminPanelDashboardRptButtonActionPerformed
+        // TODO add your handling code here:
+        //downloadReport(parentDashboardStudentTable, "Student Information");
+        
+    }//GEN-LAST:event_adminPanelDashboardRptButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2897,6 +2914,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton adminButton;
     private javax.swing.JPanel adminDashboard;
     private javax.swing.JPanel adminPanel;
+    private javax.swing.JButton adminPanelDashboardRptButton;
     private javax.swing.JTextField ageTextField;
     private javax.swing.JTextField ageTextField1;
     private javax.swing.JLabel ageTextLabel;
@@ -2962,7 +2980,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField guardianTextField1;
     private javax.swing.JLabel guardianTextLabel;
     private javax.swing.JLabel guardianTextLabel1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
