@@ -21,8 +21,8 @@ public class SummerCampManagementApplication {
                 
                 
                 
-               startSchoolApplication();
-             // startCampApplication();
+              // startSchoolApplication();
+              startCampApplication();
                 
         
     }

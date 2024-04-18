@@ -146,7 +146,7 @@ public class ParentService {
     return "Parent Deleted Succesfully";
     }
 
-    
+    //Extra
     public Parent getParenttById(Integer userId) throws CustomException {
 		
 		      Optional <Parent> parent = this.parentRepository.findById(userId);
