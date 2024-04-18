@@ -1205,6 +1205,9 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="DOWNLOAD REPORT"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="parentDashboardDownloadButtonActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="parentDashboardLabel">
                               <Properties>
@@ -1393,6 +1396,9 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="SUBMIT"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createButton1ActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel1">
                               <Properties>
@@ -1565,11 +1571,17 @@
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="EDIT"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editParentButton1ActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="updateParentButton1">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="SAVE"/>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateParentButton1ActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="NoOfKidsEnrolledLabel">
                               <Properties>
