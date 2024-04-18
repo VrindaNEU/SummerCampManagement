@@ -5,6 +5,7 @@
 package com.Northeastern.SummerCampManagement.View;
 
 import com.Northeastern.SummerCampManagement.Entity.AppUser;
+import com.Northeastern.SummerCampManagement.Entity.Feedback;
 import com.Northeastern.SummerCampManagement.Entity.MealPreference;
 import com.Northeastern.SummerCampManagement.Entity.Parent;
 import com.Northeastern.SummerCampManagement.Entity.SchoolAdmin;
@@ -17,6 +18,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import static com.Northeastern.SummerCampManagement.Entity.MealPreference.FoodPreference;
+import com.Northeastern.SummerCampManagement.Service.FeedbackService;
 import com.Northeastern.SummerCampManagement.cellModifier.TableActionCellEditor;
 import com.Northeastern.SummerCampManagement.cellModifier.TableActionCellRender;
 import com.Northeastern.SummerCampManagement.cellModifier.TableActionEvent;
@@ -51,7 +53,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     ParentService parentService ;
     StudentService studentService;
     SchoolAdminService schoolAdminService;
-    
+    FeedbackService feedbackService;
    //****--end---********//
     public ArrayList<Parent> parentList = new ArrayList<Parent>();
     public ArrayList<Student> studentList = new ArrayList<Student>();
@@ -62,6 +64,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     SchoolAdmin schoolAdmin;
     Integer loggedInUserId;
     MealPreference mealPreference;
+    Feedback feedback;
     /**
      * Creates new form MainFrame
      */
@@ -77,6 +80,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         
          schoolAdminService = (SchoolAdminService) BeanUtil.getBean("schoolAdminService");
         studentService = (StudentService) BeanUtil.getBean("studentService");
+          feedbackService = (FeedbackService) BeanUtil.getBean("feedbackService");
       //****--end---********//
         
      parent = new Parent();
@@ -84,6 +88,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
      student = new Student();
       schoolAdmin = new SchoolAdmin();
       mealPreference = new MealPreference();
+      feedback = new Feedback();
      
      //to be moved later
      
@@ -187,17 +192,19 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         parentFeedbackPanel = new javax.swing.JPanel();
         studentCrudTextLabel1 = new javax.swing.JLabel();
         Q1Label = new javax.swing.JLabel();
-        firstNametextField1 = new javax.swing.JTextField();
         conactNumbertextLabel1 = new javax.swing.JLabel();
         usernameTextLabel1 = new javax.swing.JLabel();
-        ageTextField1 = new javax.swing.JTextField();
-        usernameTextField1 = new javax.swing.JTextField();
         guardianTextLabel1 = new javax.swing.JLabel();
-        guardianTextField1 = new javax.swing.JTextField();
         createButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        recommendationFeedbackTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        foodFeedbackCombo = new javax.swing.JComboBox<>();
+        staffFeedbackCombo = new javax.swing.JComboBox<>();
+        activityFeedbackCombo = new javax.swing.JComboBox<>();
+        overallFeedbackCombo = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        studentFeedbackId = new javax.swing.JTextField();
         parentProfilePanel = new javax.swing.JPanel();
         parentCrudtextLabel1 = new javax.swing.JLabel();
         firstNameProfileTextLabel1 = new javax.swing.JLabel();
@@ -953,27 +960,15 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         parentFeedbackPanel.setPreferredSize(new java.awt.Dimension(599, 595));
 
         studentCrudTextLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        studentCrudTextLabel1.setText("FEEDBACK");
+        studentCrudTextLabel1.setText("CAMP FEEDBACK");
 
         Q1Label.setText("1. Food Feedback: How would you rate the quality and variety of the meals provided at the camp?");
-
-        firstNametextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                firstNametextField1ActionPerformed(evt);
-            }
-        });
 
         conactNumbertextLabel1.setText("2. Staff Feedback: Were the camp counselors and staff helpful, friendly, and attentive to your child's needs?");
 
         usernameTextLabel1.setText("3. Activity Feedback: Did your child enjoy the activities offered at the camp?");
 
         guardianTextLabel1.setText("4. How satisfied were you with the overall management and organization of the camp?");
-
-        guardianTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guardianTextField1ActionPerformed(evt);
-            }
-        });
 
         createButton1.setText("SUBMIT");
         createButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -984,45 +979,72 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         jLabel1.setText("5. Please provide any recommendations or suggestions for improving the camp experience.");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        recommendationFeedbackTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                recommendationFeedbackTextFieldActionPerformed(evt);
             }
         });
 
         jLabel3.setText(" (Please rate on a scale of 1 to 5, with 1 being poor and 5 being excellent)");
+
+        foodFeedbackCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        staffFeedbackCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        activityFeedbackCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        overallFeedbackCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        jLabel5.setText("Student Id");
 
         javax.swing.GroupLayout parentFeedbackPanelLayout = new javax.swing.GroupLayout(parentFeedbackPanel);
         parentFeedbackPanel.setLayout(parentFeedbackPanelLayout);
         parentFeedbackPanelLayout.setHorizontalGroup(
             parentFeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
-                .addGroup(parentFeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(guardianTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ageTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(firstNametextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(parentFeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(usernameTextLabel1))
-                        .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(conactNumbertextLabel1))
-                        .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
-                            .addGap(212, 212, 212)
-                            .addComponent(createButton1))
-                        .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
-                            .addGap(180, 180, 180)
-                            .addComponent(studentCrudTextLabel1))
-                        .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(parentFeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(guardianTextLabel1)
-                                .addComponent(Q1Label)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel3)))))
+                .addGroup(parentFeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(parentFeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(recommendationFeedbackTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(parentFeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(usernameTextLabel1))
+                            .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(conactNumbertextLabel1))
+                            .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
+                                .addGap(212, 212, 212)
+                                .addComponent(createButton1))
+                            .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
+                                .addGap(180, 180, 180)
+                                .addComponent(studentCrudTextLabel1))
+                            .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(parentFeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(guardianTextLabel1)
+                                    .addComponent(Q1Label)
+                                    .addComponent(jLabel1)))))
+                    .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(foodFeedbackCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(staffFeedbackCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(activityFeedbackCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(overallFeedbackCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(parentFeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(studentFeedbackId, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         parentFeedbackPanelLayout.setVerticalGroup(
@@ -1030,31 +1052,35 @@ public class SchoolMainFrame extends javax.swing.JFrame {
             .addGroup(parentFeedbackPanelLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(studentCrudTextLabel1)
-                .addGap(40, 40, 40)
+                .addGap(20, 20, 20)
+                .addGroup(parentFeedbackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(studentFeedbackId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
-                .addGap(23, 23, 23)
-                .addComponent(Q1Label, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(firstNametextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(conactNumbertextLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ageTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Q1Label, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(foodFeedbackCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(conactNumbertextLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(staffFeedbackCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(usernameTextLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usernameTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addComponent(activityFeedbackCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(guardianTextLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(guardianTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(15, 15, 15)
+                .addComponent(overallFeedbackCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addComponent(recommendationFeedbackTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(createButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         rightParentPanel.add(parentFeedbackPanel, "card3");
@@ -1899,7 +1925,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(schoolSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+            .addComponent(schoolSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 595, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -2017,14 +2043,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 //        studentInfoTable.getColumnModel().getColumn(7).setPreferredWidth(100);
     }//GEN-LAST:event_studentCrudButtonActionPerformed
 
-    private void firstNametextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNametextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_firstNametextField1ActionPerformed
-
-    private void guardianTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardianTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_guardianTextField1ActionPerformed
-
     private void schoolReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schoolReportButtonActionPerformed
         // TODO add your handling code here:
         rightParentPanel.removeAll();
@@ -2060,10 +2078,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         rightParentPanel.repaint();
         rightParentPanel.revalidate();
     }//GEN-LAST:event_parentDashboardButtonActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void studentDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentDashboardButtonActionPerformed
         // TODO add your handling code here:
@@ -2714,6 +2728,27 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
     private void createButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButton1ActionPerformed
         // TODO add your handling code here:
+        //Add Feedback to Student
+        feedback.setFoodFeedback(Integer.parseInt(foodFeedbackCombo.getSelectedItem().toString()));
+        feedback.setStaffFeedback(Integer.parseInt(staffFeedbackCombo.getSelectedItem().toString()));
+        feedback.setActivityFeedback(Integer.parseInt(activityFeedbackCombo.getSelectedItem().toString()));
+        feedback.setManagementFeedback(Integer.parseInt(overallFeedbackCombo.getSelectedItem().toString()));
+        feedback.setRecommendations(recommendationFeedbackTextField.getText());
+        
+        try {
+            feedbackService.addFeedbackByStudentId(Integer.parseInt(studentFeedbackId.getText()), feedback);
+            recommendationFeedbackTextField.setText(" ");
+            studentFeedbackId.setText(" ");
+            JOptionPane.showMessageDialog(this, "Feedback sent!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            
+        } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Enter Valid User Id", "Success", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
+      
+        
         
     }//GEN-LAST:event_createButton1ActionPerformed
 
@@ -2852,6 +2887,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_adminPanelDashboardRptButtonActionPerformed
 
+    private void recommendationFeedbackTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recommendationFeedbackTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recommendationFeedbackTextFieldActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2900,6 +2939,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel NoOfKidsEnrolledLabel;
     private javax.swing.JLabel Q1Label;
     private javax.swing.JTextField StudentActivityCountTextField;
+    private javax.swing.JComboBox<String> activityFeedbackCombo;
     private com.toedter.calendar.JDateChooser activityRegistrationDateChooser;
     private javax.swing.JLabel activityRegistrationDateLabel;
     private javax.swing.JButton addCampRegistrationButton;
@@ -2916,7 +2956,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel adminPanel;
     private javax.swing.JButton adminPanelDashboardRptButton;
     private javax.swing.JTextField ageTextField;
-    private javax.swing.JTextField ageTextField1;
     private javax.swing.JLabel ageTextLabel;
     private javax.swing.JTextArea allergies;
     private javax.swing.JComboBox<String> beveragePreference;
@@ -2974,16 +3013,16 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel firstNameProfileTextLabel1;
     private javax.swing.JTextField firstNameTextField;
     private javax.swing.JLabel firstNameTextLabel;
-    private javax.swing.JTextField firstNametextField1;
+    private javax.swing.JComboBox<String> foodFeedbackCombo;
     private javax.swing.JComboBox<String> foodPreferences;
     private javax.swing.JLabel gradeStudentText;
-    private javax.swing.JTextField guardianTextField1;
     private javax.swing.JLabel guardianTextLabel;
     private javax.swing.JLabel guardianTextLabel1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2997,7 +3036,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lastNameParentTextLabel;
     private javax.swing.JTextField lastNameParentTextfield;
     private javax.swing.JLabel lastNameProfileLabel;
@@ -3016,6 +3054,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton logoutButton;
     private javax.swing.JTextArea medicalConditions;
     private javax.swing.JLabel noOfKidsEnrolledTextLabel;
+    private javax.swing.JComboBox<String> overallFeedbackCombo;
     private javax.swing.JButton parentButton;
     private javax.swing.JButton parentCrudButton;
     private javax.swing.JPanel parentCrudPanel;
@@ -3039,6 +3078,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField passwordSchoolTextField;
     private javax.swing.JButton profileButton;
     private javax.swing.JTextField profileFirstNameTextfield;
+    private javax.swing.JTextField recommendationFeedbackTextField;
     private javax.swing.JPanel rightPanel;
     private javax.swing.JPanel rightParentPanel;
     private javax.swing.JPanel rightStudentPanel;
@@ -3051,6 +3091,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JTable schoolReportTable;
     private javax.swing.JSplitPane schoolSplitPane;
     private javax.swing.JComboBox<String> selectParentComboBox;
+    private javax.swing.JComboBox<String> staffFeedbackCombo;
     private javax.swing.JLabel staffTextLabel;
     private javax.swing.JButton studentButton;
     private javax.swing.JTextField studentCampPassword;
@@ -3067,6 +3108,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel studentDashboardLabel3;
     private javax.swing.JLabel studentDashboardLabel4;
     private javax.swing.JLabel studentDashboardLabel5;
+    private javax.swing.JTextField studentFeedbackId;
     private javax.swing.JLabel studentFirstNameTextLabel;
     private javax.swing.JTable studentInfoTable;
     private javax.swing.JLabel studentMealPrefLabel;
@@ -3087,7 +3129,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton updateParentButton1;
     private javax.swing.JLabel userNameLoginLabel;
     private javax.swing.JTextField usernameSchoolTextField;
-    private javax.swing.JTextField usernameTextField1;
     private javax.swing.JLabel usernameTextLabel1;
     private javax.swing.JButton viewCampReportButton;
     private javax.swing.JLabel welcomeSchoolLabel;
