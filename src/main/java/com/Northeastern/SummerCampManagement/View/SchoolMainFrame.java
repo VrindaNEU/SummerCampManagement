@@ -551,8 +551,8 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                                 .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(studentCrudPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         studentCrudPanelLayout.setVerticalGroup(
             studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1965,16 +1965,17 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         TableActionEvent event = new TableActionEvent() {
             @Override
             public void onSave(int row) {
-               String contactNo = studentModel.getValueAt(row, 2).toString();
+               String contactNo = studentModel.getValueAt(row, 3).toString();
                 studentList.get(row).setContactNumber(contactNo);
-                String email = studentModel.getValueAt(row, 3).toString();
+                String email = studentModel.getValueAt(row, 4).toString();
                 studentList.get(row).setEmail(email);
-                String address = studentModel.getValueAt(row, 5).toString();
-                studentList.get(row).setEmail(address);
+                String address = studentModel.getValueAt(row, 6).toString();
+                studentList.get(row).setAddress(address);
                 
                 Student student = new Student();
                 try {
-                    student = studentService.getStudentById(Integer.parseInt(studentModel.getValueAt(row, 2).toString()));
+                    student = studentService.getStudentById(Integer.valueOf(studentModel.getValueAt(row, 0).toString()));
+                    
                 } catch (CustomException ex) {
                     Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1991,18 +1992,19 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                  if(studentInfoTable.isEditing()){
                     studentInfoTable.getCellEditor().stopCellEditing();
                 }
-                studentModel.removeRow(row);
-                studentList.remove(row);
+
                 try {
-                    String deleteStudentById = studentService.deleteStudentById(Integer.valueOf(studentModel.getValueAt(row, 2).toString()));
+                    String deleteStudentById = studentService.deleteStudentById(Integer.valueOf(studentModel.getValueAt(row, 0).toString()));
                 } catch (CustomException ex) {
                     Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                                studentModel.removeRow(row);
+                studentList.remove(row);
             }
         };
         studentInfoTable.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
         studentInfoTable.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
-        studentInfoTable.getColumnModel().getColumn(7).setPreferredWidth(50);
+        //studentInfoTable.getColumnModel().getColumn(7).setPreferredWidth(50);
 //        studentInfoTable.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
 //       studentInfoTable.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor());
 //        studentInfoTable.getColumnModel().getColumn(7).setPreferredWidth(100);
@@ -2637,16 +2639,16 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         TableActionEvent event = new TableActionEvent() {
             @Override
             public void onSave(int row) {
-               String contactNo = studentModel.getValueAt(row, 2).toString();
+               String contactNo = studentModel.getValueAt(row, 3).toString();
                 studentList.get(row).setContactNumber(contactNo);
-                String email = studentModel.getValueAt(row, 3).toString();
+                String email = studentModel.getValueAt(row, 4).toString();
                 studentList.get(row).setEmail(email);
-                String address = studentModel.getValueAt(row, 5).toString();
-                studentList.get(row).setEmail(address);
+                String address = studentModel.getValueAt(row, 6).toString();
+                studentList.get(row).setAddress(address);
                 
                 Student student = new Student();
                 try {
-                    student = studentService.getStudentById(Integer.parseInt(studentModel.getValueAt(row, 2).toString()));
+                    student = studentService.getStudentById(Integer.valueOf(studentModel.getValueAt(row, 0).toString()));
                 } catch (CustomException ex) {
                     Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2663,18 +2665,19 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                  if(studentInfoTable.isEditing()){
                     studentInfoTable.getCellEditor().stopCellEditing();
                 }
-                studentModel.removeRow(row);
-                studentList.remove(row);
+                
                 try {
                     String deleteStudentById = studentService.deleteStudentById(Integer.valueOf(studentModel.getValueAt(row, 2).toString()));
                 } catch (CustomException ex) {
                     Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                studentModel.removeRow(row);
+                studentList.remove(row);
             }
         };
         studentInfoTable.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
         studentInfoTable.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
-        studentInfoTable.getColumnModel().getColumn(7).setPreferredWidth(50);
+        //studentInfoTable.getColumnModel().getColumn(7).setPreferredWidth(50);
        
 //        DocBotPanel.removeAll();
 //        DocBotPanel.add(viewPatientPanel);
