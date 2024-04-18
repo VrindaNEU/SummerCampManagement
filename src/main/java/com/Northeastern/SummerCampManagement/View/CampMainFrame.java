@@ -1194,13 +1194,13 @@ public class CampMainFrame extends javax.swing.JFrame {
 
         activityTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Activity Id", "Name", "Category", "Description", "Age Group", "Status"
+                "Activity Id", "Name", "Category", "Description", "Age Group"
             }
         ));
         jScrollPane7.setViewportView(activityTable);
@@ -1568,7 +1568,7 @@ public class CampMainFrame extends javax.swing.JFrame {
         
          DefaultTableModel activityModel = (DefaultTableModel)activityTable.getModel();
         activityModel.setRowCount(0);
-        Object rowData[] = new Object[6]; 
+        Object rowData[] = new Object[5]; 
         
         for(int j = 0; j < activityList.size(); j++)
         {
@@ -1577,7 +1577,6 @@ public class CampMainFrame extends javax.swing.JFrame {
         rowData[2] = activityList.get(j).getCategory();
         rowData[3] = activityList.get(j).getDescription();
         rowData[4] = activityList.get(j).getAgeGroup();
-       rowData[5] = activityList.get(j).getStatus();
         activityModel.addRow(rowData);
         
         }
@@ -1654,30 +1653,30 @@ public class CampMainFrame extends javax.swing.JFrame {
     private void loginCampButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginCampButtonActionPerformed
         // TODO add your handling code here:
          // Create new admin
-       CampAdmin newAdmin = new CampAdmin();
-        newAdmin.setUsername("yashj");
-        newAdmin.setPassword("admin@123");
-       newAdmin.setRole(AppUser.Role.CampAdmin);
-       try {          
-           adminService.addCampAdmin(newAdmin);
-      } catch (CustomException ex) {
-           Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
-       }
+//       CampAdmin newAdmin = new CampAdmin();
+//        newAdmin.setUsername("yashj");
+//        newAdmin.setPassword("admin@123");
+//       newAdmin.setRole(AppUser.Role.CampAdmin);
+//       try {          
+//           adminService.addCampAdmin(newAdmin);
+//      } catch (CustomException ex) {
+//           Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+//       }
         
         /// Admin Created //
         
         /// Create new staff //
         
-        CampStaff newStaff = new CampStaff();
-        newStaff.setUsername("Vrinda");
-        newStaff.setPassword("admin@123");
-       newStaff.setRole(AppUser.Role.CampStaff);
-       try {          
-           staffService.addCampStaff(newStaff);
-      } catch (CustomException ex) {
-           Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
-       }
-        
+//        CampStaff newStaff = new CampStaff();
+//        newStaff.setUsername("Vrinda");
+//        newStaff.setPassword("admin@123");
+//       newStaff.setRole(AppUser.Role.CampStaff);
+//       try {          
+//           staffService.addCampStaff(newStaff);
+//      } catch (CustomException ex) {
+//           Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+//       }
+//        
         
         ////////Staff Created//////
         
@@ -1846,6 +1845,7 @@ public class CampMainFrame extends javax.swing.JFrame {
          else{  // Camper Logged In 
             
         userLoggedInId = camper.getUserId();
+        System.out.println(camper.getUserId());
         
         campSplitPane.setVisible(true);
         topPanel.setVisible(true);
@@ -1996,13 +1996,15 @@ public class CampMainFrame extends javax.swing.JFrame {
         //Load Data in table
         
            try {
-            scheduleList = (ArrayList<Schedule>) scheduleService.getScheduleByCamperId(userLoggedInId);
+            scheduleList =  (ArrayList<Schedule>) scheduleService.getSchedulesForUserById(userLoggedInId);
+         System.out.println(scheduleList.get(0).getDate());
         } catch (CustomException ex) {
             Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         
-        
-         DefaultTableModel scheduleModel = (DefaultTableModel)viewMySchedulesTable.getModel();
+           
+        DefaultTableModel scheduleModel = (DefaultTableModel)viewMySchedulesTable.getModel();
         scheduleModel.setRowCount(0);
         Object rowData[] = new Object[5]; 
         
@@ -2014,9 +2016,9 @@ public class CampMainFrame extends javax.swing.JFrame {
         rowData[3] = scheduleList.get(j).getLocation();
         rowData[4] = scheduleList.get(j).getActivity().getActivityName();
        
-        scheduleModel.addRow(rowData);
+        scheduleModel.addRow(rowData);}
         
-        }
+        
         
     }//GEN-LAST:event_camperScheduleButtonActionPerformed
 
@@ -2053,10 +2055,10 @@ public class CampMainFrame extends javax.swing.JFrame {
             }
             
             //Disable from editing
-            allergiesDietTextField.setEditable(false);
-             medicalDietTextField.setEditable(false);
-             beverageDietComboBox.setEditable(false);
-             foodDietComboBox.setEditable(false);
+            allergiesDietTextField.setEnabled(false);
+             medicalDietTextField.setEnabled(false);
+             beverageDietComboBox.setEnabled(false);
+             foodDietComboBox.setEnabled(false);
         
     }//GEN-LAST:event_camperDietButtonActionPerformed
 
@@ -2156,14 +2158,24 @@ public class CampMainFrame extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "No row selected!", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
               int selectedId = (int) activityTable.getValueAt(selectedRow, 0);
-              
-              
+             
+          
             try {
-                camperService.registerActivity(userLoggedInId, activityService.getActivityById(selectedId));
+                activity = activityService.getActivityById(selectedId);
             } catch (CustomException ex) {
                 Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-                }   
+              
+              
+            try {
+                camperService.registerActivity(userLoggedInId, activity);
+                JOptionPane.showMessageDialog(this, "Registered Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } catch (CustomException ex) {
+                Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                } 
+             
+        
         
     }//GEN-LAST:event_registerActivityButtonActionPerformed
 
@@ -2172,10 +2184,10 @@ public class CampMainFrame extends javax.swing.JFrame {
         
         //Enable Editing
       
-            allergiesDietTextField.setEditable(true);
-             medicalDietTextField.setEditable(true);
-             beverageDietComboBox.setEditable(true);
-             foodDietComboBox.setEditable(true);
+            allergiesDietTextField.setEnabled(true);
+             medicalDietTextField.setEnabled(true);
+             beverageDietComboBox.setEnabled(true);
+             foodDietComboBox.setEnabled(true);
     }//GEN-LAST:event_editDietButtonActionPerformed
 
     private void saveDietButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveDietButtonActionPerformed
@@ -2202,10 +2214,10 @@ public class CampMainFrame extends javax.swing.JFrame {
         
         //Disable Editing
       
-            allergiesDietTextField.setEditable(false);
-             medicalDietTextField.setEditable(false);
-             beverageDietComboBox.setEditable(false);
-             foodDietComboBox.setEditable(false);
+            allergiesDietTextField.setEnabled(false);
+             medicalDietTextField.setEnabled(false);
+             beverageDietComboBox.setEnabled(false);
+             foodDietComboBox.setEnabled(false);
          
     }//GEN-LAST:event_saveDietButtonActionPerformed
 
