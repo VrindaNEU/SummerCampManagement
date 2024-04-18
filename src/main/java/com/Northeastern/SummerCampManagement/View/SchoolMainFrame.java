@@ -1937,7 +1937,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         selectParentComboBox.setModel(parentComboModel);
         selectParentComboBox.setSelectedIndex(0);
         
-          //load the parent info to jtable
+          //load the student info to jtable
         DefaultTableModel studentModel = (DefaultTableModel)studentInfoTable.getModel();
         studentModel.setRowCount(0);
         Object rowData[] = new Object[8]; 
@@ -2592,6 +2592,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
             validInput = false;
             JOptionPane.showMessageDialog(this, "Invalid Address. Please update and resubmit."  );
         }
+        else{
 
         student.setFirstName(firstNameTextField.getText());
         student.setLastName(lastNameTextField.getText());
@@ -2605,7 +2606,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         
      try {
          this.studentService.addStudentByParentId(student, parentId);
-         
+          } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     
          //clear the text fields
          firstNameTextField.setText("");
          lastNameTextField.setText("");
@@ -2615,25 +2619,31 @@ public class SchoolMainFrame extends javax.swing.JFrame {
          addressTextField.setText("");
          
         
-         //load the parent info to jtable
-        DefaultTableModel studentModel = (DefaultTableModel)studentInfoTable.getModel();
-        studentModel.setRowCount(0);
-        Object rowData[] = new Object[7]; 
         
-        studentList = (ArrayList)this.studentService.getAllStudents();
+         //load the parent info to jtable
+          DefaultTableModel studentModel = (DefaultTableModel)studentInfoTable.getModel();
+        studentModel.setRowCount(0);
+        Object rowData[] = new Object[8];  
+        
+        
+        try {
+            studentList = (ArrayList)this.studentService.getAllStudents();
+        } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         for(int j = 0; j < studentList.size(); j++)
         {
-     
-        rowData[0] = studentList.get(j).getFirstName();
-        rowData[1] = studentList.get(j).getLastName();
-        rowData[2] = studentList.get(j).getContactNumber();
-        rowData[3] = studentList.get(j).getEmail();
-        rowData[4] = studentList.get(j).getAge();
-        rowData[5] = studentList.get(j).getAddress();     
-        rowData[6] = new JButton("Action");
+        rowData[0] = studentList.get(j).getUserId();
+        rowData[1] = studentList.get(j).getFirstName();
+        rowData[2] = studentList.get(j).getLastName();
+        rowData[3] = studentList.get(j).getContactNumber();
+        rowData[4] = studentList.get(j).getEmail();
+        rowData[5] = studentList.get(j).getAge();
+        rowData[6] = studentList.get(j).getAddress();
+        rowData[7] = new JButton("Action");    
+       
         studentModel.addRow(rowData);
-        
         }
         
         TableActionEvent event = new TableActionEvent() {
@@ -2683,8 +2693,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 //        DocBotPanel.add(viewPatientPanel);
 //        DocBotPanel.repaint();
 //        DocBotPanel.revalidate();
-     } catch (CustomException ex) {
-         Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
      }
     }//GEN-LAST:event_createButtonActionPerformed
 
