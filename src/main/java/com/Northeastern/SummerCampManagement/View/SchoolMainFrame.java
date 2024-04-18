@@ -2420,8 +2420,8 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                 parentList.remove(row);
             }
         };
-        parentInfoTable.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
-        parentInfoTable.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
+        parentInfoTable.getColumnModel().getColumn(6).setCellRenderer(new TableActionCellRender());
+        parentInfoTable.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditor(event));
         //end of addition
         }   
                 
@@ -2521,8 +2521,8 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                 parentList.remove(row);
             }
         };
-        parentInfoTable.getColumnModel().getColumn(7).setCellRenderer(new TableActionCellRender());
-        parentInfoTable.getColumnModel().getColumn(7).setCellEditor(new TableActionCellEditor(event));
+        parentInfoTable.getColumnModel().getColumn(6).setCellRenderer(new TableActionCellRender());
+        parentInfoTable.getColumnModel().getColumn(6).setCellEditor(new TableActionCellEditor(event));
         //end of addition
     }//GEN-LAST:event_parentCrudButtonActionPerformed
 
