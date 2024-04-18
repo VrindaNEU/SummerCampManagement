@@ -1974,7 +1974,8 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                 
                 Student student = new Student();
                 try {
-                    student = studentService.getStudentById(Integer.parseInt(studentModel.getValueAt(row, 0).toString()));
+                    student = studentService.getStudentById(Integer.valueOf(studentModel.getValueAt(row, 0).toString()));
+                    
                 } catch (CustomException ex) {
                     Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2647,7 +2648,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                 
                 Student student = new Student();
                 try {
-                    student = studentService.getStudentById(Integer.parseInt(studentModel.getValueAt(row, 0).toString()));
+                    student = studentService.getStudentById(Integer.valueOf(studentModel.getValueAt(row, 0).toString()));
                 } catch (CustomException ex) {
                     Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
