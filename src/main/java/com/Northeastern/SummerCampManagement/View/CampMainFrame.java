@@ -8,6 +8,7 @@ import com.Northeastern.SummerCampManagement.Entity.Activity;
 import com.Northeastern.SummerCampManagement.Entity.AppUser;
 import com.Northeastern.SummerCampManagement.Entity.CampAdmin;
 import com.Northeastern.SummerCampManagement.Entity.CampStaff;
+import com.Northeastern.SummerCampManagement.Entity.Feedback;
 import com.Northeastern.SummerCampManagement.Entity.MealPreference;
 import com.Northeastern.SummerCampManagement.Entity.Parent;
 import com.Northeastern.SummerCampManagement.Entity.Schedule;
@@ -17,6 +18,7 @@ import com.Northeastern.SummerCampManagement.Service.ActivityService;
 import com.Northeastern.SummerCampManagement.Service.CampAdminService;
 import com.Northeastern.SummerCampManagement.Service.CampStaffService;
 import com.Northeastern.SummerCampManagement.Service.CustomException;
+import com.Northeastern.SummerCampManagement.Service.FeedbackService;
 import com.Northeastern.SummerCampManagement.Service.MealPreferenceService;
 import com.Northeastern.SummerCampManagement.Service.ParentService;
 import com.Northeastern.SummerCampManagement.Service.ScheduleService;
@@ -27,9 +29,17 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.apache.poi.ss.usermodel.Row;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot3D;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
+import org.jfree.util.Rotation;
 
 /**
  *
@@ -44,7 +54,7 @@ public class CampMainFrame extends javax.swing.JFrame {
     ActivityService activityService;
     ScheduleService scheduleService;
     MealPreferenceService mealPreferenceService;
-    
+     FeedbackService feedbackService;
    //****--end---********//
     
     CampAdmin admin;
@@ -80,6 +90,7 @@ public class CampMainFrame extends javax.swing.JFrame {
         activityService = (ActivityService) BeanUtil.getBean("activityService");
          scheduleService = (ScheduleService) BeanUtil.getBean("scheduleService");
          mealPreferenceService = (MealPreferenceService) BeanUtil.getBean("mealPreferenceService");
+         feedbackService = (FeedbackService) BeanUtil.getBean("feedbackService");
       //****--end---********//
         
         //Initialize
@@ -89,7 +100,7 @@ public class CampMainFrame extends javax.swing.JFrame {
         activity = new Activity();
         schedule = new Schedule();
         mealPreference = new MealPreference();
-        
+        feedbackService = new FeedbackService();
         
         
         
@@ -1548,8 +1559,58 @@ public class CampMainFrame extends javax.swing.JFrame {
         rightPanel.add(feedbackPanel);
         rightPanel.repaint();
         rightPanel.revalidate();
+        
+        ArrayList<Feedback> feedbackList = new ArrayList<>();
+        try {
+            feedbackList = (ArrayList<Feedback>) feedbackService.getAllFeedbacks();
+        } catch (CustomException ex) {
+            Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        PieDataset dataset = createDataset();
+        
+        JFreeChart chart = CreateChart(dataset, "CAMP FEEDBACK");
+        feedbackPanel  = new ChartPanel(chart);
+        feedbackPanel.setPreferredSize(new java.awt.Dimension(500,300));
+        //setContentPane(feedbackPanel);
+        getContentPane().add(feedbackPanel);
+        setVisible(true);
+       // CreateChart CC = new CreateChart("PiechartTest","OS Comparison");
+//        CC.pack();
+//        CC.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        CC.setVisible(true);
     }//GEN-LAST:event_campFeedbackButtonActionPerformed
 
+     private PieDataset createDataset(){
+        DefaultPieDataset  result = new DefaultPieDataset();
+        ArrayList<Feedback> feedbackList = new ArrayList<>();
+        
+        try {
+            feedbackList = (ArrayList<Feedback>) feedbackService.getAllFeedbacks();
+        } catch (CustomException ex) {
+            Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        for(Feedback feedback : feedbackList){
+            result.setValue("Activity", feedback.getActivityFeedback());
+            result.setValue("Food", feedback.getFoodFeedback());
+            result.setValue("Management", feedback.getManagementFeedback());
+            result.setValue("Saff", feedback.getStaffFeedback());
+            
+        }
+        return result;
+    }
+    
+    private JFreeChart CreateChart(PieDataset dataset, String title)
+    {
+        JFreeChart chart = ChartFactory.createPieChart3D(title, dataset,true,true,false);
+        PiePlot3D plot = (PiePlot3D) chart.getPlot();
+        plot.setStartAngle(0);
+        plot.setDirection(Rotation.CLOCKWISE);
+        plot.setForegroundAlpha(0.5f);
+        return chart;
+    }
+    
     private void camperActivityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camperActivityButtonActionPerformed
         // TODO add your handling code here:
          rightCamperPanel.removeAll();

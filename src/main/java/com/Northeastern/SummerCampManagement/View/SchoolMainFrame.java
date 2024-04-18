@@ -106,6 +106,15 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLocaleChooser1 = new com.toedter.components.JLocaleChooser();
+        loginPanel = new javax.swing.JPanel();
+        userNameLoginLabel = new javax.swing.JLabel();
+        passwordLoginPanel = new javax.swing.JLabel();
+        roleLoginLabel = new javax.swing.JLabel();
+        usernameSchoolTextField = new javax.swing.JTextField();
+        passwordSchoolTextField = new javax.swing.JTextField();
+        roleSchoolDropBox = new javax.swing.JComboBox<>();
+        welcomeSchoolLabel = new javax.swing.JLabel();
+        loginSchoolButton = new javax.swing.JButton();
         schoolSplitPane = new javax.swing.JSplitPane();
         topPanel = new javax.swing.JPanel();
         adminButton = new javax.swing.JButton();
@@ -293,17 +302,78 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         studentDashboardButton = new javax.swing.JButton();
         studentCampRegButton = new javax.swing.JButton();
         studentReportButton = new javax.swing.JButton();
-        loginPanel = new javax.swing.JPanel();
-        userNameLoginLabel = new javax.swing.JLabel();
-        passwordLoginPanel = new javax.swing.JLabel();
-        roleLoginLabel = new javax.swing.JLabel();
-        usernameSchoolTextField = new javax.swing.JTextField();
-        passwordSchoolTextField = new javax.swing.JTextField();
-        roleSchoolDropBox = new javax.swing.JComboBox<>();
-        welcomeSchoolLabel = new javax.swing.JLabel();
-        loginSchoolButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        userNameLoginLabel.setText("Username");
+
+        passwordLoginPanel.setText("Password");
+
+        roleLoginLabel.setText("Role");
+
+        roleSchoolDropBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "student", "parent", "admin" }));
+
+        welcomeSchoolLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        welcomeSchoolLabel.setText("WELCOME TO THE SCHOOL CAMP");
+
+        loginSchoolButton.setText("LOGIN");
+        loginSchoolButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginSchoolButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
+        loginPanel.setLayout(loginPanelLayout);
+        loginPanelLayout.setHorizontalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(loginPanelLayout.createSequentialGroup()
+                                    .addComponent(passwordLoginPanel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(passwordSchoolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(loginPanelLayout.createSequentialGroup()
+                                    .addComponent(userNameLoginLabel)
+                                    .addGap(97, 97, 97)
+                                    .addComponent(usernameSchoolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, loginPanelLayout.createSequentialGroup()
+                                .addComponent(roleLoginLabel)
+                                .addGap(127, 127, 127)
+                                .addComponent(roleSchoolDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(204, 204, 204)
+                        .addComponent(welcomeSchoolLabel))
+                    .addGroup(loginPanelLayout.createSequentialGroup()
+                        .addGap(293, 293, 293)
+                        .addComponent(loginSchoolButton)))
+                .addContainerGap(207, Short.MAX_VALUE))
+        );
+        loginPanelLayout.setVerticalGroup(
+            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginPanelLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(welcomeSchoolLabel)
+                .addGap(65, 65, 65)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userNameLoginLabel)
+                    .addComponent(usernameSchoolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordLoginPanel)
+                    .addComponent(passwordSchoolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(roleLoginLabel)
+                    .addComponent(roleSchoolDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(61, 61, 61)
+                .addComponent(loginSchoolButton)
+                .addContainerGap(197, Short.MAX_VALUE))
+        );
 
         schoolSplitPane.setDividerLocation(70);
         schoolSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
@@ -653,42 +723,44 @@ public class SchoolMainFrame extends javax.swing.JFrame {
             .addGroup(parentCrudPanelLayout.createSequentialGroup()
                 .addGroup(parentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(parentCrudPanelLayout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(parentCrudtextLabel))
-                    .addGroup(parentCrudPanelLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
                         .addGroup(parentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(parentCrudPanelLayout.createSequentialGroup()
-                                .addGroup(parentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(parentCrudPanelLayout.createSequentialGroup()
-                                        .addComponent(firstNameParentTextLabel)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(parentFirstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(parentCrudPanelLayout.createSequentialGroup()
-                                        .addComponent(emailParentTextLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(emailParentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(parentCrudPanelLayout.createSequentialGroup()
-                                        .addComponent(addressParentTextLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(addressParentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(174, 174, 174)
-                                .addGroup(parentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(parentCrudPanelLayout.createSequentialGroup()
-                                        .addComponent(contactNumberTextLabel)
-                                        .addGap(38, 38, 38)
-                                        .addComponent(contactNumberParentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(parentCrudPanelLayout.createSequentialGroup()
-                                        .addComponent(lastNameParentTextLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lastNameParentTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(225, 225, 225)
+                                .addComponent(parentCrudtextLabel))
                             .addGroup(parentCrudPanelLayout.createSequentialGroup()
-                                .addGap(220, 220, 220)
-                                .addComponent(createParentButton)))))
-                .addContainerGap(46, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, parentCrudPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2)
+                                .addGap(25, 25, 25)
+                                .addGroup(parentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(parentCrudPanelLayout.createSequentialGroup()
+                                        .addGroup(parentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(parentCrudPanelLayout.createSequentialGroup()
+                                                .addComponent(firstNameParentTextLabel)
+                                                .addGap(30, 30, 30)
+                                                .addComponent(parentFirstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(parentCrudPanelLayout.createSequentialGroup()
+                                                .addComponent(emailParentTextLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(emailParentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(parentCrudPanelLayout.createSequentialGroup()
+                                                .addComponent(addressParentTextLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(addressParentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(174, 174, 174)
+                                        .addGroup(parentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(parentCrudPanelLayout.createSequentialGroup()
+                                                .addComponent(contactNumberTextLabel)
+                                                .addGap(38, 38, 38)
+                                                .addComponent(contactNumberParentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(parentCrudPanelLayout.createSequentialGroup()
+                                                .addComponent(lastNameParentTextLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(lastNameParentTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(parentCrudPanelLayout.createSequentialGroup()
+                                        .addGap(220, 220, 220)
+                                        .addComponent(createParentButton)))))
+                        .addGap(0, 40, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, parentCrudPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2)))
                 .addContainerGap())
         );
         parentCrudPanelLayout.setVerticalGroup(
@@ -1827,76 +1899,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         schoolSplitPane.setRightComponent(bottomPanel);
 
-        userNameLoginLabel.setText("Username");
-
-        passwordLoginPanel.setText("Password");
-
-        roleLoginLabel.setText("Role");
-
-        roleSchoolDropBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "student", "parent", "admin" }));
-
-        welcomeSchoolLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        welcomeSchoolLabel.setText("WELCOME TO THE SCHOOL CAMP");
-
-        loginSchoolButton.setText("LOGIN");
-        loginSchoolButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginSchoolButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
-        loginPanel.setLayout(loginPanelLayout);
-        loginPanelLayout.setHorizontalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(loginPanelLayout.createSequentialGroup()
-                                    .addComponent(passwordLoginPanel)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(passwordSchoolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(loginPanelLayout.createSequentialGroup()
-                                    .addComponent(userNameLoginLabel)
-                                    .addGap(97, 97, 97)
-                                    .addComponent(usernameSchoolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, loginPanelLayout.createSequentialGroup()
-                                .addComponent(roleLoginLabel)
-                                .addGap(127, 127, 127)
-                                .addComponent(roleSchoolDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addComponent(welcomeSchoolLabel))
-                    .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addGap(293, 293, 293)
-                        .addComponent(loginSchoolButton)))
-                .addContainerGap(207, Short.MAX_VALUE))
-        );
-        loginPanelLayout.setVerticalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(welcomeSchoolLabel)
-                .addGap(65, 65, 65)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(userNameLoginLabel)
-                    .addComponent(usernameSchoolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordLoginPanel)
-                    .addComponent(passwordSchoolTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(roleLoginLabel)
-                    .addComponent(roleSchoolDropBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
-                .addComponent(loginSchoolButton)
-                .addContainerGap(166, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1904,18 +1906,18 @@ public class SchoolMainFrame extends javax.swing.JFrame {
             .addComponent(schoolSplitPane)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addContainerGap()
                     .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(schoolSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 595, Short.MAX_VALUE)
+            .addComponent(schoolSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addContainerGap()
                     .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(38, Short.MAX_VALUE)))
         );
 
         pack();
