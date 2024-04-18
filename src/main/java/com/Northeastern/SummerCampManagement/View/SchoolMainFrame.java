@@ -20,6 +20,8 @@ import static com.Northeastern.SummerCampManagement.Entity.MealPreference.FoodPr
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -2257,6 +2259,36 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
     private void createParentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createParentButtonActionPerformed
         // TODO add your handling code here:
+        boolean validInput = true;
+        if(!isValidName(parentFirstNameField.getText()))
+        {
+            validInput = false;
+            JOptionPane.showMessageDialog(this, "Please check the firstname input."  );
+        }
+        else if (!isValidName(lastNameParentTextfield.getText()))
+        {
+            validInput = false;
+            JOptionPane.showMessageDialog(this, "Please check the lastname input."  );
+            
+        }
+        else if (!isValidEmail(emailParentTextField.getText()))
+        {
+            validInput = false;
+            JOptionPane.showMessageDialog(this, "Please check the lastname input."  );
+        }
+        else if(!isValidPhoneNumber(contactNumberParentTextField.getText()))
+        {
+            validInput = false;
+            JOptionPane.showMessageDialog(this, "Please check the contact number input."  ); 
+        }
+        else if(!isValidAddress(addressParentTextField.getText()))   
+        {
+              validInput = false;
+            JOptionPane.showMessageDialog(this, "Please check the address input."  ); 
+        }
+        if(validInput){
+            
+       
       parent.setFirstName(parentFirstNameField.getText());
       parent.setLastName(lastNameParentTextfield.getText());
       parent.setEmail(emailParentTextField.getText());
@@ -2294,10 +2326,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
        
         parentModel.addRow(rowData);
         
+        }   
+        } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-     } catch (CustomException ex) {
-         Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
-     }
+      }
       
       
         
@@ -2488,9 +2521,39 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
     
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
-       
+       Boolean validInput = true;
        Integer parentId  = Integer.parseInt(selectParentComboBox.getSelectedItem().toString());
-        
+        if(!isValidName(firstNameTextField.getText()))
+        {
+            validInput = false;
+            JOptionPane.showMessageDialog(this, "Invalid First Name. Please update and resubmit."  );
+        }
+        else if(!isValidName(lastNameTextField.getText()))
+        {
+            validInput = false;
+            JOptionPane.showMessageDialog(this, "Invalid Last Name. Please update and resubmit."  );
+        }
+        else if(!isValidEmail(emailTextField.getText()))
+        {
+            validInput = false;
+            JOptionPane.showMessageDialog(this, "Invalid Email. Please update and resubmit."  );
+        }
+        else if(!isValidPhoneNumber(contactNumberTextField.getText()))
+        {
+            validInput = false;
+            JOptionPane.showMessageDialog(this, "Invalid Phone. Please update and resubmit."  );
+        }
+         else if(!isValidAge(ageTextField.getText()))
+        {
+            validInput = false;
+            JOptionPane.showMessageDialog(this, "Invalid Age. Please update and resubmit."  );
+        }
+        else if(!isValidAddress(addressTextField.getText()))
+        {
+            validInput = false;
+            JOptionPane.showMessageDialog(this, "Invalid Address. Please update and resubmit."  );
+        }
+
         student.setFirstName(firstNameTextField.getText());
         student.setLastName(lastNameTextField.getText());
         student.setEmail(emailTextField.getText());
@@ -2587,6 +2650,92 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_updateParentButton1ActionPerformed
 
+    public static boolean isValidName(String name) {
+        // is null or empty
+        if (name == null || name.trim().isEmpty()) {
+            return false;
+        }
+
+        // input length 
+        if (name.length() > 50) {
+            return false;
+        }
+
+        // input validation using regular expression
+        String regex = "^[a-zA-Z]+$"; 
+        Pattern ipPattern = Pattern.compile(regex);
+        Matcher ipMatcher = ipPattern.matcher(name);
+
+        return ipMatcher.matches();
+    }
+
+ public static boolean isValidAddress(String address) {
+        // is null or empty
+        if (address == null || address.trim().isEmpty()) {
+            return false;
+        }
+
+        
+        // input validation using regular expression
+        String regex = "^[a-zA-Z]+$"; 
+        Pattern ipPattern = Pattern.compile(regex);
+        Matcher ipMatcher = ipPattern.matcher(address);
+
+        return ipMatcher.matches();
+    }
+    
+    public static boolean isValidAge(String userAge)
+    {
+        try
+        {
+            int maxAge =15;
+            int age = Integer.parseInt(userAge);
+
+            if(age < 0 || age > maxAge)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        catch (NumberFormatException ex) 
+        {
+            return false;
+        }
+        
+    }
+    
+    public static boolean isValidPhoneNumber(String phoneNumber)
+    {
+        // Define the regex pattern for a 10-digit U.S. phone number
+        String regex = "^(\\d{10}|\\d{3}[-\\.\\s]?\\d{3}[-\\.\\s]?\\d{4}|\\(\\d{3}\\)[-\\.\\s]?\\d{3}[-\\.\\s]?\\d{4})$";
+
+        // Compile the pattern
+        Pattern ipPattern = Pattern.compile(regex);
+
+        // Match the input phone number against the pattern
+        Matcher ipMatcher = ipPattern.matcher(phoneNumber);
+
+        // Return true if the phone number matches the pattern, false otherwise
+        return ipMatcher.matches();
+    }
+    
+    public static boolean isValidEmail(String email) {
+        // Define the regex pattern for a basic email address validation
+        String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+
+        // Compile the pattern
+        Pattern ipPattern = Pattern.compile(regex);
+
+        // Match the input email against the pattern
+        Matcher ipMatcher = ipPattern.matcher(email);
+
+        // Return true if the email matches the pattern, false otherwise
+        return ipMatcher.matches();
+    }
+    
     private void foodPreferencesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foodPreferencesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_foodPreferencesActionPerformed
