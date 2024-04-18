@@ -2117,16 +2117,16 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         // Create new admin
-      // SchoolAdmin newAdmin = new SchoolAdmin();
-       // newAdmin.setUsername("yashj");
-       // newAdmin.setPassword("admin@123");
-      // newAdmin.setRole(AppUser.Role.SchoolAdmin);
-      // try {          
-         //  schoolAdminService.addSchoolAdmin(newAdmin);
-     // } catch (CustomException ex) {
-          // Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
-      // }
-        //
+       SchoolAdmin newAdmin = new SchoolAdmin();
+        newAdmin.setUsername("yashj");
+        newAdmin.setPassword("admin@123");
+       newAdmin.setRole(AppUser.Role.SchoolAdmin);
+       try {          
+           schoolAdminService.addSchoolAdmin(newAdmin);
+      } catch (CustomException ex) {
+           Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        
         /// Admin Created //
         
         if(roleSchoolDropBox.getSelectedItem().toString()== "admin"){
