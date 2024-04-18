@@ -5,6 +5,7 @@
 package com.Northeastern.SummerCampManagement.View;
 
 import com.Northeastern.SummerCampManagement.Entity.AppUser;
+import com.Northeastern.SummerCampManagement.Entity.MealPreference;
 import com.Northeastern.SummerCampManagement.Entity.Parent;
 import com.Northeastern.SummerCampManagement.Entity.SchoolAdmin;
 import com.Northeastern.SummerCampManagement.Entity.Student;
@@ -15,6 +16,7 @@ import com.Northeastern.SummerCampManagement.Service.StudentService;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import static com.Northeastern.SummerCampManagement.Entity.MealPreference.FoodPreference;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,6 +55,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     Student student;
     SchoolAdmin schoolAdmin;
     Integer loggedInUserId;
+    MealPreference mealPreference;
     /**
      * Creates new form MainFrame
      */
@@ -74,7 +77,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
      
      student = new Student();
       schoolAdmin = new SchoolAdmin();
-
+      mealPreference = new MealPreference();
      
      //to be moved later
      
@@ -116,7 +119,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         studentCrudPanel = new javax.swing.JPanel();
         studentCrudTextLabel = new javax.swing.JLabel();
         firstNameTextLabel = new javax.swing.JLabel();
-        firstNametextField = new javax.swing.JTextField();
+        firstNameTextField = new javax.swing.JTextField();
         lastNameTextLabel = new javax.swing.JLabel();
         lastNameTextField = new javax.swing.JTextField();
         conactNumbertextLabel = new javax.swing.JLabel();
@@ -247,12 +250,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         contactNumberStudentProfileLabel = new javax.swing.JLabel();
         addressStudentProfileLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        lastNameStudentTextLabel = new javax.swing.JLabel();
+        emailStudentTextLabel = new javax.swing.JLabel();
         studentFirstNameTextLabel = new javax.swing.JLabel();
         AddressStudentTextLabel = new javax.swing.JLabel();
-        UserNameStudentTextLabel = new javax.swing.JLabel();
         lastNameStudentText = new javax.swing.JLabel();
         ContactNumberStudentText = new javax.swing.JLabel();
         AgeStudentText = new javax.swing.JLabel();
@@ -265,21 +266,21 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         studentCampRegistrationPanel = new javax.swing.JPanel();
         campReportLabel1 = new javax.swing.JLabel();
         studentMealPrefLabel1 = new javax.swing.JLabel();
-        viewCampReportButton1 = new javax.swing.JButton();
+        addCampRegistrationButton = new javax.swing.JButton();
         campRegistrationUserName = new javax.swing.JLabel();
         campRegistrationPassword = new javax.swing.JLabel();
-        studentMealPrefTextField2 = new javax.swing.JTextField();
-        studentMealPrefTextField3 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        studentCampPassword = new javax.swing.JTextField();
+        studentCampUsername = new javax.swing.JTextField();
+        beveragePreference = new javax.swing.JComboBox<>();
         campRegistrationBeverageLabel = new javax.swing.JLabel();
         campRegistrationFoodLabel = new javax.swing.JLabel();
         campRegistrationAllergiesLabel = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        foodPreferences = new javax.swing.JComboBox<>();
         campRegistrationMedCondition = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        allergies = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        medicalConditions = new javax.swing.JTextArea();
         leftStudentPanel = new javax.swing.JPanel();
         studentProfileButton = new javax.swing.JButton();
         studentDashboardButton = new javax.swing.JButton();
@@ -451,9 +452,9 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         firstNameTextLabel.setText("First Name");
 
-        firstNametextField.addActionListener(new java.awt.event.ActionListener() {
+        firstNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                firstNametextFieldActionPerformed(evt);
+                firstNameTextFieldActionPerformed(evt);
             }
         });
 
@@ -521,7 +522,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                                     .addComponent(conactNumbertextLabel))
                                 .addGap(34, 34, 34)
                                 .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(firstNametextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(contactNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(62, 62, 62)
                                 .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -561,7 +562,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(studentCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(firstNameTextLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(firstNametextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lastNameTextLabel)
                     .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
@@ -1467,15 +1468,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Age");
 
-        jLabel5.setText("UserName");
-
-        lastNameStudentTextLabel.setText("jLabel7");
+        emailStudentTextLabel.setText("jLabel7");
 
         studentFirstNameTextLabel.setText("jLabel8");
 
         AddressStudentTextLabel.setText("jLabel7");
-
-        UserNameStudentTextLabel.setText("jLabel7");
 
         lastNameStudentText.setText("jLabel7");
 
@@ -1494,13 +1491,11 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                         .addGroup(studentProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(firstNameProfileLabel)
                             .addComponent(emailStudentProfileLabel)
-                            .addComponent(addressStudentProfileLabel)
-                            .addComponent(jLabel5))
+                            .addComponent(addressStudentProfileLabel))
                         .addGap(58, 58, 58)
                         .addGroup(studentProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(UserNameStudentTextLabel)
                             .addComponent(AddressStudentTextLabel)
-                            .addComponent(lastNameStudentTextLabel)
+                            .addComponent(emailStudentTextLabel)
                             .addGroup(studentProfilePanelLayout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1509,7 +1504,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                         .addGroup(studentProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(studentProfilePanelLayout.createSequentialGroup()
                                 .addComponent(contactNumberStudentProfileLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                                 .addComponent(ContactNumberStudentText))
                             .addGroup(studentProfilePanelLayout.createSequentialGroup()
                                 .addComponent(jLabel4)
@@ -1540,7 +1535,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                 .addGroup(studentProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailStudentProfileLabel)
                     .addComponent(contactNumberStudentProfileLabel)
-                    .addComponent(lastNameStudentTextLabel)
+                    .addComponent(emailStudentTextLabel)
                     .addComponent(ContactNumberStudentText))
                 .addGap(32, 32, 32)
                 .addGroup(studentProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1548,11 +1543,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(AddressStudentTextLabel)
                     .addComponent(AgeStudentText))
-                .addGap(33, 33, 33)
-                .addGroup(studentProfilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(UserNameStudentTextLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(369, Short.MAX_VALUE))
         );
 
         rightStudentPanel.add(studentProfilePanel, "card4");
@@ -1612,10 +1603,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         studentMealPrefLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         studentMealPrefLabel1.setText("Meal Preference");
 
-        viewCampReportButton1.setText("SUBMIT");
-        viewCampReportButton1.addActionListener(new java.awt.event.ActionListener() {
+        addCampRegistrationButton.setText("SUBMIT");
+        addCampRegistrationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewCampReportButton1ActionPerformed(evt);
+                addCampRegistrationButtonActionPerformed(evt);
             }
         });
 
@@ -1623,19 +1614,19 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         campRegistrationPassword.setText("Password");
 
-        studentMealPrefTextField2.addActionListener(new java.awt.event.ActionListener() {
+        studentCampPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                studentMealPrefTextField2ActionPerformed(evt);
+                studentCampPasswordActionPerformed(evt);
             }
         });
 
-        studentMealPrefTextField3.addActionListener(new java.awt.event.ActionListener() {
+        studentCampUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                studentMealPrefTextField3ActionPerformed(evt);
+                studentCampUsernameActionPerformed(evt);
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Juice", "Coke", " " }));
+        beveragePreference.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Juice", "Coke" }));
 
         campRegistrationBeverageLabel.setText("Beverage Preference");
 
@@ -1643,17 +1634,22 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
         campRegistrationAllergiesLabel.setText("Allergies");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vegetarian", "Non Vegetarian", "Vegan" }));
+        foodPreferences.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vegetarian", "Non Vegetarian", "Vegan" }));
+        foodPreferences.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                foodPreferencesActionPerformed(evt);
+            }
+        });
 
         campRegistrationMedCondition.setText("Medical Conditions");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane4.setViewportView(jTextArea1);
+        allergies.setColumns(20);
+        allergies.setRows(5);
+        jScrollPane4.setViewportView(allergies);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane5.setViewportView(jTextArea2);
+        medicalConditions.setColumns(20);
+        medicalConditions.setRows(5);
+        jScrollPane5.setViewportView(medicalConditions);
 
         javax.swing.GroupLayout studentCampRegistrationPanelLayout = new javax.swing.GroupLayout(studentCampRegistrationPanel);
         studentCampRegistrationPanel.setLayout(studentCampRegistrationPanelLayout);
@@ -1667,8 +1663,8 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                             .addGroup(studentCampRegistrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(campRegistrationPassword)
                                 .addGroup(studentCampRegistrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(beveragePreference, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(foodPreferences, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28))
@@ -1687,13 +1683,13 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                                     .addComponent(campRegistrationAllergiesLabel)
                                     .addComponent(campRegistrationMedCondition))
                                 .addGap(33, 33, 33)
-                                .addComponent(studentMealPrefTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(studentCampUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(studentMealPrefTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(studentCampPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
             .addGroup(studentCampRegistrationPanelLayout.createSequentialGroup()
                 .addGap(218, 218, 218)
-                .addComponent(viewCampReportButton1)
+                .addComponent(addCampRegistrationButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, studentCampRegistrationPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1707,19 +1703,19 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                 .addComponent(campReportLabel1)
                 .addGap(44, 44, 44)
                 .addGroup(studentCampRegistrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(studentMealPrefTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(studentCampUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campRegistrationUserName)
                     .addComponent(campRegistrationPassword)
-                    .addComponent(studentMealPrefTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(studentCampPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(studentMealPrefLabel1)
                 .addGap(14, 14, 14)
                 .addGroup(studentCampRegistrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(beveragePreference, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campRegistrationBeverageLabel))
                 .addGap(23, 23, 23)
                 .addGroup(studentCampRegistrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(foodPreferences, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campRegistrationFoodLabel))
                 .addGroup(studentCampRegistrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(studentCampRegistrationPanelLayout.createSequentialGroup()
@@ -1733,7 +1729,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
                     .addComponent(campRegistrationMedCondition)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
-                .addComponent(viewCampReportButton1)
+                .addComponent(addCampRegistrationButton)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -1903,7 +1899,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(schoolSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+            .addComponent(schoolSplitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 595, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -1918,9 +1914,9 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_parentButtonActionPerformed
 
-    private void firstNametextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNametextFieldActionPerformed
+    private void firstNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_firstNametextFieldActionPerformed
+    }//GEN-LAST:event_firstNameTextFieldActionPerformed
 
     private void studentCrudButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentCrudButtonActionPerformed
         // TODO add your handling code here:
@@ -2029,17 +2025,52 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         rightStudentPanel.revalidate();
     }//GEN-LAST:event_studentDashboardButtonActionPerformed
 
-    private void studentMealPrefTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentMealPrefTextField2ActionPerformed
+    private void studentCampPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentCampPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_studentMealPrefTextField2ActionPerformed
+    }//GEN-LAST:event_studentCampPasswordActionPerformed
 
-    private void studentMealPrefTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentMealPrefTextField3ActionPerformed
+    private void studentCampUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentCampUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_studentMealPrefTextField3ActionPerformed
+    }//GEN-LAST:event_studentCampUsernameActionPerformed
 
-    private void viewCampReportButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCampReportButton1ActionPerformed
+    private void addCampRegistrationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCampRegistrationButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_viewCampReportButton1ActionPerformed
+        
+        
+        student.setUsername(studentCampUsername.getText());
+        student.setPassword(studentCampPassword.getText());
+        if(beveragePreference.getSelectedItem().toString() == "Juice"){
+            mealPreference.setBeveragePreferance(MealPreference.Beverage.juice);
+        }
+        else {
+         mealPreference.setBeveragePreferance(MealPreference.Beverage.coke);
+        }
+        
+        if(foodPreferences.getSelectedItem().toString() == "Vegetarian"){
+            mealPreference.setFoodPreference(MealPreference.FoodPreference.vegetarian);
+        }
+        else if(foodPreferences.getSelectedItem().toString() == "Non Vegetarian") {
+          mealPreference.setFoodPreference(MealPreference.FoodPreference.nonvegetarian);
+        }
+        else{
+         mealPreference.setFoodPreference(MealPreference.FoodPreference.vegan);
+        }
+        mealPreference.setAllergies(allergies.getText());
+        mealPreference.setMedicalConditions(medicalConditions.getText());
+        
+        try {
+            studentService.campRegister(loggedInUserId, student.getUsername(), student.getPassword(), mealPreference);
+        } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        studentCampUsername.setText(" ");
+        studentCampPassword.setText(" ");
+        allergies.setText(" ");
+        medicalConditions.setText(" ");
+        
+        JOptionPane.showMessageDialog(this, "Registered successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_addCampRegistrationButtonActionPerformed
 
     private void loginSchoolButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginSchoolButtonActionPerformed
         // TODO add your handling code here:
@@ -2067,7 +2098,8 @@ public class SchoolMainFrame extends javax.swing.JFrame {
             }
             if(schoolAdmin.getUserId() == null){
                 System.out.println(schoolAdmin.getUserId());
-                JOptionPane.showInternalMessageDialog(loginPanel, "did not match");
+               
+                JOptionPane.showMessageDialog(this, "Incorrect Username or Password", "Failed", JOptionPane.INFORMATION_MESSAGE);
             }
             else {
 
@@ -2120,7 +2152,8 @@ public class SchoolMainFrame extends javax.swing.JFrame {
             
             if(parent.getUserId() == null){
                 System.out.println(parent.getUserId());
-                JOptionPane.showInternalMessageDialog(loginPanel, "did not match");
+                
+                 JOptionPane.showMessageDialog(this, "Incorrect Username or Password", "Failed", JOptionPane.INFORMATION_MESSAGE);
             }
             else {
                     loggedInUserId = parent.getUserId();
@@ -2176,7 +2209,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
             
             if(student.getUserId() == null){
                 System.out.println(student.getUserId());
-                JOptionPane.showInternalMessageDialog(loginPanel, "did not match");
+                JOptionPane.showMessageDialog(this, "Incorrect Username or Password", "Failed", JOptionPane.INFORMATION_MESSAGE);
             }
             else
             {  
@@ -2345,18 +2378,50 @@ public class SchoolMainFrame extends javax.swing.JFrame {
 
     private void studentProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentProfileButtonActionPerformed
         // TODO add your handling code here:
+        // Setting up the view
         rightStudentPanel.removeAll();
         rightStudentPanel.add(studentProfilePanel);
         rightStudentPanel.repaint();
         rightStudentPanel.revalidate();
+        //LoadData
+        try {
+        
+            student = studentService.getStudentById(loggedInUserId);
+        } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        studentFirstNameTextLabel.setText(student.getFirstName());
+        lastNameStudentText.setText(student.getLastName());
+        emailStudentTextLabel.setText(student.getEmail());
+        ContactNumberStudentText.setText(student.getContactNumber());
+        AddressStudentTextLabel.setText(student.getAddress());
+       AgeStudentText.setText(student.getAge().toString());
+        
+        
+        
     }//GEN-LAST:event_studentProfileButtonActionPerformed
 
     private void studentReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentReportButtonActionPerformed
         // TODO add your handling code here:
+        // Setting up the view
         rightStudentPanel.removeAll();
         rightStudentPanel.add(studentschoolReportPanel);
         rightStudentPanel.repaint();
         rightStudentPanel.revalidate();
+        //LoadData
+        
+         try {
+        
+            student = studentService.getStudentById(loggedInUserId);
+        } catch (CustomException ex) {
+            Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        AttendancestudentText.setText(student.getAttendance());
+        gradeStudentText.setText(student.getGrade());
+        
+        
     }//GEN-LAST:event_studentReportButtonActionPerformed
 
     private void studentCampRegButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentCampRegButtonActionPerformed
@@ -2426,7 +2491,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
        
        Integer parentId  = Integer.parseInt(selectParentComboBox.getSelectedItem().toString());
         
-        student.setFirstName(firstNametextField.getText());
+        student.setFirstName(firstNameTextField.getText());
         student.setLastName(lastNameTextField.getText());
         student.setEmail(emailTextField.getText());
         student.setContactNumber(contactNumberTextField.getText());
@@ -2440,29 +2505,30 @@ public class SchoolMainFrame extends javax.swing.JFrame {
          this.studentService.addStudentByParentId(student, parentId);
          
          //clear the text fields
-         parentFirstNameField.setText("");
-         lastNameParentTextfield.setText("");
-         emailParentTextField.setText("");
-         contactNumberParentTextField.setText("");
-         addressParentTextField.setText("");
+         firstNameTextField.setText("");
+         lastNameTextField.setText("");
+         emailTextField.setText("");
+         contactNumberTextField.setText("");
+         ageTextField.setText("");
+         addressTextField.setText("");
          
         
          //load the parent info to jtable
-        DefaultTableModel studentModel = (DefaultTableModel)parentDashboardStudentTable.getModel();
+        DefaultTableModel studentModel = (DefaultTableModel)studentInfoTable.getModel();
         studentModel.setRowCount(0);
-        Object rowData[] = new Object[3]; 
+        Object rowData[] = new Object[6]; 
         
         studentList = (ArrayList)this.studentService.getAllStudents();
         
         for(int j = 0; j < studentList.size(); j++)
         {
      
-        rowData[0] = studentList.get(j).getFirstName() + " " + studentList.get(j).getLastName();
-
- 
-        rowData[1] = studentList.get(j).getAge();
-        rowData[2] = studentList.get(j).getCamper();
-              
+        rowData[0] = studentList.get(j).getFirstName();
+        rowData[1] = studentList.get(j).getLastName();
+        rowData[2] = studentList.get(j).getContactNumber();
+        rowData[3] = studentList.get(j).getEmail();
+        rowData[4] = studentList.get(j).getAge();
+        rowData[5] = studentList.get(j).getAddress();     
        
         studentModel.addRow(rowData);
         
@@ -2521,6 +2587,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_updateParentButton1ActionPerformed
 
+    private void foodPreferencesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foodPreferencesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_foodPreferencesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2570,9 +2640,9 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel Q1Label;
     private javax.swing.JTextField StudentActivityCountTextField;
     private javax.swing.JButton UPDATE;
-    private javax.swing.JLabel UserNameStudentTextLabel;
     private com.toedter.calendar.JDateChooser activityRegistrationDateChooser;
     private javax.swing.JLabel activityRegistrationDateLabel;
+    private javax.swing.JButton addCampRegistrationButton;
     private javax.swing.JButton addCampusButton;
     private javax.swing.JLabel addressParentProfileLabel;
     private javax.swing.JTextField addressParentProfileTextField;
@@ -2587,6 +2657,8 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField ageTextField;
     private javax.swing.JTextField ageTextField1;
     private javax.swing.JLabel ageTextLabel;
+    private javax.swing.JTextArea allergies;
+    private javax.swing.JComboBox<String> beveragePreference;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JLabel campActivitiesCountLabel;
     private javax.swing.JLabel campRegistrationAllergiesLabel;
@@ -2632,15 +2704,17 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField emailParentTextField;
     private javax.swing.JLabel emailParentTextLabel;
     private javax.swing.JLabel emailStudentProfileLabel;
+    private javax.swing.JLabel emailStudentTextLabel;
     private javax.swing.JTextField emailTextField;
     private javax.swing.JLabel emailTextLabel;
     private javax.swing.JButton feedbackButton;
     private javax.swing.JLabel firstNameParentTextLabel;
     private javax.swing.JLabel firstNameProfileLabel;
     private javax.swing.JLabel firstNameProfileTextLabel1;
+    private javax.swing.JTextField firstNameTextField;
     private javax.swing.JLabel firstNameTextLabel;
-    private javax.swing.JTextField firstNametextField;
     private javax.swing.JTextField firstNametextField1;
+    private javax.swing.JComboBox<String> foodPreferences;
     private javax.swing.JLabel gradeStudentText;
     private javax.swing.JTextField guardianTextField1;
     private javax.swing.JLabel guardianTextLabel;
@@ -2648,13 +2722,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2668,8 +2739,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lastNameParentTextLabel;
     private javax.swing.JTextField lastNameParentTextfield;
@@ -2677,7 +2746,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField lastNameProfileTextfield;
     private javax.swing.JLabel lastNameStudentProfileLabel;
     private javax.swing.JLabel lastNameStudentText;
-    private javax.swing.JLabel lastNameStudentTextLabel;
     private javax.swing.JTextField lastNameTextField;
     private javax.swing.JLabel lastNameTextLabel;
     private javax.swing.JPanel leftPanel;
@@ -2688,6 +2756,7 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel loginPanel;
     private javax.swing.JButton loginSchoolButton;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JTextArea medicalConditions;
     private javax.swing.JLabel noOfKidsEnrolledTextLabel;
     private javax.swing.JButton parentButton;
     private javax.swing.JButton parentCrudButton;
@@ -2726,8 +2795,10 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> selectParentComboBox;
     private javax.swing.JLabel staffTextLabel;
     private javax.swing.JButton studentButton;
+    private javax.swing.JTextField studentCampPassword;
     private javax.swing.JButton studentCampRegButton;
     private javax.swing.JPanel studentCampRegistrationPanel;
+    private javax.swing.JTextField studentCampUsername;
     private javax.swing.JButton studentCrudButton;
     private javax.swing.JPanel studentCrudPanel;
     private javax.swing.JLabel studentCrudTextLabel;
@@ -2743,8 +2814,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel studentMealPrefLabel;
     private javax.swing.JLabel studentMealPrefLabel1;
     private javax.swing.JTextField studentMealPrefTextField;
-    private javax.swing.JTextField studentMealPrefTextField2;
-    private javax.swing.JTextField studentMealPrefTextField3;
     private javax.swing.JLabel studentNameLabel;
     private javax.swing.JPanel studentPanel;
     private javax.swing.JButton studentProfileButton;
@@ -2763,7 +2832,6 @@ public class SchoolMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField usernameTextField1;
     private javax.swing.JLabel usernameTextLabel1;
     private javax.swing.JButton viewCampReportButton;
-    private javax.swing.JButton viewCampReportButton1;
     private javax.swing.JLabel welcomeSchoolLabel;
     // End of variables declaration//GEN-END:variables
 }

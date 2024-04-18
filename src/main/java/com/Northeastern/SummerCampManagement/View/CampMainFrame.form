@@ -318,7 +318,7 @@
                                                       <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                                                       <Component id="dashboardStaffLabel1" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="staffTextLabel1" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="activityListTextLabel" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -341,7 +341,7 @@
                                                   <Component id="dashboardCampLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="studentTextLabel" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                                                   <Component id="dashboardStaffLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="staffTextLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="activityListTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
@@ -393,7 +393,7 @@
                                 <Property name="text" type="java.lang.String" value="No. Of Activities"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="staffTextLabel1">
+                            <Component class="javax.swing.JLabel" name="activityListTextLabel">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="jLabel1"/>
                               </Properties>

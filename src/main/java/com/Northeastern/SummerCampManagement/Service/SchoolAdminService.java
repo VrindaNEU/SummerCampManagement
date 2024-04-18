@@ -39,6 +39,8 @@ public class SchoolAdminService {
 		
 		return admins.get();
 	}
+     
+     //Add Admins
      public SchoolAdmin addSchoolAdmin(SchoolAdmin newSchoolAdmin) throws CustomException  {
 		
          

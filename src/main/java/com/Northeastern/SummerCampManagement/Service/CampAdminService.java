@@ -6,17 +6,20 @@ package com.Northeastern.SummerCampManagement.Service;
 
 import com.Northeastern.SummerCampManagement.Dao.CampAdminRepository;
 import com.Northeastern.SummerCampManagement.Entity.CampAdmin;
+import com.Northeastern.SummerCampManagement.Entity.SchoolAdmin;
 import com.Northeastern.SummerCampManagement.Entity.Student;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author vrind
  */
+@Service
 public class CampAdminService {
     
      @Autowired
@@ -35,6 +38,14 @@ public class CampAdminService {
 		
 		return campAdmins.get();
 	}
+     
+      //Add Admins
+     public CampAdmin addCampAdmin(CampAdmin newCampAdmin) throws CustomException  {
+		
+         
+		return this.campAdminRepository.save(newCampAdmin);	
+	}
+     
     
      public CampAdmin  loginByCampAdminId(String userName,String password) throws CustomException{
      
@@ -43,9 +54,9 @@ public class CampAdminService {
      campAdminLogin = (List<CampAdmin>)getAllCampAdmins();
      
      for (CampAdmin campAdmini: campAdminLogin){
-                    if(campAdmini.getUsername()==userName && campAdmini.getPassword()== password){
-                        
-                       selectedCampAdmin=  campAdmini;
+                    if(campAdmini.getUsername().equals(userName) && campAdmini.getPassword().equals(password)){
+                       selectedCampAdmin =  campAdmini;
+                       break;
                     }
                   }
      
