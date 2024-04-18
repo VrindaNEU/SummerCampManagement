@@ -1263,37 +1263,62 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jTextField1" alignment="1" min="-2" pref="564" max="-2" attributes="0"/>
-                                          <Component id="guardianTextField1" alignment="1" min="-2" pref="564" max="-2" attributes="0"/>
-                                          <Component id="usernameTextField1" alignment="1" min="-2" pref="564" max="-2" attributes="0"/>
-                                          <Component id="ageTextField1" alignment="1" min="-2" pref="564" max="-2" attributes="0"/>
-                                          <Component id="firstNametextField1" alignment="1" min="-2" pref="564" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="usernameTextLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                              <Component id="recommendationFeedbackTextField" alignment="1" min="-2" pref="564" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="usernameTextLabel1" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="conactNumbertextLabel1" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
+                                                      <Component id="createButton1" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
+                                                      <Component id="studentCrudTextLabel1" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="guardianTextLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="Q1Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="conactNumbertextLabel1" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
-                                                  <Component id="createButton1" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
-                                                  <Component id="studentCrudTextLabel1" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="guardianTextLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="Q1Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                              <Component id="foodFeedbackCombo" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                              <Component id="staffFeedbackCombo" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                              <Component id="activityFeedbackCombo" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                              <Component id="overallFeedbackCombo" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="studentFeedbackId" min="-2" pref="71" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -1307,31 +1332,36 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                       <Component id="studentCrudTextLabel1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="studentFeedbackId" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                      <Component id="Q1Label" min="-2" pref="26" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="firstNametextField1" min="-2" pref="26" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="conactNumbertextLabel1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="ageTextField1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Q1Label" min="-2" pref="26" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                      <Component id="foodFeedbackCombo" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="conactNumbertextLabel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="staffFeedbackCombo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="usernameTextLabel1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="usernameTextField1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="activityFeedbackCombo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                       <Component id="guardianTextLabel1" min="-2" pref="16" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="guardianTextField1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                      <Component id="overallFeedbackCombo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                      <Component id="recommendationFeedbackTextField" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="createButton1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="121" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1342,18 +1372,13 @@
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Segoe UI" size="12" style="1"/>
                                 </Property>
-                                <Property name="text" type="java.lang.String" value="FEEDBACK"/>
+                                <Property name="text" type="java.lang.String" value="CAMP FEEDBACK"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="Q1Label">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="1. Food Feedback: How would you rate the quality and variety of the meals provided at the camp?"/>
                               </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="firstNametextField1">
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="firstNametextField1ActionPerformed"/>
-                              </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="conactNumbertextLabel1">
                               <Properties>
@@ -1365,19 +1390,10 @@
                                 <Property name="text" type="java.lang.String" value="3. Activity Feedback: Did your child enjoy the activities offered at the camp?"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="ageTextField1">
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="usernameTextField1">
-                            </Component>
                             <Component class="javax.swing.JLabel" name="guardianTextLabel1">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="4. How satisfied were you with the overall management and organization of the camp?"/>
                               </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="guardianTextField1">
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guardianTextField1ActionPerformed"/>
-                              </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="createButton1">
                               <Properties>
@@ -1392,15 +1408,86 @@
                                 <Property name="text" type="java.lang.String" value="5. Please provide any recommendations or suggestions for improving the camp experience."/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="jTextField1">
+                            <Component class="javax.swing.JTextField" name="recommendationFeedbackTextField">
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="recommendationFeedbackTextFieldActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel3">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value=" (Please rate on a scale of 1 to 5, with 1 being poor and 5 being excellent)"/>
                               </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="foodFeedbackCombo">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="5">
+                                    <StringItem index="0" value="1"/>
+                                    <StringItem index="1" value="2"/>
+                                    <StringItem index="2" value="3"/>
+                                    <StringItem index="3" value="4"/>
+                                    <StringItem index="4" value="5"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="staffFeedbackCombo">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="5">
+                                    <StringItem index="0" value="1"/>
+                                    <StringItem index="1" value="2"/>
+                                    <StringItem index="2" value="3"/>
+                                    <StringItem index="3" value="4"/>
+                                    <StringItem index="4" value="5"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="activityFeedbackCombo">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="5">
+                                    <StringItem index="0" value="1"/>
+                                    <StringItem index="1" value="2"/>
+                                    <StringItem index="2" value="3"/>
+                                    <StringItem index="3" value="4"/>
+                                    <StringItem index="4" value="5"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="overallFeedbackCombo">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="5">
+                                    <StringItem index="0" value="1"/>
+                                    <StringItem index="1" value="2"/>
+                                    <StringItem index="2" value="3"/>
+                                    <StringItem index="3" value="4"/>
+                                    <StringItem index="4" value="5"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel5">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Student Id"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="studentFeedbackId">
                             </Component>
                           </SubComponents>
                         </Container>
