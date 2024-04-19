@@ -148,7 +148,7 @@ public class StudentService {
         camperLogin = (List<Student>)getAllStudents();
 
         for (Student camperi: camperLogin){
-                    if(camperi.getCampUsername().equals(userName) && camperi.getCampPassword().equals(password) && camperi.getCamper().equals(true)){
+                    if(camperi.getCamper().equals(true) && camperi.getCampUsername().equals(userName) && camperi.getCampPassword().equals(password)){
                         
                        selectedCamper=  camperi;
                        break;

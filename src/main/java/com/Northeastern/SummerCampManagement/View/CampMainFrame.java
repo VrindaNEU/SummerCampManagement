@@ -160,26 +160,6 @@ public class CampMainFrame extends javax.swing.JFrame {
         foodFeedbackLabel = new javax.swing.JLabel();
         foodFeedbackText = new javax.swing.JLabel();
         feedbackChartButton = new javax.swing.JButton();
-        staffCrudPanel = new javax.swing.JPanel();
-        staffActivityLabel = new javax.swing.JLabel();
-        firstNameStaffActivityLabel = new javax.swing.JLabel();
-        lastNameStaffActivityLabel = new javax.swing.JLabel();
-        emailStaffActivityLabel = new javax.swing.JLabel();
-        contactStaffActivityLabel = new javax.swing.JLabel();
-        designationStaffActivityLabel = new javax.swing.JLabel();
-        staffActivityStatusLabel = new javax.swing.JLabel();
-        staffActivityStatusDropDown = new javax.swing.JComboBox<>();
-        designationStaffActivityDropDown = new javax.swing.JComboBox<>();
-        contactStaffActivityField = new javax.swing.JTextField();
-        firstNameStaffActivityField = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        staffActivityTable = new javax.swing.JTable();
-        createStaffActivityButton = new javax.swing.JButton();
-        editStaffActivityButton = new javax.swing.JButton();
-        deleteStaffActivityButton = new javax.swing.JButton();
-        saveStaffActivityButton = new javax.swing.JButton();
         leftPanel = new javax.swing.JPanel();
         campRegButton = new javax.swing.JButton();
         campAdmindashboardButton = new javax.swing.JButton();
@@ -576,148 +556,6 @@ public class CampMainFrame extends javax.swing.JFrame {
 
         rightPanel.add(feedbackPanel, "card4");
 
-        staffActivityLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        staffActivityLabel.setText("STAFF");
-
-        firstNameStaffActivityLabel.setText("First Name");
-
-        lastNameStaffActivityLabel.setText("Last Name");
-
-        emailStaffActivityLabel.setText("Email");
-
-        contactStaffActivityLabel.setText("Contact Number");
-
-        designationStaffActivityLabel.setText("Designation");
-
-        staffActivityStatusLabel.setText("Active Status");
-
-        staffActivityStatusDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "InActive" }));
-
-        designationStaffActivityDropDown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Camp Lead", "Camp Manager", "Camp Assistant" }));
-        designationStaffActivityDropDown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                designationStaffActivityDropDownActionPerformed(evt);
-            }
-        });
-
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-
-        staffActivityTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Name", "Last Name", "Email", "Contact No.", "Designation", "Activity Status"
-            }
-        ));
-        jScrollPane4.setViewportView(staffActivityTable);
-
-        createStaffActivityButton.setText("Create");
-
-        editStaffActivityButton.setText("Edit");
-
-        deleteStaffActivityButton.setText("Delete");
-
-        saveStaffActivityButton.setText("Save");
-
-        javax.swing.GroupLayout staffCrudPanelLayout = new javax.swing.GroupLayout(staffCrudPanel);
-        staffCrudPanel.setLayout(staffCrudPanelLayout);
-        staffCrudPanelLayout.setHorizontalGroup(
-            staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(staffCrudPanelLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(firstNameStaffActivityLabel)
-                        .addComponent(lastNameStaffActivityLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(emailStaffActivityLabel, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addGroup(staffCrudPanelLayout.createSequentialGroup()
-                        .addComponent(createStaffActivityButton)
-                        .addGap(2, 2, 2)))
-                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(staffCrudPanelLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(firstNameStaffActivityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(64, 64, 64)
-                        .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(contactStaffActivityLabel)
-                                .addComponent(designationStaffActivityLabel))
-                            .addGroup(staffCrudPanelLayout.createSequentialGroup()
-                                .addComponent(staffActivityStatusLabel)
-                                .addGap(24, 24, 24)))
-                        .addGap(39, 39, 39)
-                        .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(staffCrudPanelLayout.createSequentialGroup()
-                                .addComponent(contactStaffActivityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(staffCrudPanelLayout.createSequentialGroup()
-                                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(deleteStaffActivityButton)
-                                    .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(designationStaffActivityDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(staffActivityStatusDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(staffCrudPanelLayout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(editStaffActivityButton)
-                        .addGap(71, 71, 71)
-                        .addComponent(saveStaffActivityButton)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(staffCrudPanelLayout.createSequentialGroup()
-                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(staffCrudPanelLayout.createSequentialGroup()
-                        .addGap(220, 220, 220)
-                        .addComponent(staffActivityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        staffCrudPanelLayout.setVerticalGroup(
-            staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(staffCrudPanelLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(staffActivityLabel)
-                .addGap(34, 34, 34)
-                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(firstNameStaffActivityLabel)
-                    .addComponent(contactStaffActivityLabel)
-                    .addComponent(firstNameStaffActivityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(contactStaffActivityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lastNameStaffActivityLabel)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(designationStaffActivityLabel)
-                    .addComponent(designationStaffActivityDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailStaffActivityLabel)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(staffActivityStatusLabel)
-                    .addComponent(staffActivityStatusDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
-                .addGroup(staffCrudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(createStaffActivityButton)
-                    .addComponent(editStaffActivityButton)
-                    .addComponent(saveStaffActivityButton)
-                    .addComponent(deleteStaffActivityButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
-        );
-
-        rightPanel.add(staffCrudPanel, "card5");
-
         jSplitPane2.setRightComponent(rightPanel);
 
         leftPanel.setBackground(new java.awt.Color(0, 51, 255));
@@ -824,7 +662,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                         .addGroup(staffDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(camperCount)
                             .addComponent(activityCount))))
-                .addContainerGap(352, Short.MAX_VALUE))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
         staffDashboardLayout.setVerticalGroup(
             staffDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -839,7 +677,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                 .addGroup(staffDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(activityCount))
-                .addContainerGap(463, Short.MAX_VALUE))
+                .addContainerGap(363, Short.MAX_VALUE))
         );
 
         rightStaffPanel.add(staffDashboard, "card2");
@@ -1594,6 +1432,27 @@ public class CampMainFrame extends javax.swing.JFrame {
         rightStaffPanel.add(staffDashboard);
         rightStaffPanel.repaint();
         rightStaffPanel.revalidate();
+        
+        //Staff Dashboard Started
+        
+        try {
+                  
+                   camperList = (ArrayList<Student>) camperService.getAllCampers();
+               } catch (CustomException ex) {
+                   Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+               }
+        camperCount.setText(String.valueOf(camperList.size()));
+        
+               try {
+                   activityList = (ArrayList<Activity>) activityService.getAllActivities();
+               } catch (CustomException ex) {
+                   Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+               }
+        
+            activityCount.setText(String.valueOf(activityList.size()));
+        
+        
+        //Staff Dashboard Ends
     }//GEN-LAST:event_staffDashboardButtonActionPerformed
 
     private void camperDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_camperDashboardButtonActionPerformed
@@ -1665,35 +1524,27 @@ public class CampMainFrame extends javax.swing.JFrame {
         } catch (CustomException ex) {
             Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+        int activity = 0;
+        int food = 0; 
+        int management = 0;
+        int staff =0;
         
-                       int activityCount =0;
-               int foodCount = 0;
-               int managementCOunt = 0;
-               int staffCount = 0;
-               for(Feedback feedbk : feedbackList)
-               {
-                   if(!feedbk.getFoodFeedback().toString().isEmpty())
-                   {
-                       foodCount ++;
-                   }
-                   if(!feedbk.getActivityFeedback().toString().isEmpty())
-                   {
-                        activityCount ++;
-                   }
-                   if(!feedbk.getManagementFeedback().toString().isEmpty())
-                   {
-                        managementCOunt ++;
-                   }
-                   if(!feedbk.getStaffFeedback().toString().isEmpty())
-                   {
-                        staffCount ++;
-                   }
-               }
-        
-        result.setValue("Activity", activityCount);
-        result.setValue("Food", foodCount);
-        result.setValue("management", managementCOunt);
-        result.setValue("Staff", staffCount);
+        for(Feedback feedback : feedbackList){
+            activity += feedback.getActivityFeedback();
+            food += feedback.getFoodFeedback();
+            management += feedback.getManagementFeedback();
+            staff += feedback.getStaffFeedback();
+//            result.setValue("Activity", feedback.getActivityFeedback());
+//            result.setValue("Food", feedback.getFoodFeedback());
+//            result.setValue("Management", feedback.getManagementFeedback());
+//            result.setValue("Staff", feedback.getStaffFeedback());
+//            
+        }
+
+        result.setValue("Activity", activity);
+        result.setValue("Food", food);
+        result.setValue("management", management);
+        result.setValue("Staff", staff);
 
         return result;
     }
@@ -1756,19 +1607,11 @@ public class CampMainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_activityAgeTextfieldActionPerformed
 
-    private void designationStaffActivityDropDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_designationStaffActivityDropDownActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_designationStaffActivityDropDownActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
     private void loginCampButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginCampButtonActionPerformed
         // TODO add your handling code here:
          // Create new admin
 //       CampAdmin newAdmin = new CampAdmin();
-//        newAdmin.setUsername("yashj");
+//        newAdmin.setUsername("Campadmin");
 //        newAdmin.setPassword("admin@123");
 //       newAdmin.setRole(AppUser.Role.CampAdmin);
 //       try {          
@@ -1782,15 +1625,15 @@ public class CampMainFrame extends javax.swing.JFrame {
         /// Create new staff //
         
 //        CampStaff newStaff = new CampStaff();
-//        newStaff.setUsername("Vrinda");
-//        newStaff.setPassword("admin@123");
+//        newStaff.setUsername("Campstaff");
+//        newStaff.setPassword("staff@123");
 //       newStaff.setRole(AppUser.Role.CampStaff);
 //       try {          
 //           staffService.addCampStaff(newStaff);
 //      } catch (CustomException ex) {
 //           Logger.getLogger(SchoolMainFrame.class.getName()).log(Level.SEVERE, null, ex);
 //       }
-//        
+        
         
         ////////Staff Created//////
         
@@ -1942,6 +1785,7 @@ public class CampMainFrame extends javax.swing.JFrame {
             
             
               try {
+                  System.out.println(usernameCampTextField.getText());
                camper = camperService.loginByCamperId(usernameCampTextField.getText(), passwordCampTextField.getText());
            } catch (CustomException ex) {
                Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -2344,7 +2188,7 @@ public class CampMainFrame extends javax.swing.JFrame {
         PieDataset dataset = createDataset();
         CreateChart CC = new CreateChart("Feedback","Feedback", dataset );
         CC.pack();
-        //CC.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        CC.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         CC.setVisible(true);
     }//GEN-LAST:event_feedbackChartButtonActionPerformed
 
@@ -2439,25 +2283,15 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JSplitPane camperSplitPane;
     private javax.swing.JLabel camperUpcomingActivityDashboardLabel;
     private javax.swing.JLabel camperscheduleImageLabel;
-    private javax.swing.JTextField contactStaffActivityField;
-    private javax.swing.JLabel contactStaffActivityLabel;
-    private javax.swing.JButton createStaffActivityButton;
     private javax.swing.JLabel dashboardCampLabel;
     private javax.swing.JLabel dashboardStaffLabel;
     private javax.swing.JLabel dashboardStaffLabel1;
-    private javax.swing.JButton deleteStaffActivityButton;
-    private javax.swing.JComboBox<String> designationStaffActivityDropDown;
-    private javax.swing.JLabel designationStaffActivityLabel;
     private javax.swing.JLabel dietPreferencesLabel;
     private javax.swing.JLabel dietaryPrefLabel;
     private javax.swing.JPanel dietryPreferencePanel;
     private javax.swing.JButton editDietButton;
-    private javax.swing.JButton editStaffActivityButton;
-    private javax.swing.JLabel emailStaffActivityLabel;
     private javax.swing.JButton feedbackChartButton;
     private javax.swing.JPanel feedbackPanel;
-    private javax.swing.JTextField firstNameStaffActivityField;
-    private javax.swing.JLabel firstNameStaffActivityLabel;
     private javax.swing.JComboBox<String> foodDietComboBox;
     private javax.swing.JLabel foodDietLabel;
     private javax.swing.JLabel foodFeedbackLabel;
@@ -2470,14 +2304,10 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JLabel lastNameStaffActivityLabel;
     private javax.swing.JPanel leftCamperPanel;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JPanel leftStaffPanel;
@@ -2500,18 +2330,12 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> roleCampDropBox;
     private javax.swing.JLabel roleCampLoginLabel;
     private javax.swing.JButton saveDietButton;
-    private javax.swing.JButton saveStaffActivityButton;
     private javax.swing.JLabel scheduleActivityLabel;
     private com.toedter.calendar.JDateChooser scheduleStaffDate;
     private javax.swing.JComboBox<String> selectActivityCombo;
     private javax.swing.JComboBox<String> selectLocationCombo;
     private javax.swing.JButton staffActivityButton;
-    private javax.swing.JLabel staffActivityLabel;
     private javax.swing.JPanel staffActivityPanel;
-    private javax.swing.JComboBox<String> staffActivityStatusDropDown;
-    private javax.swing.JLabel staffActivityStatusLabel;
-    private javax.swing.JTable staffActivityTable;
-    private javax.swing.JPanel staffCrudPanel;
     private javax.swing.JPanel staffDashboard;
     private javax.swing.JButton staffDashboardButton;
     private javax.swing.JButton staffDietButton;
