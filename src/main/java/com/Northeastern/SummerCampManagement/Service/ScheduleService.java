@@ -12,6 +12,7 @@ import com.Northeastern.SummerCampManagement.Entity.Parent;
 import com.Northeastern.SummerCampManagement.Entity.Schedule;
 import com.Northeastern.SummerCampManagement.Entity.Student;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -48,9 +49,10 @@ public class ScheduleService {
 		if (!activity.isPresent())
 			throw new CustomException("Activity not found for id:" + activityId);
                 
-                activity.get().setSchedule(newSchedule);
+                newSchedule.setActivity(activity.get());
                 
-                this.activityRepository.save(activity.get());
+                               
+                this.scheduleRepository.save(newSchedule);
   
 		return newSchedule;	
 	}
@@ -81,5 +83,29 @@ public class ScheduleService {
                 
 		return schedules;
 	}
+     
+     
+     //Get Schedules for activity by camperid
+     
+     public Collection<Schedule> getSchedulesForUserById(Integer camperId) throws CustomException{
+           Optional<Student> student = this.studentRepository.findById(camperId);
+		if (!student.isPresent())
+	    throw new CustomException("Student not found for id:" + camperId);
+                
+                Set<Activity> activities = new HashSet<Activity>();
+                activities =  student.get().getActivities();
+                
+                List<Schedule> schedules = new ArrayList<Schedule>();
+                
+                for(Activity activityi : activities){
+                schedules.add(activityi.getSchedule());
+                    
+                }
+                System.out.println(schedules.get(0).getDate());
+                
+                
+                return schedules;
+     
+     }
     
 }

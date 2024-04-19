@@ -1,4 +1,5 @@
 package com.Northeastern.SummerCampManagement;
+import com.Northeastern.SummerCampManagement.View.CampMainFrame;
 import com.Northeastern.SummerCampManagement.View.SchoolMainFrame;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +19,10 @@ public class SummerCampManagementApplication {
                 .web(WebApplicationType.NONE)
                 .run(args);
                 
-                startSchoolApplication();
+                
+                
+              // startSchoolApplication();
+              startCampApplication();
                 
         
     }
@@ -30,6 +34,13 @@ public class SummerCampManagementApplication {
        frame.setVisible(true);
     }
 
+        
+        private static void startCampApplication() {
+        CampMainFrame frame = new CampMainFrame();
+
+       frame.setSize(700, 700);
+       frame.setVisible(true);
+    }
     
 
 }

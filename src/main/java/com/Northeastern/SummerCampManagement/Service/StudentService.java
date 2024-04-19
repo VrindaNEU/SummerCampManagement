@@ -4,6 +4,8 @@
  */
 package com.Northeastern.SummerCampManagement.Service;
 
+import com.Northeastern.SummerCampManagement.Dao.ActivityRepository;
+import com.Northeastern.SummerCampManagement.Dao.MealPreferenceRepository;
 import com.Northeastern.SummerCampManagement.Dao.ParentRepository;
 import com.Northeastern.SummerCampManagement.Entity.Student;
 import com.Northeastern.SummerCampManagement.Entity.MealPreference;
@@ -12,11 +14,13 @@ import com.Northeastern.SummerCampManagement.Entity.Feedback;
 import com.Northeastern.SummerCampManagement.Dao.StudentRepository;
 import com.Northeastern.SummerCampManagement.Entity.Parent;
 import com.Northeastern.SummerCampManagement.Entity.SchoolAdmin;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +40,12 @@ public class StudentService {
     @Autowired
     ParentRepository parentRepository;
     
+    @Autowired
+    MealPreferenceRepository mealPreferenceRepository;
+    
+     @Autowired
+     ActivityRepository activityRepository;
+    
     // Create Student
     public Student addStudentByParentId(Student newStudent, Integer parentId) throws CustomException  {
         
@@ -43,14 +53,34 @@ public class StudentService {
 		if (!parent.isPresent())
 			throw new CustomException("Parent not found for id:" + parentId);
                 
-                newStudent.setParent(parent.get());
-                this.studentRepository.save(newStudent);
+                newStudent.setCamper(Boolean.FALSE);
                 
-//                List<Student> students = new ArrayList();
+                //Adding attendance and Grades
+                Random random = new Random();
+                Random random2 = new Random();
+
+                // Generate a random number between 1 and 100 (inclusive)
+                int randomNumber = random.nextInt(100) + 1;
+                
+                newStudent.setAttendance(String.valueOf(randomNumber));
+                
+                int randomNumber2 = random2.nextInt(100) + 1;
+                
+                newStudent.setGrade(String.valueOf(String.valueOf(randomNumber2)));
+
+                //////////////////
+                
+                newStudent.setParent(parent.get());
+                Student addedStudent = this.studentRepository.save(newStudent);
+                
+               
+                List<Student> students = new ArrayList(); 
+                students = parent.get().getStudent();
+                students.add(addedStudent);
 //                
-//                parent.get().setStudent(students);
+               parent.get().setStudent(students);
 //                
-//                this.parentRepository.save(parent.get());
+               this.parentRepository.save(parent.get());
 //                
 		
 		return newStudent;	
@@ -112,27 +142,55 @@ public class StudentService {
      }
      
      // loginForCamper
-         public  Student loginByCamperId(String userName,String password) throws CustomException{
-     List<Student> camperLogin = (List<Student>) getAllStudents();
-     Student selectedCamper = new Student();
-     for (Student camperi: camperLogin){
-                    if(camperi.getCampUsername()==userName && camperi.getCampPassword()== password && camperi.getCamper()==true){
+        public  Student loginByCamperId(String userName,String password) throws CustomException{
+          Student selectedCamper = new Student();
+        List<Student> camperLogin = new ArrayList<Student>();
+        camperLogin = (List<Student>)getAllStudents();
+
+        for (Student camperi: camperLogin){
+                    if(camperi.getCampUsername().equals(userName) && camperi.getCampPassword().equals(password) && camperi.getCamper().equals(true)){
                         
                        selectedCamper=  camperi;
+                       break;
                     }
                   }
      
      return selectedCamper;
      }
+        
+        //Get all Campers
+         public  List<Student> getAllCampers() throws CustomException{
+         
+        List<Student> students = new ArrayList<Student>();
+         students = this.studentRepository.findAll();
+         
+         
+         List<Student> campers = new ArrayList<Student>();
+
+        for (Student camperi: students){
+                    if( camperi.getCamper().equals(true)){
+                        
+                       campers.add(camperi);
+                    }
+                  }
+     
+     return campers;
+     }
+        
+        ///
          
          
       public Student  loginByStudentId(String userName,String password) throws CustomException{
-     List<Student> studentLogin = (List<Student>) getAllStudents();
+     
      Student selectedStudent = new Student();
+     List<Student> studentLogin = new ArrayList<Student>();
+     studentLogin = (List<Student>)getAllStudents();
+        
      for (Student studenti: studentLogin){
-                    if(studenti.getUsername()==userName && studenti.getPassword()== password){
+                    if(studenti.getUsername().equals(userName) && studenti.getPassword().equals(password)){
                         
                        selectedStudent=  studenti;
+                       break;
                     }
                   }
      
@@ -192,8 +250,14 @@ public class StudentService {
                     student.setCamper(true);
                     student.setCampUsername(Username);
                     student.setCampPassword(Password);
-                    student.setMealPreference(mealpreference);
+                    student.setRegistrationDate(LocalDate.now());
                     
+                    mealpreference.setStudent(student);
+                    
+                   MealPreference savedPref = this.mealPreferenceRepository.save(mealpreference);
+                  
+                   student.setMealPreference(savedPref);
+                   
 		return this.studentRepository.save(student);
 	}
      
@@ -228,16 +292,24 @@ public class StudentService {
                     Student student = studentOpt.get();
                     
                    Set<Activity> activities = new HashSet<>();
+                   activities = student.getActivities();
                    activities.add(activity);
                     student.setActivities(activities);
                     
-                    studentRepository.save(student);
+                   student = studentRepository.save(student);
+                    
+                     Set<Student> students = new HashSet<>();
+                     students = activity.getStudents();
+                   students.add(student);
+                    activity.setStudents(students);
+                    
+                    activityRepository.save(activity);
      
     
      return "Registered for Activity";
      }
        
-    
+     
     
 
 

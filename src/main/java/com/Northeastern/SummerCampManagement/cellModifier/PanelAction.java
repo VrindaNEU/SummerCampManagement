@@ -20,15 +20,10 @@ public class PanelAction extends javax.swing.JPanel {
         initComponents();
     }
 
-   /* public void initEvent(TableActionEvent event, int row)
+    
+    
+    public void initEvent(TableActionEvent event, int row)
     {
-        cmdEdit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                event.onEdit(row);
-            }
-                    
-                });
         cmdDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -36,15 +31,14 @@ public class PanelAction extends javax.swing.JPanel {
             }
                     
                 });
-        cmdView.addActionListener(new ActionListener() {
+        cmdSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                event.onView(row);
+                event.onSave(row);
             }
                     
                 });
     }
-    */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,31 +48,38 @@ public class PanelAction extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cmdSave = new com.Northeastern.SummerCampManagement.cellModifier.ActionButton();
+        cmdDelete = new com.Northeastern.SummerCampManagement.cellModifier.ActionButton();
+
+        cmdSave.setText("Save");
+
+        cmdDelete.setForeground(new java.awt.Color(255, 0, 0));
+        cmdDelete.setText("X");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 168, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(cmdSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmdDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(cmdDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 16, Short.MAX_VALUE)
+                    .addComponent(cmdSave, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-/*
-    private void cmdEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmdEditActionPerformed
 
-    private void cmdViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdViewActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmdViewActionPerformed
-
-    private void cmdDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdDeleteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmdDeleteActionPerformed
-*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.Northeastern.SummerCampManagement.cellModifier.ActionButton cmdDelete;
+    private com.Northeastern.SummerCampManagement.cellModifier.ActionButton cmdSave;
     // End of variables declaration//GEN-END:variables
 }

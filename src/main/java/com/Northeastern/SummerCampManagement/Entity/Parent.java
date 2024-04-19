@@ -6,6 +6,7 @@ package com.Northeastern.SummerCampManagement.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import java.time.LocalDate;
@@ -25,7 +26,7 @@ public class Parent extends AppUser{
     String address;
     
     @JsonIgnore
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "studentId")
     private List<Student> student;
     

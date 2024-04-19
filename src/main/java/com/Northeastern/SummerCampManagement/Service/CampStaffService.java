@@ -8,6 +8,7 @@ import com.Northeastern.SummerCampManagement.Dao.CampStaffRepository;
 import com.Northeastern.SummerCampManagement.Entity.CampStaff;
 import com.Northeastern.SummerCampManagement.Entity.Parent;
 import com.Northeastern.SummerCampManagement.Entity.Student;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -53,13 +54,17 @@ public class CampStaffService {
 		return campStaff.get();
 	}
      
-        public CampStaff  loginByCampStaffId(String userName,String password) throws CustomException{
-     List<CampStaff> campStaffLogin = (List<CampStaff>) getAllCampStaff();
-     CampStaff selectedCampStaff = new CampStaff();
-     for (CampStaff campStaffi: campStaffLogin){
-                    if(campStaffi.getUsername()==userName && campStaffi.getPassword()== password){
+     public CampStaff  loginByCampStaffId(String userName,String password) throws CustomException{
+     
+        CampStaff selectedCampStaff = new CampStaff();
+        List<CampStaff> campStaffLogin = new ArrayList<CampStaff>();
+        campStaffLogin = (List<CampStaff>)getAllCampStaff();
+
+        for (CampStaff campStaffi: campStaffLogin){
+                    if(campStaffi.getUsername().equals(userName) && campStaffi.getPassword().equals(password)){
                         
                        selectedCampStaff=  campStaffi;
+                       break;
                     }
                   }
      

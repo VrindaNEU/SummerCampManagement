@@ -31,7 +31,10 @@ public class FeedbackService {
      public String addFeedbackByStudentId(Integer studentId, Feedback feedback) throws CustomException  {
 		
            Optional<Student> student = this.studentRepository.findById(studentId);
-           student.get().setFeedback(feedback);
+           
+           Feedback addedFeedback = this.feedbackRepository.save(feedback);
+           
+           student.get().setFeedback(addedFeedback);
            this.studentRepository.save(student.get());
 	   return "Feedback added successfully";	
 	}

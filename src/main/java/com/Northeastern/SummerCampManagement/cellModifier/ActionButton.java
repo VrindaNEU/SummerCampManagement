@@ -7,7 +7,6 @@ package com.Northeastern.SummerCampManagement.cellModifier;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
@@ -19,7 +18,6 @@ import javax.swing.border.EmptyBorder;
  * @author HP PC
  */
 public class ActionButton extends JButton{
-
     private boolean mousePress;
     
     public ActionButton() {

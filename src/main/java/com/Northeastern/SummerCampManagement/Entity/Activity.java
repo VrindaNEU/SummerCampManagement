@@ -6,6 +6,7 @@ package com.Northeastern.SummerCampManagement.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,21 +24,24 @@ import java.util.Set;
  * @author vrind
  */
 
-enum Category{
-sports,
-artsCrafts,
-educational
-}
 
-enum Status{
-open,
-cancelled,
-fullyBooked
-}
 
 
 @Entity
 public class Activity {
+    
+    
+    public enum Category{
+    sports,
+    artsCrafts,
+    educational
+}
+
+public enum Status{
+    open,
+    cancelled,
+    fullyBooked
+}
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -50,7 +54,7 @@ public class Activity {
     
     
     @JsonIgnore
-    @ManyToMany(mappedBy = "activities")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "activities")
     private Set<Student> students = new HashSet<>();
     
     @OneToOne

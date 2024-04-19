@@ -5,6 +5,7 @@
 package com.Northeastern.SummerCampManagement.Entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 
 import jakarta.persistence.JoinTable;
@@ -58,13 +59,13 @@ public class Student extends AppUser{
 //    @JoinColumn(name = "activityId")
 //    private List<Activity> activities;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "parentId")
     private Parent parent;
 
     
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "student_activity",
         joinColumns = @JoinColumn(name = "user_id"),
