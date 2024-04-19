@@ -45,16 +45,22 @@ public class ScheduleService {
      
      public Schedule addScheduleByActivityId(Schedule newSchedule, Integer activityId) throws CustomException  {
         
-		      Optional<Activity> activity = this.activityRepository.findById(activityId);
+		Optional<Activity> activity = this.activityRepository.findById(activityId);
 		if (!activity.isPresent())
 			throw new CustomException("Activity not found for id:" + activityId);
                 
                 newSchedule.setActivity(activity.get());
                 
                                
-                this.scheduleRepository.save(newSchedule);
+                Schedule schedule = this.scheduleRepository.save(newSchedule);
+                
+                Activity newActivity = activity.get();
+                
+                newActivity.setSchedule(schedule);
+                
+                this.activityRepository.save(newActivity);
   
-		return newSchedule;	
+		return schedule;	
 	}
 
      
@@ -98,10 +104,13 @@ public class ScheduleService {
                 List<Schedule> schedules = new ArrayList<Schedule>();
                 
                 for(Activity activityi : activities){
-                schedules.add(activityi.getSchedule());
                     
+                    Schedule addSchedule = activityi.getSchedule();
+                    System.out.println(addSchedule.getLocation());
+                    schedules.add(addSchedule);
+                   
                 }
-                System.out.println(schedules.get(0).getDate());
+               // System.out.println(schedules.get(0).getDate());
                 
                 
                 return schedules;
