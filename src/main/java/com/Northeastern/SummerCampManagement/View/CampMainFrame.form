@@ -532,14 +532,42 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
-                                      <Component id="parentCrudtextLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jLabel9" min="-2" pref="295" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
+                                              <Component id="parentCrudtextLabel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="activityFeedbackLabel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                                      <Component id="activityFeedbackText" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="managementFeedbackLabel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="managementFeedbackText" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="staffFeedbackLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="foodFeedbackLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="foodFeedbackText" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="staffFeedbackText" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
+                                              <Component id="feedbackChartButton" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace pref="130" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -548,9 +576,23 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="parentCrudtextLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
-                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="activityFeedbackLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="activityFeedbackText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="staffFeedbackLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="staffFeedbackText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="managementFeedbackLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="managementFeedbackText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="foodFeedbackLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="foodFeedbackText" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                                      <Component id="feedbackChartButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="226" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -561,10 +603,53 @@
                                 <Property name="text" type="java.lang.String" value="FEEDBACK"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel9">
+                            <Component class="javax.swing.JLabel" name="activityFeedbackLabel">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="VISUALIZATION"/>
+                                <Property name="text" type="java.lang.String" value="Feedback for Activity:"/>
                               </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="activityFeedbackText">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="jLabel4"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="managementFeedbackLabel">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Feedback for Managenment:"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="managementFeedbackText">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="jLabel4"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="staffFeedbackLabel">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Feedback for Staff"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="staffFeedbackText">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="jLabel4"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="foodFeedbackLabel">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Feedback for Food:"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="foodFeedbackText">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="jLabel4"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="feedbackChartButton">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Feedback View"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="feedbackChartButtonActionPerformed"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
