@@ -653,289 +653,6 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JPanel" name="staffCrudPanel">
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                              <CardConstraints cardName="card5"/>
-                            </Constraint>
-                          </Constraints>
-
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="firstNameStaffActivityLabel" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lastNameStaffActivityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="emailStaffActivityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="createStaffActivityButton" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="firstNameStaffActivityField" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jTextField4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="contactStaffActivityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="designationStaffActivityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="staffActivityStatusLabel" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="contactStaffActivityField" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="1" attributes="0">
-                                                          <Component id="deleteStaffActivityButton" min="-2" max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="designationStaffActivityDropDown" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="staffActivityStatusDropDown" min="-2" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                              <Component id="editStaffActivityButton" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                                              <Component id="saveStaffActivityButton" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPane4" alignment="0" min="-2" pref="513" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
-                                              <Component id="staffActivityLabel" min="-2" pref="63" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                      <Component id="staffActivityLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="firstNameStaffActivityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="contactStaffActivityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="firstNameStaffActivityField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="contactStaffActivityField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="lastNameStaffActivityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="designationStaffActivityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="designationStaffActivityDropDown" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="emailStaffActivityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="staffActivityStatusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="staffActivityStatusDropDown" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="createStaffActivityButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="editStaffActivityButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="saveStaffActivityButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="deleteStaffActivityButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jScrollPane4" min="-2" pref="253" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                          </Layout>
-                          <SubComponents>
-                            <Component class="javax.swing.JLabel" name="staffActivityLabel">
-                              <Properties>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Segoe UI" size="14" style="1"/>
-                                </Property>
-                                <Property name="text" type="java.lang.String" value="STAFF"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="firstNameStaffActivityLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="First Name"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="lastNameStaffActivityLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Last Name"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="emailStaffActivityLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Email"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="contactStaffActivityLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Contact Number"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="designationStaffActivityLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Designation"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="staffActivityStatusLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Active Status"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JComboBox" name="staffActivityStatusDropDown">
-                              <Properties>
-                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="2">
-                                    <StringItem index="0" value="Active"/>
-                                    <StringItem index="1" value="InActive"/>
-                                  </StringArray>
-                                </Property>
-                              </Properties>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                              </AuxValues>
-                            </Component>
-                            <Component class="javax.swing.JComboBox" name="designationStaffActivityDropDown">
-                              <Properties>
-                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="3">
-                                    <StringItem index="0" value="Camp Lead"/>
-                                    <StringItem index="1" value="Camp Manager"/>
-                                    <StringItem index="2" value="Camp Assistant"/>
-                                  </StringArray>
-                                </Property>
-                              </Properties>
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="designationStaffActivityDropDownActionPerformed"/>
-                              </Events>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                              </AuxValues>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="contactStaffActivityField">
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="firstNameStaffActivityField">
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="jTextField3">
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="jTextField4">
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField4ActionPerformed"/>
-                              </Events>
-                            </Component>
-                            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
-                              <AuxValues>
-                                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                              </AuxValues>
-
-                              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                              <SubComponents>
-                                <Component class="javax.swing.JTable" name="staffActivityTable">
-                                  <Properties>
-                                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="6" rowCount="4">
-                                        <Column editable="true" title="Name" type="java.lang.Object"/>
-                                        <Column editable="true" title="Last Name" type="java.lang.Object"/>
-                                        <Column editable="true" title="Email" type="java.lang.Object"/>
-                                        <Column editable="true" title="Contact No." type="java.lang.Object"/>
-                                        <Column editable="true" title="Designation" type="java.lang.Object"/>
-                                        <Column editable="true" title="Activity Status" type="java.lang.Object"/>
-                                      </Table>
-                                    </Property>
-                                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                                      <TableColumnModel selectionModel="0">
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
-                                      </TableColumnModel>
-                                    </Property>
-                                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                                    </Property>
-                                  </Properties>
-                                </Component>
-                              </SubComponents>
-                            </Container>
-                            <Component class="javax.swing.JButton" name="createStaffActivityButton">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Create"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JButton" name="editStaffActivityButton">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Edit"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JButton" name="deleteStaffActivityButton">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Delete"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JButton" name="saveStaffActivityButton">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Save"/>
-                              </Properties>
-                            </Component>
-                          </SubComponents>
-                        </Container>
                       </SubComponents>
                     </Container>
                     <Container class="javax.swing.JPanel" name="leftPanel">
@@ -1175,7 +892,7 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="activityCategoryCombo" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <EmptySpace pref="115" max="32767" attributes="0"/>
                                                       <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
                                                   </Group>
@@ -1213,11 +930,6 @@
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
-                                      <Component id="viewRegisteredCampersButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
@@ -1254,9 +966,7 @@
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jScrollPane8" min="-2" pref="223" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Component id="viewRegisteredCampersButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="145" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1333,14 +1043,6 @@
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="activityNameTextfield1">
-                            </Component>
-                            <Component class="javax.swing.JButton" name="viewRegisteredCampersButton">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="View Registered Campers"/>
-                              </Properties>
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewRegisteredCampersButtonActionPerformed"/>
-                              </Events>
                             </Component>
                             <Container class="javax.swing.JScrollPane" name="jScrollPane8">
                               <AuxValues>
