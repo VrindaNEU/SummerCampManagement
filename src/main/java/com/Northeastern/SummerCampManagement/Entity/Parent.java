@@ -133,6 +133,10 @@ public class Parent extends AppUser{
     public void setStudent(List<Student> student) {
         this.student = student;
     }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
     
     
     

@@ -61,6 +61,10 @@ public enum Status{
     @JoinColumn(name = "scheduleId")
     private Schedule schedule;
 
+    public void setActivityId(Integer activityId) {
+        this.activityId = activityId;
+    }
+
     
     
     

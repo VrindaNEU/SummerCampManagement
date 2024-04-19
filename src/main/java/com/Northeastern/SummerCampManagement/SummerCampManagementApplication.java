@@ -6,6 +6,7 @@ import com.Northeastern.SummerCampManagement.Entity.SchoolAdmin;
 import com.Northeastern.SummerCampManagement.Service.CustomException;
 import com.Northeastern.SummerCampManagement.View.CampMainFrame;
 import com.Northeastern.SummerCampManagement.View.SchoolMainFrame;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,23 @@ public class SummerCampManagementApplication {
                 
        
                 
-               //startSchoolApplication();
-              startCampApplication();
+//               startSchoolApplication();
+//              startCampApplication();
+           Scanner scanner = new Scanner(System.in);
+        System.out.println("Which application do you want to start? (school/camp): ");
+        String choice = scanner.nextLine();
+ 
+        switch (choice.toLowerCase()) {
+            case "school":
+                startSchoolApplication();
+                break;
+            case "camp":
+                startCampApplication();
+                break;
+            default:
+                System.out.println("Invalid choice. Exiting...");
+                System.exit(1);
+        }
                 
         
     }

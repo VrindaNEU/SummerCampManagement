@@ -28,6 +28,10 @@ import java.util.Set;
 
 @Entity
 public class Student extends AppUser{
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
     
     
     private String firstName;
