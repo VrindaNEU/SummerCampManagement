@@ -1672,7 +1672,7 @@ public class CampMainFrame extends javax.swing.JFrame {
 
      private PieDataset createDataset(){
         DefaultPieDataset  result = new DefaultPieDataset();
-        ArrayList<Feedback> feedbackList = new ArrayList<>();
+       
         
         try {
             feedbackList = (ArrayList<Feedback>) feedbackService.getAllFeedbacks();
