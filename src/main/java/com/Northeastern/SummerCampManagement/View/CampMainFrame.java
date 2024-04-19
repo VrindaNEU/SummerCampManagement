@@ -29,7 +29,9 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.apache.poi.ss.usermodel.Row;
@@ -54,7 +56,7 @@ public class CampMainFrame extends javax.swing.JFrame {
     ActivityService activityService;
     ScheduleService scheduleService;
     MealPreferenceService mealPreferenceService;
-     FeedbackService feedbackService;
+      FeedbackService feedbackService;
    //****--end---********//
     
     CampAdmin admin;
@@ -64,7 +66,7 @@ public class CampMainFrame extends javax.swing.JFrame {
     Schedule schedule;
     MealPreference mealPreference;
     Integer userLoggedInId;
-    
+    Feedback feedback;
     
      public ArrayList<Student> camperList = new ArrayList<Student>();
      public ArrayList<Activity> activityList = new ArrayList<Activity>();
@@ -73,6 +75,7 @@ public class CampMainFrame extends javax.swing.JFrame {
      public ArrayList<String> camperNames  = new ArrayList<String>();
      public ArrayList<MealPreference> mealPreferenceList = new ArrayList<MealPreference>();
      public ArrayList<Schedule> scheduleList = new ArrayList<Schedule>();
+     public ArrayList<Feedback> feedbackList = new ArrayList<Feedback>();
     /**
      * Creates new form MainFrame
      */
@@ -100,7 +103,8 @@ public class CampMainFrame extends javax.swing.JFrame {
         activity = new Activity();
         schedule = new Schedule();
         mealPreference = new MealPreference();
-        feedbackService = new FeedbackService();
+        //feedbackService = new FeedbackService();
+        feedback = new Feedback();
         
         
         
@@ -1620,26 +1624,50 @@ public class CampMainFrame extends javax.swing.JFrame {
         rightPanel.add(feedbackPanel);
         rightPanel.repaint();
         rightPanel.revalidate();
+        //Dashboard starts
+        try {
+                
+                   feedbackList = (ArrayList<Feedback>) feedbackService.getAllFeedbacks();
+               } catch (CustomException ex) {
+                   Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
+               }
+               int activityCount =0;
+               int foodCount = 0;
+               int managementCOunt = 0;
+               int staffCount = 0;
+               for(Feedback feedbk : feedbackList)
+               {
+                   if(!feedbk.getFoodFeedback().toString().isEmpty())
+                   {
+                       foodCount ++;
+                   }
+                   if(!feedbk.getActivityFeedback().toString().isEmpty())
+                   {
+                        activityCount ++;
+                   }
+                   if(!feedbk.getManagementFeedback().toString().isEmpty())
+                   {
+                        managementCOunt ++;
+                   }
+                   if(!feedbk.getStaffFeedback().toString().isEmpty())
+                   {
+                        staffCount ++;
+                   }
+               }
         
-//        ArrayList<Feedback> feedbackList = new ArrayList<>();
-//        try {
-//            feedbackList = (ArrayList<Feedback>) feedbackService.getAllFeedbacks();
-//        } catch (CustomException ex) {
-//            Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//        PieDataset dataset = createDataset();
-//        
-//        JFreeChart chart = CreateChart(dataset, "CAMP FEEDBACK");
-//        feedbackPanel  = new ChartPanel(chart);
-//        feedbackPanel.setPreferredSize(new java.awt.Dimension(500,300));
-//        //setContentPane(feedbackPanel);
-//        getContentPane().add(feedbackPanel);
-//        setVisible(true);
-       // CreateChart CC = new CreateChart("PiechartTest","OS Comparison");
-//        CC.pack();
-//        CC.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        CC.setVisible(true);
+                activityFeedbackText.setText(String.valueOf(activityCount));
+        
+                staffFeedbackText.setText(String.valueOf(staffCount));
+                
+                managementFeedbackText.setText(String.valueOf(managementCOunt));
+                
+                foodFeedbackText.setText(String.valueOf(foodCount));
+               
+                   
+                   // Dashboard ends
+        
+        //Dashboard code end
+
     }//GEN-LAST:event_campFeedbackButtonActionPerformed
 
      private PieDataset createDataset(){
@@ -1651,14 +1679,28 @@ public class CampMainFrame extends javax.swing.JFrame {
         } catch (CustomException ex) {
             Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+        int activity = 0;
+        int food = 0; 
+        int management = 0;
+        int staff =0;
         
         for(Feedback feedback : feedbackList){
-            result.setValue("Activity", feedback.getActivityFeedback());
-            result.setValue("Food", feedback.getFoodFeedback());
-            result.setValue("Management", feedback.getManagementFeedback());
-            result.setValue("Saff", feedback.getStaffFeedback());
-            
+            activity += feedback.getActivityFeedback();
+            food += feedback.getFoodFeedback();
+            management += feedback.getManagementFeedback();
+            staff += feedback.getStaffFeedback();
+//            result.setValue("Activity", feedback.getActivityFeedback());
+//            result.setValue("Food", feedback.getFoodFeedback());
+//            result.setValue("Management", feedback.getManagementFeedback());
+//            result.setValue("Staff", feedback.getStaffFeedback());
+//            
         }
+
+        result.setValue("Activity", activity);
+        result.setValue("Food", food);
+        result.setValue("management", management);
+        result.setValue("Staff", staff);
+
         return result;
     }
     
