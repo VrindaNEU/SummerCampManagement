@@ -139,6 +139,9 @@
         <Component class="javax.swing.JTextField" name="usernameSchoolTextField">
         </Component>
         <Component class="javax.swing.JTextField" name="passwordSchoolTextField">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passwordSchoolTextFieldActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="roleSchoolDropBox">
           <Properties>
@@ -328,39 +331,19 @@
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                                      <Component id="dashboardStudentLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                                              <Component id="dashboardStaffLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                                              <Component id="staffTextLabel" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                                              <Component id="dashboardStudentLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="studentTextLabel" min="-2" pref="81" max="-2" attributes="0"/>
-                                                  <Component id="adminPanelDashboardRptButton" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                          <Component id="studentTextLabel" min="-2" pref="81" max="-2" attributes="0"/>
+                                          <Component id="adminPanelDashboardRptButton" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="dashboardParentLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                                              <Component id="parentsTextLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="dashboardCampuslabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="campusTextLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                                      <Component id="dashboardParentLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                      <Component id="parentsTextLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="43" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -383,16 +366,9 @@
                                               <Component id="studentTextLabel" min="-2" pref="34" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="dashboardStaffLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="dashboardCampuslabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="staffTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="campusTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                       <Component id="adminPanelDashboardRptButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="337" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -408,29 +384,9 @@
                                 <Property name="text" type="java.lang.String" value="No. Of Parents"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JLabel" name="dashboardStaffLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="No. Of Staffs"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="dashboardCampuslabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="No. Of Campus"/>
-                              </Properties>
-                            </Component>
                             <Component class="javax.swing.JLabel" name="studentTextLabel">
                               <Properties>
                                 <Property name="text" type="java.lang.String" value="number here"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="staffTextLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="jLabel1"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="campusTextLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="jLabel1"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="parentsTextLabel">
@@ -962,159 +918,6 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JPanel" name="campusCrudPanel">
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                              <CardConstraints cardName="card5"/>
-                            </Constraint>
-                          </Constraints>
-
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="1" attributes="0">
-                                                  <Component id="addCampusButton" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="campusCrudTextLabel" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jScrollPane3" min="-2" pref="452" max="-2" attributes="0"/>
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="campusNameTextLabel" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                                                      <Component id="campusNameTextField" min="-2" pref="71" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                                                      <Component id="locationCampusTextLabel" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                                      <Component id="locationTextField" min="-2" pref="71" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                                      <Component id="editCampusButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                                      <Component id="updateCampusButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="deleteCampusButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                      <Component id="campusCrudTextLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="campusNameTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="campusNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="locationCampusTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="locationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Component id="addCampusButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane3" min="-2" pref="174" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="editCampusButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="updateCampusButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="deleteCampusButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                          </Layout>
-                          <SubComponents>
-                            <Component class="javax.swing.JLabel" name="campusCrudTextLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="CAMPUS CRUD (Optional)"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="campusNameTextLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Name"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="campusNameTextField">
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="locationCampusTextLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Location"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="locationTextField">
-                            </Component>
-                            <Component class="javax.swing.JButton" name="addCampusButton">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="CREATE"/>
-                              </Properties>
-                            </Component>
-                            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-                              <AuxValues>
-                                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                              </AuxValues>
-
-                              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                              <SubComponents>
-                                <Component class="javax.swing.JTable" name="jTable3">
-                                  <Properties>
-                                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                      <Table columnCount="2" rowCount="0">
-                                        <Column editable="true" title="Name" type="java.lang.Object"/>
-                                        <Column editable="true" title="Campus" type="java.lang.Object"/>
-                                      </Table>
-                                    </Property>
-                                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                                      <TableColumnModel selectionModel="0">
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                          <Title/>
-                                          <Editor/>
-                                          <Renderer/>
-                                        </Column>
-                                      </TableColumnModel>
-                                    </Property>
-                                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                                    </Property>
-                                  </Properties>
-                                </Component>
-                              </SubComponents>
-                            </Container>
-                            <Component class="javax.swing.JButton" name="editCampusButton">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="EDIT"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JButton" name="updateCampusButton">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="SAVE"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JButton" name="deleteCampusButton">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="DELETE"/>
-                              </Properties>
-                            </Component>
-                          </SubComponents>
-                        </Container>
                       </SubComponents>
                     </Container>
                     <Container class="javax.swing.JPanel" name="leftPanel">
@@ -1139,7 +942,6 @@
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="dashboardButton1" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="campusButton" alignment="0" max="32767" attributes="0"/>
                                               <Component id="parentCrudButton" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1154,26 +956,16 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
                                   <Component id="dashboardButton1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                  <Component id="campusButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                                   <Component id="parentCrudButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                   <Component id="studentCrudButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="210" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JButton" name="campusButton">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Campus"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campusButtonActionPerformed"/>
-                          </Events>
-                        </Component>
                         <Component class="javax.swing.JButton" name="dashboardButton1">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="DashBoard"/>
@@ -1653,11 +1445,6 @@
                                                       <EmptySpace max="32767" attributes="0"/>
                                                       <Component id="contactNoParentProfileTextField" min="-2" pref="71" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="NoOfKidsEnrolledLabel" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="noOfKidsEnrolledTextLabel" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
@@ -1667,7 +1454,7 @@
                                               <Component id="updateParentButton1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="22" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1694,15 +1481,13 @@
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="addressParentProfileLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="addressParentProfileTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="NoOfKidsEnrolledLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="noOfKidsEnrolledTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="editParentButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="updateParentButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="309" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1766,16 +1551,6 @@
                               <Events>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateParentButton1ActionPerformed"/>
                               </Events>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="NoOfKidsEnrolledLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="No. Of Kids Enrolled"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="noOfKidsEnrolledTextLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="jLabel4"/>
-                              </Properties>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -1869,143 +1644,6 @@
                             </Container>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JPanel" name="campReportPanel">
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                              <CardConstraints cardName="card6"/>
-                            </Constraint>
-                          </Constraints>
-
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
-                                              <Component id="campReportLabel" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="studentNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="campActivitiesCountLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="activityRegistrationDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="studentMealPrefLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="activityRegistrationDateChooser" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="childrenComboBox" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="StudentActivityCountTextField" min="-2" pref="71" max="-2" attributes="0"/>
-                                                  <Component id="studentMealPrefTextField" min="-2" pref="71" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                                              <Component id="viewCampReportButton" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                              <Component id="downloadCampReportButton" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                                      <Component id="campReportLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="childrenComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="studentNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="activityRegistrationDateLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="activityRegistrationDateChooser" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="campActivitiesCountLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="StudentActivityCountTextField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="studentMealPrefLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="studentMealPrefTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="viewCampReportButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="downloadCampReportButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                          </Layout>
-                          <SubComponents>
-                            <Component class="javax.swing.JLabel" name="campReportLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="CAMP REPORT"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JComboBox" name="childrenComboBox">
-                              <Properties>
-                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="4">
-                                    <StringItem index="0" value="Item 1"/>
-                                    <StringItem index="1" value="Item 2"/>
-                                    <StringItem index="2" value="Item 3"/>
-                                    <StringItem index="3" value="Item 4"/>
-                                  </StringArray>
-                                </Property>
-                              </Properties>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                              </AuxValues>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="campActivitiesCountLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="No. of Activities Registered"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="studentNameLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Student"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="activityRegistrationDateLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Registration Date"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="StudentActivityCountTextField">
-                            </Component>
-                            <Component class="com.toedter.calendar.JDateChooser" name="activityRegistrationDateChooser">
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="studentMealPrefLabel">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Meal Preference"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="studentMealPrefTextField">
-                            </Component>
-                            <Component class="javax.swing.JButton" name="viewCampReportButton">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="VIEW DETAILS"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JButton" name="downloadCampReportButton">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="DOWNLOAD REPORT"/>
-                              </Properties>
-                            </Component>
-                          </SubComponents>
-                        </Container>
                       </SubComponents>
                     </Container>
                     <Container class="javax.swing.JPanel" name="leftParentPanel">
@@ -2034,7 +1672,6 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="profileButton" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
                                               <Component id="parentDashboardButton" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
-                                              <Component id="summerCampButton" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
@@ -2051,13 +1688,11 @@
                                   <Component id="parentDashboardButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                   <Component id="profileButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                  <Component id="summerCampButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                                   <Component id="schoolReportButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                   <Component id="feedbackButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="174" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2077,14 +1712,6 @@
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="parentDashboardButtonActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="summerCampButton">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Summer Camp"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="summerCampButtonActionPerformed"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="schoolReportButton">

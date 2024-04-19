@@ -205,7 +205,6 @@ public class CampMainFrame extends javax.swing.JFrame {
         activityCategoryCombo = new javax.swing.JComboBox<>();
         activityAgeGroupLabel = new javax.swing.JLabel();
         activityNameTextfield1 = new javax.swing.JTextField();
-        viewRegisteredCampersButton = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         activityViewTable = new javax.swing.JTable();
         staffSchedulePanel = new javax.swing.JPanel();
@@ -825,7 +824,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                         .addGroup(staffDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(camperCount)
                             .addComponent(activityCount))))
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(352, Short.MAX_VALUE))
         );
         staffDashboardLayout.setVerticalGroup(
             staffDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -840,7 +839,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                 .addGroup(staffDashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(activityCount))
-                .addContainerGap(363, Short.MAX_VALUE))
+                .addContainerGap(463, Short.MAX_VALUE))
         );
 
         rightStaffPanel.add(staffDashboard, "card2");
@@ -876,13 +875,6 @@ public class CampMainFrame extends javax.swing.JFrame {
         activityCategoryCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sports", "Arts and Crafts", "Educational" }));
 
         activityAgeGroupLabel.setText("Age Group");
-
-        viewRegisteredCampersButton.setText("View Registered Campers");
-        viewRegisteredCampersButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewRegisteredCampersButtonActionPerformed(evt);
-            }
-        });
 
         activityViewTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -921,7 +913,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                         .addGroup(staffActivityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(staffActivityPanelLayout.createSequentialGroup()
                                 .addComponent(activityCategoryCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
                             .addGroup(staffActivityPanelLayout.createSequentialGroup()
@@ -947,10 +939,6 @@ public class CampMainFrame extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(staffActivityPanelLayout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addComponent(viewRegisteredCampersButton)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         staffActivityPanelLayout.setVerticalGroup(
             staffActivityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -980,9 +968,7 @@ public class CampMainFrame extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(viewRegisteredCampersButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         rightStaffPanel.add(staffActivityPanel, "card4");
@@ -1672,7 +1658,7 @@ public class CampMainFrame extends javax.swing.JFrame {
 
      private PieDataset createDataset(){
         DefaultPieDataset  result = new DefaultPieDataset();
-        ArrayList<Feedback> feedbackList = new ArrayList<>();
+       
         
         try {
             feedbackList = (ArrayList<Feedback>) feedbackService.getAllFeedbacks();
@@ -1769,51 +1755,6 @@ public class CampMainFrame extends javax.swing.JFrame {
     private void activityAgeTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activityAgeTextfieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_activityAgeTextfieldActionPerformed
-
-    private void viewRegisteredCampersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRegisteredCampersButtonActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = activityViewTable.getSelectedRow();
-  if (selectedRow == -1) {
-                    JOptionPane.showMessageDialog(null, "No row selected!", "Error", JOptionPane.ERROR_MESSAGE);
-                } else {
-              int selectedId = (int) activityViewTable.getValueAt(selectedRow, 0);  
-              
-            try {
-                camperList = (ArrayList<Student>) activityService.getStudentsByActivityId(selectedId);
-            } catch (CustomException ex) {
-                Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            // Dialog Box
-       
-        // Create a string representation of the list contents
-        StringBuilder message = new StringBuilder();
-        
-    
-            
-        try {
-            // Iterate over the camperList
-           for (Student item : camperList) {
-            message.append(item.getFirstName()).append("\n");
-        }
-
-        // Display the list contents in a popup dialog
-        JOptionPane.showMessageDialog(null, message.toString(), "List Campers", JOptionPane.INFORMATION_MESSAGE);
-        
-        } catch (Exception e) {
-            // Handle any exception that might occur during the iteration
-            JOptionPane.showMessageDialog(null, "Error occurred: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        
-            // End of Dialog Box
-            
-                }
-  
-        
-        
-        
-    }//GEN-LAST:event_viewRegisteredCampersButtonActionPerformed
 
     private void designationStaffActivityDropDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_designationStaffActivityDropDownActionPerformed
         // TODO add your handling code here:
@@ -2241,6 +2182,10 @@ public class CampMainFrame extends javax.swing.JFrame {
         topPanel.setVisible(false);
         bottomPanel.setVisible(false);
         loginPanel.setVisible(true);
+        
+        usernameCampTextField.setText("");
+        passwordCampTextField.setText("");
+        
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void activityCreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activityCreateButtonActionPerformed
@@ -2586,7 +2531,6 @@ public class CampMainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField usernameCampTextField;
     private javax.swing.JTable viewMealPrefTable;
     private javax.swing.JTable viewMySchedulesTable;
-    private javax.swing.JButton viewRegisteredCampersButton;
     private javax.swing.JLabel welcomeCampLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -51,20 +51,13 @@ public class Schedule {
     
     //Getters and Setters
 
-    public Activity getActivity() {
-        return activity;
-    }
-
-    public void setActivity(Activity activity) {
-        this.activity = activity;
-    }
-
-    
-    
     public Integer getScheduleId() {
         return scheduleId;
     }
 
+    public void setScheduleId(Integer scheduleId) {
+        this.scheduleId = scheduleId;
+    }
 
     public String getDate() {
         return date;
@@ -98,6 +91,15 @@ public class Schedule {
         this.location = location;
     }
 
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
+
+   
    
     
     
