@@ -1665,27 +1665,35 @@ public class CampMainFrame extends javax.swing.JFrame {
         } catch (CustomException ex) {
             Logger.getLogger(CampMainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        int activity = 0;
-        int food = 0; 
-        int management = 0;
-        int staff =0;
         
-        for(Feedback feedback : feedbackList){
-            activity += feedback.getActivityFeedback();
-            food += feedback.getFoodFeedback();
-            management += feedback.getManagementFeedback();
-            staff += feedback.getStaffFeedback();
-//            result.setValue("Activity", feedback.getActivityFeedback());
-//            result.setValue("Food", feedback.getFoodFeedback());
-//            result.setValue("Management", feedback.getManagementFeedback());
-//            result.setValue("Staff", feedback.getStaffFeedback());
-//            
-        }
-
-        result.setValue("Activity", activity);
-        result.setValue("Food", food);
-        result.setValue("management", management);
-        result.setValue("Staff", staff);
+                       int activityCount =0;
+               int foodCount = 0;
+               int managementCOunt = 0;
+               int staffCount = 0;
+               for(Feedback feedbk : feedbackList)
+               {
+                   if(!feedbk.getFoodFeedback().toString().isEmpty())
+                   {
+                       foodCount ++;
+                   }
+                   if(!feedbk.getActivityFeedback().toString().isEmpty())
+                   {
+                        activityCount ++;
+                   }
+                   if(!feedbk.getManagementFeedback().toString().isEmpty())
+                   {
+                        managementCOunt ++;
+                   }
+                   if(!feedbk.getStaffFeedback().toString().isEmpty())
+                   {
+                        staffCount ++;
+                   }
+               }
+        
+        result.setValue("Activity", activityCount);
+        result.setValue("Food", foodCount);
+        result.setValue("management", managementCOunt);
+        result.setValue("Staff", staffCount);
 
         return result;
     }
@@ -2336,7 +2344,7 @@ public class CampMainFrame extends javax.swing.JFrame {
         PieDataset dataset = createDataset();
         CreateChart CC = new CreateChart("Feedback","Feedback", dataset );
         CC.pack();
-        CC.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //CC.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         CC.setVisible(true);
     }//GEN-LAST:event_feedbackChartButtonActionPerformed
 
